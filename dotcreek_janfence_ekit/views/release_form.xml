@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_document_release_form">
+        <t t-name="sale.report_saleorder_document_release_form">
+            <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <br/>
+                    <h2>
+                        Customer E-Kit
+                    </h2>
+                    <div style="text-align: center">
+                        <h3>This Customer E-Kit(PDF) Contains Below Forms</h3>
+                    </div>
+                    <table class="table table-sm o_main_table">
+                        <thead>
+                            <tr>
+                                <th style="font-size:20px" name="th_description" class="text-left">S.No</th>
+                                <th style="font-size:20px" name="th_quantity" class="text-left">Form Name</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <t t-if="doc.release_form">
+                                <tr >
+                                    <td style="font-size:19px">
+                                        1
+                                    </td>
+                                    <td style="font-size:19px">
+                                        Release Form
+                                    </td>
+                                </tr>
+                            </t>
+                             <t t-if="doc.credit_card_form">
+                                <tr >
+                                    <td style="font-size:19px">
+                                        1
+                                    </td>
+                                    <td style="font-size:19px">
+                                        Credit Card Form
+                                    </td>
+                                </tr>
+                            </t>
+                            <t t-if="doc.st_form">
+                                <tr >
+                                    <td style="font-size:19px">
+                                        1
+                                    </td>
+                                    <td style="font-size:19px">
+                                        ST8 Form
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div style="page-break-before: always;">
+                    <h2>
+                        Release Form
+                    </h2>
+                    <p style="font-size:21px">I,<span t-field="doc.partner_id.name"/>, understand that Jan Fence, Inc. ("Jan Fence"), may take
+                        photographs of my installation project for,
+                        without limitation, training, demonstration, marketing and promotional purposes. Such photos
+                        shall be anonymous and
+                        exclude information that would make them personally identifiable.
+                    </p>
+                    <p style="font-size:21px">
+                        I hereby give Jan Fence and its affiliates express permission to take, copyright, use and
+                        publish such photographs for
+                        any purpose with Jan Fence's discretion. I further release and waive any and all claims against
+                        Jan Fence related to
+                        such photographs.
+                    </p>
+                    <p style="font-size:21px">By signing below, I acknowledge that I have read and fully understand the terms of this waiver
+                        and release, and I
+                        intend it to be binding.
+                    </p>
+                   <p style="font-size:21px"> Date of acceptance: <u>                  
+                                      
+                                      
+                                 
+                </u>      
+                                      
+                                     Signature: <u>                  
+                                      
+                                      
+                                 
+                </u>      </p>
+                </div>
+            </t>
+        </t>
+    </template>
+    <template id="report_saleorder_release_form">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="dotcreek_janfence_ekit.report_document_release_form" t-lang="doc.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_saleorder_release_form" model="ir.actions.report">
+        <field name="name">Release Form</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">dotcreek_janfence_ekit.report_saleorder_release_form</field>
+        <field name="report_file">dotcreek_janfence_ekit.report_saleorder_release_form</field>
+        <field name="print_report_name">'Release Form - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
