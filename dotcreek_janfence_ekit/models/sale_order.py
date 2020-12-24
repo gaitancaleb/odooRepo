@@ -29,7 +29,7 @@ class SaleOrder(models.Model):
             res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_form_st8')
             ids_sale_reports.append(res_id.id)
         if self.release_form:
-            res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_release_form')
+            res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_release_send_form')
             ids_sale_reports.append(res_id.id)
 
         lang = self.env.context.get('lang')

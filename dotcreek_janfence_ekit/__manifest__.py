@@ -24,10 +24,10 @@
     'data': [
         'views/job_proposal.xml',
         'views/job_proposal_customer.xml',
-        'views/company.xml',
         'views/form_st_8.xml',
         'views/credit_card_form.xml',
         'views/release_form.xml',
+        'views/release_send_form.xml',
         'views/company.xml',
         'views/sale_order.xml',
         'views/mail_template.xml'
