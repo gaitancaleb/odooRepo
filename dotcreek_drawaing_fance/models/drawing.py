@@ -9,6 +9,10 @@ class Drawing(models.Model):
     name = fields.Char('Name')
     lead_id = fields.Many2one('crm.lead',string='Lead')
 
+    _sql_constraints = [
+        ('drawing_name_uniq', 'unique(name,lead_id)', "A name have to be unique!"),
+    ]
+
     def go_to_drawing(self):
         self.write({
             "lead_id":self.env.context["lead_id"]
