@@ -1,0 +1,30 @@
+<!--  © 2018 Business Development Technology Partner
+ License CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/). -->
+<odoo>
+    <data>
+
+        <record id="view_drawing_form" model="ir.ui.view">
+            <field name="name">Drawing Form</field>
+            <field name="model">dotcreek_drawaing_fance.drawing</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Drawing">
+                    <sheet>
+                    <div class="oe_button_box" name="button_box">
+                            <button name="go_to_drawing" type="object" class="oe_stat_button"
+                                    context="{'drawing_id': id}" >
+                                <div class="o_stat_info">
+                                    <span>Go To Drawing</span>
+                                </div>
+                            </button>
+                        </div>
+                    <group>
+                        <field name="name"/>
+                        <field name="drawing" invisible="1"/>
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

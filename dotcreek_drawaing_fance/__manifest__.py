@@ -3,8 +3,8 @@
 
 # noinspection PyStatementEffect
 {
-    'name': 'JanFence Ekit',
-    'summary': 'Custom Reports for sale.',
+    'name': 'Drawing tool',
+    'summary': 'Jan Fences Drawing tool',
     'version': '11.0.1.0',
     'category': 'Others',
     'author': 'dotcreek S.A.',
@@ -19,18 +19,15 @@
     },
     'depends': [
         'base',
-        'sale_management'
+        'crm',
+        'stock',
+        'website',
     ],
     'data': [
-        'views/job_proposal.xml',
-        'views/job_proposal_customer.xml',
-        'views/form_st_8.xml',
-        'views/credit_card_form.xml',
-        'views/release_form.xml',
-        'views/release_send_form.xml',
-        'views/company.xml',
-        'views/sale_order.xml',
-        'views/mail_template.xml'
+        'views/lead.xml',
+        'views/specification.xml',
+        'views/drawing.xml'
+
     ],
 
 }
