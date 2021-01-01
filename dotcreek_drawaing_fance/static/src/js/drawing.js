@@ -1664,7 +1664,8 @@ function showSegmentLength() {
 
 // Show modal for element options
 function showModalOptions() {
-
+    jQuery('#elementLength').css('display', 'block');
+    jQuery('#labelelementLength').css('display', 'block');
   jQuery('#segment-length-container').css('display', 'block');
   //jQuery('#optionsModal').modal('show');
 }
@@ -2745,8 +2746,6 @@ function onEditPost() {
     var productData = JSON.parse(post.productData);
     jQuery('.material-title').text(post.material.toUpperCase());
     jQuery('#editPost').css('display', 'block');
-    jQuery('#elementLength').css('display', 'none');
-    jQuery('#labelelementLength').css('display', 'none');
     jQuery('#jf-custom-sku-product').val(productData.product_sku);
     //jQuery('#jf-material-custom-sku').show();
     //jQuery('#edit-description').show();
@@ -2754,6 +2753,8 @@ function onEditPost() {
     jQuery('#post-types').val(post.postType);
     (0, _modal.showPostTypes)();
     (0, _modal2.showModalOptions)();
+    jQuery('#elementLength').css('display', 'none');
+    jQuery('#labelelementLength').css('display', 'none');
   }, 1000);
 }
 

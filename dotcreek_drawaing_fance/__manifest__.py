@@ -26,7 +26,8 @@
     'data': [
         'views/lead.xml',
         'views/specification.xml',
-        'views/drawing.xml'
+        'views/drawing.xml',
+        'security/ir.model.access.csv'
 
     ],
 
