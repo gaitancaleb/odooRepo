@@ -20,7 +20,7 @@ class Drawing(models.Model):
         if self.drawing:
             return {
                 'type': 'ir.actions.act_url',
-                'url': '/specification?id=%s&name=%s&drawing=%s' % (self.id, self.name,self.drawing.decode()),
+                'url': '/specification?id=%s&name=%s' % (self.id, self.name),
                 'target': 'self',
             }
         else:

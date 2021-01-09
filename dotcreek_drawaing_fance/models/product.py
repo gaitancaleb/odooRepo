@@ -13,6 +13,10 @@ class ProductProduct(models.Model):
 
     default_code = fields.Char('SKU', index=True)
 
+    height = fields.Integer('Height')
+    opening = fields.Integer('Opening')
+
     _sql_constraints = [
         ('default_code', 'unique(default_code)', "A SKU can only be assigned to one product !"),
     ]
+

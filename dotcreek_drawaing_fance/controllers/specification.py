@@ -13,3 +13,10 @@ class SpecificationController(http.Controller):
         drawing.write({'name': kwargs['edit-field-type-of-spec-und-0-value'],
                        'drawing': kwargs['tostorejson']})
         return werkzeug.utils.redirect('/web#id=%s&model=crm.lead&view_type=form'%(drawing.lead_id.id))
+
+
+    @http.route('/specification/get', type='http',auth='public',methods=['GET'], website=True,sitemap=False)
+    def get_draw(self,id, **values):
+        cr,uid, context =request.cr, request.uid, request.context
+        drawing = http.request.env['dotcreek_drawaing_fance.drawing'].search([('id', '=', id)])
+        return drawing.drawing

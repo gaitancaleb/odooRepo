@@ -31,9 +31,7 @@ function pageValidations(data) {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const drawing_id = urlParams.get('id');
-
     const name = urlParams.get('name');
-
     jQuery('#edit-field-type-of-spec-und-0-value').val(name)
     jQuery('#job_form_id').val(drawing_id);
   (0, _job_specification.jobBindEvents)();
@@ -981,7 +979,14 @@ function getDrawingJob(job_id) {
   var baseURL = jQuery("#base-url").val();
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
-      const drawing = urlParams.get('drawing');
+       const drawing_id = urlParams.get('id');
+       var request = jQuery.ajax({
+        method: "GET",
+        url:"/specification/get",
+        async: false,
+        data: { id: drawing_id}
+      });
+      const drawing = request.responseText;
       var data ="["+atob(drawing)+"]";
       var jsonData = JSON.parse(data);
       if (jsonData.length) {
@@ -1017,7 +1022,14 @@ function startDrawingEdit(json) {
 function isJobEdit() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const drawing = urlParams.get('drawing')
+    const drawing_id = urlParams.get('id');
+       var request = jQuery.ajax({
+        method: "GET",
+        url:"/specification/get",
+        async: false,
+        data: { id: drawing_id}
+      });
+      const drawing = request.responseText;
   return !!(drawing !== null);
 }
 

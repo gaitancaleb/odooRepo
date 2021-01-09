@@ -27,6 +27,7 @@
         'views/lead.xml',
         'views/specification.xml',
         'views/drawing.xml',
+        'views/product.xml',
         'security/ir.model.access.csv'
 
     ],
