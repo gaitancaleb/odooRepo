@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_document_credit_card">
+        <t t-name="sale.report_saleorder_document_credit_card">
+            <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <br/>
+                    <h2>
+                        Credit Card
+Authorization
+                    </h2>
+                    <p style="font-size:21px">
+                       <strong>Re: Authorization of Payment by credit card</strong>
+                    </p>
+                    <p style="font-size:21px">
+                        <strong>
+                            I, 
+                            <u>                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                 </u>, authorize Jan Fence, Inc. to
+                            charge my credit card in the amount of $ <u>                  
+                                              
+                                             </u>, on <u>                  
+                                              
+                                             </u>,
+                            20<u>                  
+                                  
+                        </u>
+                            <br/>
+
+                            Credit Card #
+                            <u>                  
+                                                   
+                                                    
+                                                      
+                                                      
+                            </u>
+                            <br/>
+                            Exp date
+                            <u>                      
+                                                  
+                                    
+                                                       
+                                                      
+                                                      
+                            </u>
+                            <br/>
+                            Security code
+                            <u>                  
+                                                   
+                                                    
+                                                      
+                                                      
+                            </u>
+                            <br/>
+                            Billing Address Zip Code
+                            <u>                  
+                                                  
+                                                  
+                                                      
+                            </u>
+                            <br/>
+                        </strong>
+                    </p>
+                    <div class="well">Please check one:
+                        <br/>
+                    </div>
+                    <p style="font-size:21px">
+                        <strong>
+                            <u>                  
+                                                  
+                                                  
+                                                      
+                            </u>
+                            Master Card
+                            <br/>
+                            <u>                  
+                                                  
+                                                  
+                                                      
+                            </u>
+                            Visa
+                            <br/>
+                            <u>                  
+                                                  
+                                                  
+                                                      
+                            </u>
+                            Discover
+                            <br/>
+                            <u>                  
+                                                  
+                                                  
+                                                      
+                            </u>
+                            Amex
+                            <br/>
+                        </strong>
+                    </p>
+                    <div class="text-center">
+                        <p style="font-size:17px">I, the undersigned, authorize Jan Fence Inc, to use the above listed
+                            credit card for payment upon completion
+                            of service. I
+                            understand that future payments\signed "Change Orders" will be invoiced with this credit
+                            card on file and
+                            that if a check
+                            is not presented at time of completion of work the card will be run for payment.
+                        </p>
+                    </div>
+                    <p style="font-size:21px">
+                        <strong>Print Name  
+                            <u>                  
+                                                  
+                                                  
+                                                 
+                            </u>
+                            <br/>
+                            Signature
+                            <u>                  
+                                                  
+                                                  
+                                                  
+                                    
+                            </u>
+                            <br/>
+
+                            You agree your electronic signature is the legal equivalent of your manual signature on
+                            this document.
+                            <u>                  
+                                            
+                            </u>
+                            Please initial here to allow Jan Fence to run the balance upon
+                            completion on the above credit card.
+                        </strong>
+                    </p>
+                </div>
+            </t>
+        </t>
+    </template>
+    <template id="report_saleorder_credit_card">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="dotcreek_janfence_ekit.report_document_credit_card" t-lang="doc.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_saleorder_credit_card" model="ir.actions.report">
+        <field name="name">Credit Card</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">dotcreek_janfence_ekit.report_saleorder_credit_card</field>
+        <field name="report_file">dotcreek_janfence_ekit.report_saleorder_credit_card</field>
+        <field name="print_report_name">'Credit Card Form - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

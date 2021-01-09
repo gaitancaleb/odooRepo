@@ -1,0 +1,2 @@
+"id","name","model_id","group_id","perm_read","perm_write","perm_create","perm_unlink"
+"dotcreek_drawaing_fance.drawing_fance_security","Drawing Tool","dotcreek_drawaing_fance.drawing","","True","True","True","True"

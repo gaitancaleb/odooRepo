@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_mail_template_form">
+            <field name="name">email.template.form</field>
+            <field name="model">mail.template</field>
+            <field name="inherit_id" ref="mail.email_template_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath
+                            expr="//field[@name='report_name']"
+                            position="after">
+                        <field name="report_template_ids" invisible="1" widget="many2many_tags"/>
+                    </xpath>
+
+                </data>
+            </field>
+        </record>
+
+    </data>
+</odoo>

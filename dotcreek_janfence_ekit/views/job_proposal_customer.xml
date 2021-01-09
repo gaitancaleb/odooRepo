@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_saleorder_document_janfence_customers">
+        <t t-name="sale.report_saleorder_document_janfence_customers">
+            <t t-call="web.external_layout">
+                <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
+
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <table style="width:100%">
+                        <tr>
+                            <td>
+                                <h2>
+                                    <span>Job Proposal</span>
+
+                                </h2>
+                                <br/>
+                            </td>
+                            <td class="ml64">
+                                <p>
+                                    <span t-field="doc.company_id.licence_id_one" nolabel="1"/>
+                                    <br/>
+                                    <span t-field="doc.company_id.licence_id_two" nolabel="1"/>
+                                    <br/>
+                                    <span t-field="doc.company_id.licence_id_three" nolabel="1"/>
+                                    <br/>
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                    <div class="row mt16 mb16" id="informations">
+                        <table style="width:100%">
+
+                            <tr>
+                                <td>
+                                    <strong>Customer/Project Name:</strong>
+                                </td>
+                                <td>
+                                    <span t-field="doc.partner_id.name"/>
+                                </td>
+                                <td>
+                                    <strong>Date:</strong>
+                                </td>
+                                <td>
+                                    <span t-field="doc.date_order"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Phone:</strong>
+                                </td>
+                                <td>
+                                    <span t-field="doc.partner_id.phone"/>
+                                </td>
+                                <td>
+                                    <strong>E-mail:</strong>
+                                </td>
+                                <td>
+                                    <span t-field="doc.partner_id.email"/>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Service Address:</strong>
+                                </td>
+                                <td>
+                                    <span t-field="doc.partner_shipping_id.street"/>,
+                                    <span t-field="doc.partner_shipping_id.city"/>,
+                                    <span t-field="doc.partner_shipping_id.state_id.name"/>,
+                                    <span t-field="doc.partner_shipping_id.zip"/>
+                                </td>
+
+                                <td>
+                                    <strong>Salesmen:</strong>
+                                </td>
+                                <td>
+                                    <span t-field="doc.user_id.name"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <table class="table table-sm o_main_table">
+                        <thead>
+                            <tr>
+                                <th name="th_description" class="text-left">Description</th>
+                                <th name="th_subtotal" class="text-right">
+                                    <t groups="account.group_show_line_subtotals_tax_excluded">Amount</t>
+                                    <t groups="account.group_show_line_subtotals_tax_included">Total Price</t>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+
+                            <t t-set="current_subtotal" t-value="0"/>
+                            <tr>
+
+                                <td name="td_name" class="col-lg">
+                                    <span t-field="doc.note"/>
+
+                                </td>
+
+                                <td name="td_subtotal" class="text-right o_price_total">
+                                    <span t-field="doc.amount_total"/>
+                                </td>
+
+
+                            </tr>
+                            <t t-foreach="doc.order_line" t-as="line">
+
+                                <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal"
+                                   groups="account.group_show_line_subtotals_tax_excluded"/>
+                                <t t-set="current_subtotal" t-value="current_subtotal + line.price_total"
+                                   groups="account.group_show_line_subtotals_tax_included"/>
+
+                                <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
+
+                                    <t t-if="line.display_type == 'line_section'">
+                                        <td name="td_section_line" colspan="99">
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <t t-set="current_section" t-value="line"/>
+                                        <t t-set="current_subtotal" t-value="0"/>
+                                    </t>
+                                    <t t-if="line.display_type == 'line_note'">
+                                        <td name="td_note_line" colspan="99">
+                                            <span t-field="line.name"/>
+                                        </td>
+                                    </t>
+                                </tr>
+
+                                <t t-if="current_section and (line_last or doc.order_line[line_index+1].display_type == 'line_section')">
+                                    <tr class="is-subtotal text-right">
+                                        <td name="td_section_subtotal" colspan="99">
+                                            <strong class="mr16">Subtotal</strong>
+                                            <span t-esc="current_subtotal"
+                                                  t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <div class="clearfix" name="so_total_summary">
+                        <div id="total" class="row" name="total">
+                            <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                                <table class="table table-sm">
+
+                                    <tr class="border-black o_total">
+                                        <td name="td_amount_total_label">
+                                            <strong>Total</strong>
+                                        </td>
+                                        <td name="td_amount_total" class="text-right">
+                                            <span t-field="doc.amount_total"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div t-if="doc.signature" class="mt32 ml64 mr4" name="signature">
+                        <div class="offset-8">
+                            <strong>Signature</strong>
+                        </div>
+                        <div class="offset-8">
+                            <img t-att-src="image_data_uri(doc.signature)" style="max-height: 4cm; max-width: 8cm;"/>
+                        </div>
+                        <div class="offset-8 text-center">
+                            <p t-field="doc.signed_by"/>
+                        </div>
+                    </div>
+                    <div t-if="doc.sale_order_option_ids and doc.state in ['draft', 'sent']">
+                        <t t-set="has_option_discount"
+                           t-value="any(doc.sale_order_option_ids.filtered(lambda o: o.discount != 0.0))"/>
+                        <h4>
+                            <span>Options</span>
+                        </h4>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th class="text-left">Description</th>
+                                    <th t-if="has_option_discount" groups="product.group_discount_per_so_line"
+                                        class="text-left">Disc.%
+                                    </th>
+                                    <th class="text-right">Unit Price</th>
+                                </tr>
+                            </thead>
+                            <tbody class="sale_tbody">
+                                <tr t-foreach="doc.sale_order_option_ids" t-as="option">
+                                    <td>
+                                        <span t-field="option.name"/>
+                                    </td>
+                                    <td t-if="has_option_discount" groups="product.group_discount_per_so_line">
+                                        <strong t-if="option.discount != 0.0" class="text-info">
+                                            <t t-esc="((option.discount % 1) and '%s' or '%d') % option.discount"/>%
+                                        </strong>
+                                    </td>
+                                    <td>
+                                        <strong class="text-right">
+                                            <div t-field="option.price_unit"
+                                                 t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"
+                                                 t-att-style="option.discount and 'text-decoration: line-through' or None"
+                                                 t-att-class="option.discount and 'text-danger' or None"/>
+                                            <div t-if="option.discount">
+                                                <t t-esc="'%.2f' % ((1-option.discount / 100.0) * option.price_unit)"/>
+                                            </div>
+                                        </strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <div class="oe_structure"/>
+                    <p style="font-size:12px">
+                        PERMIT MUST BE OBTAINED BY OWNER PRIOR TO INSTALLATION
+                        <br/>
+                        TERMS OF PAYMENT
+                    </p>
+                    <p style="font-size:11px">
+                        <strong>*Price valid for 7 days from Date of Job Proposal For All Material*</strong>
+                        <br/>
+                        <strong>We require $1/3 deposit, $1/3 due at start of job. Balance due upon completion.</strong>
+                        <br/>
+                        <strong>Approximate start date:</strong>
+                        8 to 10 weeks <strong>Approximate end date:</strong> 1 to 2 days
+                    </p>
+                    <p style="font-size:10px">By signing below, you acknowledge that: (1) You have read the entire
+                        Contract; (2) You agree to all of the provisions of this Contract; (3) You have received a
+                        complete copy of
+                        this Contract; (4) The above prices, specifications and conditions are satisfactory and are
+                        hereby accepted. Jan Fence, Inc. is authorized to do the work as specified. Payment
+                        will be made as outlined above; (5) Until this Contract is paid in full, you have no ownership
+                        interest in the fence/material installed on your property; (6) You may cancel this
+                        Contract at any time before midnight of the third business day after receiving a copy of this
+                        Contract. If you wish to cancel this Contract, you must either (a) send a signed and
+                        dated written notice of cancellation by registered mail, return receipt requested; or (b)
+                        personally deliver a signed and dated written notice of cancellation to: Jan Fence, Inc., 4
+                        Industrial Road, Pequannock, NJ 07440, Telephone (973) 694-4055. If you cancel this Contract
+                        within the three-day period, you are entitled to a full refund of your money.
+                        Refunds must be made within 30 days of the Contractor's receipt of the cancellation notice.
+                    </p>
+                    <p style="font-size:11px">
+                        <strong>2 YEAR WARRANTY</strong>
+                        <br/>
+                    </p>
+                    <p style="font-size:10px">
+                        Jan Fence, Inc. warrants only to the original purchaser that all new fencing is free from
+                        defects in material and workmanship, under normal and proper usage. This warranty only
+                        applies to defects resulting from normal use and not from changes caused by alteration, abuse,
+                        fire, flood, unstable soil, underground water conditions, checking, warping and
+                        Acts of God. Under this warranty, obligation is limited to replacement of the defective material
+                        this warranty gives you specific legal rights and you may also have other rights
+                        which may vary from state to state.
+                    </p>
+                </div>
+                <div style="page-break-before: always;">
+                    <div class="col-xs-3 text-center">
+                        <h3>
+                            <strong>CONTRACT OBLIGATIONS</strong>
+                        </h3>
+                    </div>
+                    <p style="font-size:12px">
+                        1. <strong>Charges for Late Payment.</strong> If we do not receive full payment within 10 days
+                        after it is due, you will be responsible for a
+                        late payment charge of 5% of the unpaid amount or $10, whichever is greater.
+                        <br/>
+                        2. <strong>Change in Address.</strong> You must notify us in writing within 30 days of any
+                        change in your address.
+                        <br/>
+                        3. <strong>Official Fees, Taxes and Fines.</strong> You must promptly pay all official fees and
+                        taxes, if applicable, related to this
+                        installation, including permit and inspection fees and personal property taxes. Some bills for
+                        official fees and taxes may be
+                        sent to you for payment. Other bills may be paid by us on your behalf and we will charge you the
+                        amount paid. You must
+                        pay all fees incurred during the installation, even if they are assessed and billed after the
+                        installation has ended. We may
+                        charge you an estimated amount for the remaining fees at the end of the installation. You are
+                        responsible for any shortage
+                        in this estimate, and we will refund you any excess.
+                        <br/>
+                        4. <strong>Installation.</strong> We shall furnish and install a fence as agreed up previously
+                        and any additional work as described herein at
+                        the address listed on the reverse. We agree to complete coverage, except in omitted areas. We
+                        shall be permitted to make
+                        all necessary alterations that are in its judgement required to accomplish the work to be
+                        performed. We will make every
+                        effort to avoid damage to lawn, shrubs and property, but by reason of the nature of the work are
+                        not responsible for any
+                        damage caused during installation.
+                        <br/>
+                        5. <strong>Completion Date.</strong> We shall make a good faith effort to complete the
+                        installation on or about the date mentioned herein.
+                        <br/>
+                        If completion fate in not met by us, we shall not be held responsible for any delay or damage to
+                        landscaping or grass.
+                        <br/>
+                        6. <strong>Boundaries.</strong> You will provide an accurate survey or diagram of property
+                        boundaries upon which we may rely.
+                        <br/>
+                        7. <strong>Permits.</strong> You will obtain the necessary permits and variances required.
+                        <br/>
+                        8. <strong>Indemnification.</strong> You shall indemnify, defend, and hold harmless Jan Fence,
+                        its employees, officers, directors, and
+                        affiliates from any loss, cost, expense, or damage claimed by third parties for property damage
+                        and/or bodily injury,
+                        including death, which arises from or is related to the installation, use, maintenance or
+                        operation of the fence system
+                        and/or any work performed by Jan Fence to the greatest extent permitted by law. This
+                        indemnification includes claims
+                        arising from the location of the fence.
+                        <br/>
+                        9. <strong>Limitation of Liability.</strong> You shall in no manner hold Jan Fence, its
+                        employees, officers, directors, and affiliates liable for
+                        bodily injury or property damages resulting from and/or inflicted to underground pipes, wires,
+                        cables, invisible dog fences,
+                        pool lines or any other underground structure that is not clearly marked on a survey or diagram
+                        of location to scale, or for
+                        the improper placement of the fence. Furthermore, we shall not be responsible for empty ground
+                        space due to rocky
+                        conditions, or heavily sloped areas. You are responsible for all repairs of any damage outlined
+                        within this paragraph and
+                        for all property boundaries.
+                        <br/>
+                        10. <strong>Notices.</strong> All correspondence and notices will be sent to the billing address
+                        shown on the Contract, unless you give us
+                        a different address in writing.
+                        <br/>
+                        11.<strong>Choice of Law and Severability.</strong> You agree that the law of the state of New
+                        Jersey applies to this Contract. If certain
+                        provisions of this Contract violate the law, those provisions will be void, and the rest of the
+                        Contract will be enforceable.
+                        The venue of any litigation under this agreement shall be in a court of competent jurisdiction
+                        in the State of New Jersey.
+                        <br/>
+                        12. <strong>No Waiver by Us.</strong> If we delay or refrain from exercising our rights under
+                        this Contract, we do not lose those rights. If
+                        we accept late or partial payments from you, we do not waive our right to receive full and
+                        timely payments.
+                        <br/>
+                        13. <strong>Modification or Amendment.</strong> No amendment, change or modification of this
+                        Contract shall be valid unless in writing
+                        signed by the parties hereto.
+                        <br/>
+                        14. <strong>Miscellaneous.</strong> All material is guaranteed to be as specified. All work to
+                        be completed in a workmanlike manner
+                        according to standard practices. Any alteration or deviation from the within specifications
+                        involving extra costs will be done
+                        only upon written change order. The costs will become an extra charge over and above the
+                        estimate. All elements of this
+                        agreement are contingent upon strikes, accidents, or delays beyond our control. The estimate
+                        does not include material
+                        price increases or additional labor and materials which may be required should unforeseen
+                        problems arise after the work has commenced.
+                        <br/>
+                        15. <strong>NJ Department of Consumer Affairs Consumer Service Center Hotline.</strong> (973)
+                        504-6200, Toll free (NJ Only): (800)
+                        242-5846.
+                        <br/>
+                        16. <strong>Insurance.</strong> A copy of the certificate of commercial general liability
+                        insurance can be obtained upon request. The
+                        telephone number of the insurance company issuing the certificate is (973) 256-7703.
+                        <br/>
+                    </p>
+                </div>
+
+            </t>
+        </t>
+    </template>
+    <template id="report_saleorder_janfenses_customers">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="dotcreek_janfence_ekit.report_saleorder_document_janfence_customers"
+                   t-lang="doc.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+    <template id="sale.report_saleorder">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="dotcreek_janfence_ekit.report_saleorder_janfenses_customers" t-lang="doc.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+    <template id="sale.report_saleorder_pro_forma">
+        <t t-call="web.html_container">
+            <t t-set="is_pro_forma" t-value="True"/>
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="dotcreek_janfence_ekit.report_saleorder_janfenses_customers" t-lang="doc.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+    <record id="sale.action_report_saleorder" model="ir.actions.report">
+            <field name="name">Job Proposal</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sale.report_saleorder</field>
+            <field name="report_file">sale.report_saleorder</field>
+            <field name="print_report_name">'Job Proposal - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="sale.action_report_pro_forma_invoice" model="ir.actions.report">
+            <field name="name">Job Proposal</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sale.report_saleorder_pro_forma</field>
+            <field name="report_file">sale.report_saleorder_pro_forma</field>
+            <field name="print_report_name">'Job Proposal - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="groups_id" eval="[(4, ref('sale.group_proforma_sales'))]"/>
+        </record>
+</odoo>
