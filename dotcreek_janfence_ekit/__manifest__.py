@@ -28,6 +28,7 @@
         'views/credit_card_form.xml',
         'views/release_form.xml',
         'views/release_send_form.xml',
+        'views/e_kit.xml',
         'views/company.xml',
         'views/sale_order.xml',
         'views/mail_template.xml'

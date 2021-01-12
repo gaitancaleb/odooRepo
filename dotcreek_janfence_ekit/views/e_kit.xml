@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_document_e_kit_print_full">
+        <t t-name="dotcreek_janfence_ekit.report_e_kit_print_full">
+            <t t-call="web.external_layout">
+                <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <br/>
+                    <h2>
+                        Customer E-Kit
+                    </h2>
+                    <div style="text-align: center">
+                        <h3>This Customer E-Kit(PDF) Contains Below Forms</h3>
+                    </div>
+                    <table class="table table-sm o_main_table">
+                        <thead>
+                            <tr>
+                                <th style="font-size:20px" name="th_description" class="text-left">S.No</th>
+                                <th style="font-size:20px" name="th_quantity" class="text-left">Form Name</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <t t-if="doc.release_form">
+                                <tr >
+                                    <td style="font-size:19px">
+                                        1
+                                    </td>
+                                    <td style="font-size:19px">
+                                        Release Form
+                                    </td>
+                                </tr>
+                            </t>
+                             <t t-if="doc.credit_card_form">
+                                <tr >
+                                    <td style="font-size:19px">
+                                        1
+                                    </td>
+                                    <td style="font-size:19px">
+                                        Credit Card Form
+                                    </td>
+                                </tr>
+                            </t>
+                            <t t-if="doc.st_form">
+                                <tr >
+                                    <td style="font-size:19px">
+                                        1
+                                    </td>
+                                    <td style="font-size:19px">
+                                        ST8 Form
+                                    </td>
+                                </tr>
+                            </t>
+                             <tr >
+                                    <td style="font-size:19px">
+                                        1
+                                    </td>
+                                    <td style="font-size:19px">
+                                        Job Proposal
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div style="page-break-before: always;">
+                <t t-call="dotcreek_janfence_ekit.report_saleorder_document_janfence_customers_templ"></t>
+                </div>
+                <t t-if="doc.st_form">
+                    <div style="page-break-before: always;">
+                <t t-call="dotcreek_janfence_ekit.report_document_form_st8_templ"></t>
+                    </div>
+                </t>
+                <t t-if="doc.release_form">
+                    <div style="page-break-before: always;">
+                <t t-call="dotcreek_janfence_ekit.report_document_release_send_templ"></t>
+                    </div>
+                </t>
+                <t t-if="doc.credit_card_form">
+                    <div style="page-break-before: always;">
+                <t t-call="dotcreek_janfence_ekit.report_document_credit_card_templ"></t>
+                    </div>
+                </t>
+
+            </t>
+        </t>
+    </template>
+
+    <template id="report_e_kit_print_full">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="dotcreek_janfence_ekit.report_document_e_kit_print_full" t-lang="doc.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_saleorder_e_kit_print" model="ir.actions.report">
+        <field name="name">E-Kit</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">dotcreek_janfence_ekit.report_e_kit_print_full</field>
+        <field name="report_file">dotcreek_janfence_ekit.report_e_kit_print_full</field>
+        <field name="print_report_name">'E-Kit - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
