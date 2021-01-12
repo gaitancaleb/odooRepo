@@ -5,7 +5,13 @@
             <t t-call="web.external_layout">
                 <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
 
-                <div class="page">
+                <t t-call="dotcreek_janfence_ekit.report_saleorder_document_janfence_customers_templ"></t>
+
+            </t>
+        </t>
+    </template>
+    <template id="report_saleorder_document_janfence_customers_templ">
+        <div class="page">
                     <div class="oe_structure"/>
                     <table style="width:100%">
                         <tr>
@@ -35,16 +41,31 @@
 
                             <tr>
                                 <td>
-                                    <strong>Customer/Project Name:</strong>
-                                </td>
-                                <td>
-                                    <span t-field="doc.partner_id.name"/>
-                                </td>
-                                <td>
                                     <strong>Date:</strong>
                                 </td>
                                 <td>
-                                    <span t-field="doc.date_order"/>
+                                    <span t-field="doc.date_order" t-options='{"widget": "date"}'/>
+                                </td>
+                                <td>
+                                    <strong>Expiration Date:</strong>
+                                </td>
+                                <td>
+                                    <span t-field="doc.validity_date" t-options='{"widget": "date"}'/>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Approximate Start Date:</strong>
+                                </td>
+                                <td>
+                                    <span t-field="doc.approximate_start_date" t-options='{"widget": "date"}'/>
+                                </td>
+                                <td>
+                                    <strong>Approximate End Date:</strong>
+                                </td>
+                                <td>
+                                    <span t-field="doc.approximate_end_date" t-options='{"widget": "date"}'/>
                                 </td>
                             </tr>
                             <tr>
@@ -223,14 +244,14 @@
                         <br/>
                         TERMS OF PAYMENT
                     </p>
-                    <p style="font-size:11px">
+                    <!--<p style="font-size:11px">
                         <strong>*Price valid for 7 days from Date of Job Proposal For All Material*</strong>
                         <br/>
                         <strong>We require $1/3 deposit, $1/3 due at start of job. Balance due upon completion.</strong>
                         <br/>
                         <strong>Approximate start date:</strong>
                         8 to 10 weeks <strong>Approximate end date:</strong> 1 to 2 days
-                    </p>
+                    </p>-->
                     <p style="font-size:10px">By signing below, you acknowledge that: (1) You have read the entire
                         Contract; (2) You agree to all of the provisions of this Contract; (3) You have received a
                         complete copy of
@@ -250,6 +271,7 @@
                         <strong>2 YEAR WARRANTY</strong>
                         <br/>
                     </p>
+
                     <p style="font-size:10px">
                         Jan Fence, Inc. warrants only to the original purchaser that all new fencing is free from
                         defects in material and workmanship, under normal and proper usage. This warranty only
@@ -259,6 +281,16 @@
                         this warranty gives you specific legal rights and you may also have other rights
                         which may vary from state to state.
                     </p>
+            <table style="width:100%;height:40px">
+                                    <tr>
+                                        <td style="width:50%">
+                                            <span style="font-size:11px">Signature:</span>
+                                        </td>
+                                        <td style="width:50%">
+                                            <span style="font-size:11px">Date:</span>
+                                        </td>
+                                    </tr>
+                                </table>
                 </div>
                 <div style="page-break-before: always;">
                     <div class="col-xs-3 text-center">
@@ -370,9 +402,6 @@
                         <br/>
                     </p>
                 </div>
-
-            </t>
-        </t>
     </template>
     <template id="report_saleorder_janfenses_customers">
         <t t-call="web.html_container">

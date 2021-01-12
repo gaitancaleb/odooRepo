@@ -4,7 +4,14 @@
         <t t-name="sale.report_saleorder_document_release_send_form">
             <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
             <t t-call="web.external_layout">
-                <div class="page">
+
+                <t t-call="dotcreek_janfence_ekit.report_document_release_send_templ"></t>
+
+            </t>
+        </t>
+    </template>
+    <template id="report_document_release_send_templ">
+        <div class="page">
                     <div class="oe_structure"/>
                     <h2>
                         Release Form
@@ -41,8 +48,6 @@
 
                 </div>
 
-            </t>
-        </t>
     </template>
     <template id="report_saleorder_release_send_form">
         <t t-call="web.html_container">

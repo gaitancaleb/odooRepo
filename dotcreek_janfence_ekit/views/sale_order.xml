@@ -24,6 +24,12 @@
                         </page>
 
                     </xpath>
+                    <xpath expr="//field[@name='date_order']"
+                            position="after">
+                        <field name="approximate_start_date"/>
+                        <field name="approximate_end_date"/>
+
+                    </xpath>
 
                 </data>
             </field>

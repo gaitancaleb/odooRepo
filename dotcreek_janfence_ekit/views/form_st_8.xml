@@ -4,7 +4,13 @@
         <t t-name="sale.report_form_st8">
             <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
 
-            <div class="page">
+            <t t-call="dotcreek_janfence_ekit.report_document_form_st8_templ"></t>
+
+
+        </t>
+    </template>
+    <template id="report_document_form_st8_templ">
+        <div class="page">
                 <div class="oe_structure"/>
                 <table style="width:100%;">
                     <tr>
@@ -208,9 +214,6 @@
 
                 </p>
             </div>
-
-
-        </t>
     </template>
     <template id="report_form_st8">
         <t t-call="web.html_container">

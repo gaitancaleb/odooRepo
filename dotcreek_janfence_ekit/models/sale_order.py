@@ -17,6 +17,9 @@ class SaleOrder(models.Model):
     release_form = fields.Boolean("Realease Form")
     credit_card_form = fields.Boolean("Credit Card Form")
 
+    approximate_start_date = fields.Date('Approximate Start Date')
+    approximate_end_date = fields.Date('Approximate End Date')
+
     def action_quotation_send(self):
         ''' Opens a wizard to compose an email, with relevant mail template loaded by default '''
         self.ensure_one()
