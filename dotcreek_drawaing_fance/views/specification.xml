@@ -236,7 +236,7 @@
                                                                     <div style="display: block;" id="jobspec-edit">
                                                                         <div class="clearfix"></div>
                                                                         <div class="drawing-container">
-                                                                            <div class="toolbar">
+                                                                            <div class="toolbar" style="display: none;" hidden="">
                                                                                 <div class="box">
                                                                                     <div class="fences">
                                                                                         <h5>Fences</h5>
@@ -353,7 +353,7 @@
                                                                                     </div>
                                                                                     <div class="second section">
                                                                                         <ul>
-                                                                                            <li>
+                                                                                            <li style="display: none;" hidden="">
                                                                                                 <button type="button"
                                                                                                         id="draw-undo"
                                                                                                         class="icon">
@@ -361,7 +361,7 @@
                                                                                                             src="https://staging.janfence.com/sites/all/modules/custom/jf_theming/drawing/img/undo.svg"/>
                                                                                                 </button>
                                                                                             </li>
-                                                                                            <li>
+                                                                                            <li style="display: none;" hidden="">
                                                                                                 <button type="button"
                                                                                                         id="draw-redo"
                                                                                                         class="icon">
@@ -376,6 +376,12 @@
                                                                                                     Clear
                                                                                                 </button>
                                                                                             </li>
+                                                                                            <li>
+                                                                                                <input type="submit"
+                                                                                       value="Save"
+                                                                                       class="btn btn-primary control-button-save"/>
+                                                                                            </li>
+
                                                                                         </ul>
                                                                                     </div>
                                                                                     <div class="third section">
@@ -442,12 +448,6 @@
                                                                                 </div>
                                                                             </div>
                                                                             <br/>
-                                                                            <div class="control-input-save">
-                                                                                <input type="submit"
-                                                                                       value="Save Drawing"
-                                                                                       class="btn btn-primary control-button-save"/>
-
-                                                                            </div>
                                                                             <div class="modal fade s_popup_middle"
                                                                                  id="optionsModal"
                                                                                  data-keyboard="false" tabindex="-1"
