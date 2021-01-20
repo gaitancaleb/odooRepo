@@ -8,6 +8,8 @@ class Drawing(models.Model):
         = fields.Binary('Drawing', default=False)
     name = fields.Char('Name')
     lead_id = fields.Many2one('crm.lead',string='Lead')
+    drawing_img \
+        = fields.Binary('Drawing', default=False, readonly=True)
 
     _sql_constraints = [
         ('drawing_name_uniq', 'unique(name,lead_id)', "A name have to be unique!"),

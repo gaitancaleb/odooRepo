@@ -11,6 +11,7 @@ class SpecificationController(http.Controller):
         cr,uid, context =request.cr, request.uid, request.context
         drawing = http.request.env['dotcreek_drawaing_fance.drawing'].search([('id', '=', kwargs['job_form_id'])])
         drawing.write({'name': kwargs['edit-field-type-of-spec-und-0-value'],
+                       'drawing_img': kwargs['edit-field-base64-data'].replace('data:image/png;base64,',''),
                        'drawing': kwargs['tostorejson']})
         return werkzeug.utils.redirect('/web#id=%s&model=crm.lead&view_type=form'%(drawing.lead_id.id))
 
@@ -20,3 +21,9 @@ class SpecificationController(http.Controller):
         cr,uid, context =request.cr, request.uid, request.context
         drawing = http.request.env['dotcreek_drawaing_fance.drawing'].search([('id', '=', id)])
         return drawing.drawing
+
+    @http.route('/specification/cancel', type='http',auth='public',methods=['GET'], website=True,sitemap=False)
+    def get_cancel(self, id,**kwargs):
+        cr,uid, context =request.cr, request.uid, request.context
+        drawing = http.request.env['dotcreek_drawaing_fance.drawing'].search([('id', '=', id)])
+        return werkzeug.utils.redirect('/web#id=%s&model=crm.lead&view_type=form'%(drawing.lead_id.id))

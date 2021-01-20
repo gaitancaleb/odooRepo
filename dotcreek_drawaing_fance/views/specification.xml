@@ -185,6 +185,11 @@
                                                                            name="edit-field-type-of-spec-und-0-value"
                                                                            style="display: none;"/>
 
+                                                                     <input type="text"
+                                                                           id="edit-field-base64-data"
+                                                                           name="edit-field-base64-data"
+                                                                           style="display: none;"/>
+
                                                                     <input id="elementLength" type="text"
                                                                            style="height: 30px; display: none;"
                                                                            placeholder="Fence length"/>
@@ -315,6 +320,12 @@
                                                                                                             src="https://staging.janfence.com/sites/all/modules/custom/jf_theming/drawing/img/line.svg"/>
                                                                                                 </button>
                                                                                             </li>
+                                                                                            <li>
+                                                                                              <button type="button" id="draw-line"
+                                                                                                      class="icon selectable">
+                                                                                                  <img src="/dotcreek_drawaing_fance/static/src/img/line-pen.png"/>
+                                                                                              </button>
+                                                                                          </li>
                                                                                             <!-- <li><button type="button" id="draw-eraser" class="icon"><img src="https://staging.janfence.com/sites/all/modules/custom/jf_theming/drawing/img/line.svg"></button></li> -->
                                                                                             <li>
                                                                                                 <button type="button"
@@ -352,7 +363,9 @@
                                                                                         </ul>
                                                                                     </div>
                                                                                     <div class="second section">
-                                                                                        <ul>
+                                                                                        <ul style="
+    margin-left: 10px;
+">
                                                                                             <li style="display: none;" hidden="">
                                                                                                 <button type="button"
                                                                                                         id="draw-undo"
@@ -381,11 +394,20 @@
                                                                                        value="Save"
                                                                                        class="btn btn-primary control-button-save"/>
                                                                                             </li>
+                                                                                            <li>
+                                                                                                <button type="button"
+                                                                                                        id="bdt-cancel"
+                                                                                                        class="btn btn-danger">
+                                                                                                    Cancel
+                                                                                                </button>
+                                                                                            </li>
 
                                                                                         </ul>
                                                                                     </div>
                                                                                     <div class="third section">
-                                                                                        <ul>
+                                                                                        <ul style="
+    margin-left: 10px;
+">
                                                                                             <li class="text shape">
                                                                                                 <input id="fill-color"
                                                                                                        type="hidden"
@@ -396,7 +418,7 @@
                                                                                                     Fill
                                                                                                 </button>
                                                                                             </li>
-                                                                                            <li class="shape">
+                                                                                            <li class="shape line">
                                                                                                 <input id="stroke-color"
                                                                                                        type="hidden"
                                                                                                        value="000"/>
@@ -425,18 +447,18 @@
                                                                                                             src="https://staging.janfence.com/sites/all/modules/custom/jf_theming/drawing/img/bold.svg"/>
                                                                                                 </button>
                                                                                             </li>
-                                                                                            <li class="shape">
+                                                                                            <li class="shape line">
                                                                                                 <input type="range"
                                                                                                        id="shape-stroke"
                                                                                                        value="0" min="0"
                                                                                                        max="50"/>
                                                                                             </li>
-                                                                                            <li class="line">
+                                                                                           <!-- <li class="line">
                                                                                                 <button type="button"
                                                                                                         id="line-options">
                                                                                                     Options
                                                                                                 </button>
-                                                                                            </li>
+                                                                                            </li>-->
                                                                                             <li class="post">
                                                                                                 <button type="button"
                                                                                                         id="post-options">

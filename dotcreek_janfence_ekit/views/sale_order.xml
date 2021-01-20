@@ -12,10 +12,16 @@
                             position="after">
                         <page string="E-Kit" name="electronic_kit">
                             <group>
+
+                            <group>
                             <field name="release_form"/>
                             <field name="credit_card_form"/>
                             <field name="st_form"/>
                         </group>
+                                <group>
+                                <field name="drawing_id"/>
+                            </group>
+                            </group>
                             <group string="ST8 Information" attrs="{'invisible' : [('st_form', '=', False)]}">
                                 <field name="st_amount"/>
                                 <field name="st_note"/>
