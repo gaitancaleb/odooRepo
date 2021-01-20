@@ -19,7 +19,8 @@
     },
     'depends': [
         'base',
-        'sale_management'
+        'sale_management',
+        'dotcreek_drawaing_fance'
     ],
     'data': [
         'views/job_proposal.xml',

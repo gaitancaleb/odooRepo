@@ -436,11 +436,33 @@ function setIsDown(value) {
 
 // Function called when click down on canvas
 function onDown(evt) {
-  if (_canvas.canvas.drawMode === 'straight' || _canvas.canvas.drawMode === 'gate') {
+  if (_canvas.canvas.drawMode === 'straight') {
+    lineOnDownStraight(evt, _canvas.canvas.drawMode);
+  }
+  if (_canvas.canvas.drawMode === 'gate') {
     lineOnDown(evt, _canvas.canvas.drawMode);
   }
 }
+function lineOnDownStraight(evt, type) {
 
+  if (_canvas2.isOver) {
+    exports.isDown = isDown = _canvas3.line.drawingState == 'started' ? true : false;
+  }
+  exports.isDown = isDown = !isDown;
+  var elem = type !== 'gate' ? 'fence' : type;
+  if (isDown) {
+    (0, _canvas3.startLine)(evt, elem);
+    return;
+  }
+  if (_canvas3.line.length > 0) {
+    if (_canvas.canvas.getActiveObject()) {
+        (0, _canvas3.moveLine)(true);
+      }
+    }
+    //_canvas3.line.setCoords();
+    onNewLine(elem, true);
+    _canvas3.line.drawingState = 'finished';
+  }
 // Start/Finish line according click
 function lineOnDown(evt, type) {
   if (_canvas.productPending) return;
@@ -497,7 +519,7 @@ function onNewLine(elem) {
   var isSet = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
   (0, _modal.hideActions)();
-  jQuery('#setProduct').css('display', 'block');
+  //jQuery('#setProduct').css('display', 'block');
   (0, _modal2.setDefaultMaterial)(_canvas3.line.material);
   setTimeout(function onNewLineTime() {
     if (isSet) {
@@ -683,16 +705,16 @@ function objectSelected(elem) {
   var trashBtn = jQuery('#draw-trash');
   (0, _toolbox2.enableElement)(trashBtn);
   (0, _toolbox2.hideElementsOptions)();
-  if (elem.class == 'line') {
+  /*if (elem.class == 'line') {
     (0, _canvas.setSelectedLine)(elem);
     changeSelectedBorder(elem);
-  }
+  }*/
   (0, _canvas2.clearPost)();
-  if (elem.class == 'post') {
+  /*if (elem.class == 'post') {
     (0, _canvas3.setIsDown)(false);
     (0, _canvas2.setSelectedPost)(elem);
     changeSelectedBorder(elem);
-  }
+  }*/
   if (elem.class == 'text' || elem.class == 'shape' || elem.class == 'line' || elem.class == 'post') {
     (0, _toolbox2.showElementOptions)(elem.class, 'table-cell');
     return;
@@ -939,7 +961,7 @@ function onSubmit() {
 //Create image based on canvas and add it to form input
 function setCanvasImage(canvas) {
   var url = canvas.toDataURL({ format: 'image/jpeg', multiplier: 1 });
-  $("#edit-field-base64-data input").val(url);
+  jQuery("#edit-field-base64-data").val(url);
 }
 
 // Store drawing data associated to job
@@ -1001,6 +1023,9 @@ function getDrawingJob(job_id) {
           // let state = JSON.parse(job.job_json_data).state;
           startDrawingEdit(jsonJobData);
         }
+      }
+      else{
+      (0, _canvas.bindCanvasEvents)();
       }
 
 }
@@ -1659,12 +1684,12 @@ function setLastLineMaterial(material, type) {
     return obj.material == material && obj.drawingElement == type;
   });
   var lastFence = materialFences[materialFences.length - 1];
-  var productData = JSON.parse(lastFence.productData);
+/*  var productData = JSON.parse(lastFence.productData);
   // jQuery('.material-title').text(line.material.toUpperCase());
   jQuery('#jf-custom-sku-product').val(productData.product_sku);
   //jQuery('#jf-material-custom-sku').show();
   //jQuery('#edit-description').show();
-  jQuery('#edit-description').find('input').val(productData.description);
+  jQuery('#edit-description').find('input').val(productData.description);*/
 }
 
 // Show segment length input
@@ -1676,9 +1701,9 @@ function showSegmentLength() {
 
 // Show modal for element options
 function showModalOptions() {
-    jQuery('#elementLength').css('display', 'block');
-    jQuery('#labelelementLength').css('display', 'block');
-  jQuery('#segment-length-container').css('display', 'block');
+    //jQuery('#elementLength').css('display', 'block');
+    //jQuery('#labelelementLength').css('display', 'block');
+  //jQuery('#segment-length-container').css('display', 'block');
   //jQuery('#optionsModal').modal('show');
 }
 
@@ -2460,6 +2485,9 @@ var elementSelected = exports.elementSelected = '';
 
 // Bind toolbar events
 function tbarBindEvents() {
+  jQuery('#draw-line').on('click', function () {
+    (0, _toolbar.setSelectedType)(this, 'straight');
+  });
   jQuery('.fence').on('click', function () {
     (0, _toolbar.setSelectedType)(this, 'straight');
   });
@@ -2473,8 +2501,8 @@ function tbarBindEvents() {
 
 // Set selected options
 function setOptionSelected(type, material) {
-  jQuery('.material-title').text(material.toUpperCase());
-  exports.materialSelected = materialSelected = material;
+/*  jQuery('.material-title').text(material.toUpperCase());
+  exports.materialSelected = materialSelected = material;*/
   exports.elementSelected = elementSelected = type;
 }
 
@@ -2610,6 +2638,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.clearBtn = exports.trashBtn = undefined;
+exports.cancelBtn =  undefined;
 exports.tboxBindEvents = tboxBindEvents;
 exports.lockDrawing = lockDrawing;
 exports.loadFontSizes = loadFontSizes;
@@ -2697,6 +2726,19 @@ function tboxBindEvents() {
   clearBtn.on('click', function () {
     (0, _toolbox3.clear)();
   });
+
+  cancelBtn.on('click', function () {
+    const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+       const drawing_id = urlParams.get('id');
+       location.replace("/web#id="+drawing_id+"&model=crm.lead&view_type=form")
+       /*var request = jQuery.ajax({
+        method: "GET",
+        url:"/specification/cancel",
+        async: false,
+        data: { id: drawing_id}
+      });*/
+  });
   // Show edit line options
   jQuery('#line-options').on('click', function () {
     onEditLine();
@@ -2765,8 +2807,8 @@ function onEditPost() {
     jQuery('#post-types').val(post.postType);
     (0, _modal.showPostTypes)();
     (0, _modal2.showModalOptions)();
-    jQuery('#elementLength').css('display', 'none');
-    jQuery('#labelelementLength').css('display', 'none');
+    //jQuery('#elementLength').css('display', 'none');
+    //jQuery('#labelelementLength').css('display', 'none');
   }, 1000);
 }
 
@@ -2796,6 +2838,7 @@ function resetPickColor() {
 // let strokeColorBtn = jQuery('#pick-stroke-color');
 var trashBtn = exports.trashBtn = jQuery('#draw-trash');
 var clearBtn = exports.clearBtn = jQuery('#draw-clear');
+var cancelBtn = exports.cancelBtn = jQuery('#bdt-cancel');
 var colorInput = jQuery('#fill-color');
 var fontSize = jQuery('#font-size');
 var lockBtn = jQuery('#lock-drawning');

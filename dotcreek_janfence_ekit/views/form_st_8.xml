@@ -10,13 +10,13 @@
         </t>
     </template>
     <template id="report_document_form_st8_templ">
-        <div class="page">
+        <div class="page" >
                 <div class="oe_structure"/>
                 <table style="width:100%;">
                     <tr>
                         <td style="border: 1px solid black;width:33%">
                             <div>
-                                <p class="mt48" style="font-size:16px">
+                                <p class="mt48" style="font-size:15px">
                                     <strong>ST-8</strong>
                                     (11-11, R-13)
                                     <br/>
@@ -31,17 +31,17 @@
                         </td>
                         <td style="width:33%">
                             <div style="text-align: center">
-                                <p style="font-size:20px">State of New Jersey
+                                <p style="font-size:18px">State of New Jersey
                                     <br/>
                                     Division of Taxation
                                 </p>
-                                <p style="font-size:24px">
+                                <p style="font-size:22px">
                                     <strong>SALES TAX
                                         <br/>
                                         FORM ST-8
                                     </strong>
                                 </p>
-                                <p style="font-size:21px">CERTIFICATE OF EXEMPT
+                                <p style="font-size:19px">CERTIFICATE OF EXEMPT
                                     <br/>
                                     CAPITAL IMPROVEMENT
                                 </p>
@@ -49,7 +49,7 @@
                         </td>
                         <td style="border: 1px solid black;">
                             <div>
-                                <p class="mt48" style="font-size:16px">A registered New Jersey contractor must
+                                <p class="mt48" style="font-size:12px">A registered New Jersey contractor must
                                     collect the tax on the amount charged for
                                     labor and services under the contract
                                     unless the owner gives him a fully
@@ -83,7 +83,7 @@
                 <div style="text-align: center">
                     <span style="font-size:14px">Address Of Contractor</span>
                 </div>
-                <span t-field="doc.company_id.licence_id_four"/>
+                <span t-field="doc.company_id.licence_id_one"/>
                 <hr style="height:3px;border-width:0;color:gray;background-color:gray"/>
                 <div style="text-align: center">
                     <span style="font-size:14px">Contractor's New Jersey Certificate of authority Number</span>
@@ -157,7 +157,7 @@
                                     undersigned on purchases of materials incorporated or consumed in the
                                     performance of the contract described herein.
                                 </p>
-                                <table style="width:100%;height:140px">
+                                <table style="width:100%;height:70px">
                                     <tr>
                                         <td style="width:50%">
                                             <span style="font-size:16px">Signature:</span>
@@ -189,7 +189,7 @@
                                 <span style="font-size:16px" t-field="doc.partner_id.city"/>,
                                 <span style="font-size:16px" t-field="doc.partner_id.state_id.name"/>,
                                 <span style="font-size:16px" t-field="doc.partner_id.zip"/>
-                                <table style="width:100%;height:100px">
+                                <table style="width:100%;height:40px">
                                     <tr>
                                         <td style="width:50%">
                                             <span style="font-size:16px">Signature:</span>
