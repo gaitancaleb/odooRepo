@@ -86,9 +86,14 @@ class ProductProduct(models.Model):
         if categ_ids:
             templates_ids = self.env['product.product'].search([('categ_id', 'in', categ_ids._ids)])
             for template in templates_ids:
+                template.write({'optional_product_ids': [(5, 0, 0)]})
                 for optional in self.env['product.product'].search([('id', '!=', template.id),
-                                                                    ('height', '=', template.height),
-                                                                    ('product_template_attribute_value_ids', '=',templates_ids.product_template_attribute_value_ids._ids)]):
-                    if optional.default_code and (optional.product_tmpl_id.id not in template.optional_product_ids._ids):
-                        template.write({'optional_product_ids': [(4, optional.product_tmpl_id.id)]})
+                                                                    ('height', '=', template.height)]):
+                    is_chield=True
+                    for attri_id in optional.product_template_attribute_value_ids:
+                        if attri_id not in templates_ids.product_template_attribute_value_ids._ids:
+                            is_chield=False
+                    if is_chield:
+                        if optional.default_code and (optional.product_tmpl_id.id not in template.optional_product_ids._ids):
+                            template.write({'optional_product_ids': [(4, optional.product_tmpl_id.id)]})
 
