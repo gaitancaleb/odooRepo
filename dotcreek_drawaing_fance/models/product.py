@@ -12,6 +12,7 @@ class Product(models.Model):
     default_code = fields.Char(
         'SKU', compute='_compute_default_code',
         inverse='_set_default_code', store=True)
+    height = fields.Char('Height')
 
 class ProductProduct(models.Model):
     _inherit = "product.product"
@@ -79,3 +80,15 @@ class ProductProduct(models.Model):
         else:
             product_ids = self._search(args, limit=limit, access_rights_uid=name_get_uid)
         return product_ids
+
+    def set_cetgories_foroptional(self):
+        categ_ids = self.env['product.category'].search([('name', 'ilike','SECTIONS')])
+        if categ_ids:
+            templates_ids = self.env['product.product'].search([('categ_id', 'in', categ_ids._ids)])
+            for template in templates_ids:
+                for optional in self.env['product.product'].search([('id', '!=', template.id),
+                                                                    ('height', '=', template.height),
+                                                                    ('product_template_attribute_value_ids', '=',templates_ids.product_template_attribute_value_ids._ids)]):
+                    if optional.default_code and (optional.product_tmpl_id.id not in template.optional_product_ids._ids):
+                        template.write({'optional_product_ids': [(4, optional.product_tmpl_id.id)]})
+
