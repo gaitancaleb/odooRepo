@@ -19,7 +19,7 @@
                             <field name="st_form"/>
                         </group>
                                 <group>
-                                <field name="drawing_id"/>
+                                <field name="drawing_id" domain="[('lead_id', '=', opportunity_id)]"/>
                             </group>
                             </group>
                             <group string="ST8 Information" attrs="{'invisible' : [('st_form', '=', False)]}">

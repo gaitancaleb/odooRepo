@@ -10,206 +10,211 @@
         </t>
     </template>
     <template id="report_document_form_st8_templ">
-        <div class="page" >
-                <div class="oe_structure"/>
-                <table style="width:100%;">
-                    <tr>
-                        <td style="border: 1px solid black;width:33%">
-                            <div>
-                                <p class="mt48" style="font-size:15px">
-                                    <strong>ST-8</strong>
-                                    (11-11, R-13)
-                                    <br/>
-                                    To be completed by both owner of real
-                                    property and contractor, and retained by
-                                    contractor. Read instructions on back of
-                                    this certificate. Do not send this form to
-                                    the Division of Taxation.
-                                </p>
-
-                            </div>
-                        </td>
-                        <td style="width:33%">
-                            <div style="text-align: center">
-                                <p style="font-size:15px">State of New Jersey
-                                    <br/>
-                                    Division of Taxation
-                                </p>
-                                <p style="font-size:20px">
-                                    <strong>SALES TAX
-                                        <br/>
-                                        FORM ST-8
-                                    </strong>
-                                </p>
-                                <p style="font-size:17px">CERTIFICATE OF EXEMPT
-                                    <br/>
-                                    CAPITAL IMPROVEMENT
-                                </p>
-                            </div>
-                        </td>
-                        <td style="border: 1px solid black;">
-                            <div>
-                                <p class="mt48" style="font-size:12px">A registered New Jersey contractor must
-                                    collect the tax on the amount charged for
-                                    labor and services under the contract
-                                    unless the owner gives him a fully
-                                    completed Certificate of Exempt Capital
-                                    Improvement.
-                                </p>
-                            </div>
-                        </td>
-                    </tr>
-
-                </table>
-                <div style="text-align: center">
-                    <p style="font-size:18px">
-                        MAY BE ISSUED ONLY BY THE OWNER OF THE REAL PROPERTY <br/>
-                        MAY NOT BE ISSUED FOR THE PURCHASE OF MATERIALS
-                    </p>
-
-                </div>
-
-                <span t-field="doc.company_id.name"/>
-                <hr style="height:3px;border-width:0;color:gray;background-color:gray"/>
-                <div style="text-align: center">
-                    <span style="font-size:14px">Name of Contractor</span>
-                </div>
-                <span t-field="doc.company_id.street"/>,
-                <span t-field="doc.company_id.city"/>,
-                <span t-field="doc.company_id.state_id.name"/>,
-                <span t-field="doc.company_id.zip"/>
-                <hr style="height:3px;border-width:0;color:gray;background-color:gray"/>
-                <div style="text-align: center">
-                    <span style="font-size:14px">Address Of Contractor</span>
-                </div>
-                <span t-field="doc.company_id.licence_id_one"/>
-                <hr style="height:3px;border-width:0;color:gray;background-color:gray"/>
-                <div style="text-align: center">
-                    <span style="font-size:13px">Contractor's New Jersey Certificate of authority Number</span>
-                </div>
-                <p style="font-size:15px">
-                    THE FOLLOWING INFORMATION MUST BE FURNISHED:
-                </p>
-                <p style="font-size:16px">The nature of the contract is as follows (describe the exempt capital
-                    improvement to
-                    be made):
-                </p>
-                <table style="border: 1px solid black;width:100%">
-                    <tr>
-                        <td>
-                            <div>
-                                <p style="font-size:17px">
-                                    <span style="font-size:16px" t-field="doc.st_note"/>
-                                </p>
-
-                            </div>
-                        </td>
-
-                    </tr>
-
-                </table>
-                <p style="font-size:16px">The address or location where work is to be performed:
-                </p>
-
-                <table style="border: 1px solid black;width:100%">
-                    <tr>
-                        <td>
-                            <div>
-                                <div class="border border-dark">
-                                    <span style="font-size:16px" t-field="doc.partner_shipping_id.street"/>,
-                                    <span style="font-size:16px" t-field="doc.partner_shipping_id.city"/>,
-                                    <span style="font-size:16px" t-field="doc.partner_shipping_id.state_id.name"/>,
-                                    <span style="font-size:16px" t-field="doc.partner_shipping_id.zip"/>
-                                </div>
-                            </div>
-                        </td>
-
-                    </tr>
-
-                </table>
-                <span style="font-size:17px">TOTAL AMOUNT OF COTRACT</span>
-                <span style="font-size:17px" t-field="doc.st_amount" widget="monetary"/>
-                <p style="font-size:14px">
-                    The undersigned hereby certifies that he is not required to pay sales and use tax with respect to
-                    charges for
-                    installation of tangible personal property, because
-                    the performance of the contract will result in an exempt capital improvement to real property. The
-                    undersigned
-                    purchaser hereby affirms (under the penalties
-                    for perjury and false swearing) that all of the information shown in this Certificate is true
-                </p>
-                <table style="width:100%;">
-                    <tr>
-                        <td style="border: 1px solid black;width:50%">
-                            <div>
-                                <div style="text-align: center">
-                                    <p style="font-size:16px">
-                                        <strong>CONTRACTOR CERTIFICATION</strong>
-                                    </p>
-
-                                </div>
-                                <p style="font-size:16px">I certify that all sales and use tax due has been or will be
-                                    paid
-                                    by the
-                                    undersigned on purchases of materials incorporated or consumed in the
-                                    performance of the contract described herein.
-                                </p>
-                                <table style="width:100%;height:40px">
-                                    <tr>
-                                        <td style="width:60%">
-                                            <span style="font-size:16px">Signature:</span>
-                                        </td>
-                                        <td style="width:40%">
-                                            <span style="font-size:16px">Date:</span>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </td>
-
-                        <td style="border: 1px solid black;width:50%">
-                            <div>
-                                <div style="text-align: center">
-                                    <p style="font-size:16px">
-                                        <strong>PROPERTY OWNER SIGNATURE</strong>
-                                    </p>
-
-                                </div>
-                                <span style="font-size:16px">Name of owner of real property: </span>
-                                <span t-field="doc.partner_id.name"/>
+        <div class="page">
+            <div class="oe_structure"/>
+            <table style="width:100%;">
+                <tr>
+                    <td style="border: 1px solid black;width:33%">
+                        <div>
+                            <p class="mt48" style="font-size:15px">
+                                <strong>ST-8</strong>
+                                (11-11, R-13)
                                 <br/>
-                                <span style="font-size:16px">Address of owner of real property:</span>
-                                <br/>
-                                <span style="font-size:16px" t-field="doc.partner_id.street"/>
-                                <br/>
-                                <t t-if="doc.partner_id.city"><span style="font-size:16px" t-field="doc.partner_id.city"/>,</t>
-                                <t t-if="doc.partner_id.state_id.name"><span style="font-size:16px" t-field="doc.partner_id.state_id.name"/>,</t>
-                                <span style="font-size:16px" t-field="doc.partner_id.zip"/>
-                                <table style="width:100%;height:40px">
-                                    <tr>
-                                        <td style="width:60%">
-                                            <span style="font-size:16px">Signature:</span>
-                                        </td>
-                                        <td style="width:40%">
-                                            <span style="font-size:16px">Date:</span>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </td>
-                    </tr>
+                                To be completed by both owner of real
+                                property and contractor, and retained by
+                                contractor. Read instructions on back of
+                                this certificate. Do not send this form to
+                                the Division of Taxation.
+                            </p>
 
-                </table>
-                <p style="font-size:12px">
-                    Any person making representations on this certificate which are willfully false may be subject to
-                    such penalties as may be provided for by law.
+                        </div>
+                    </td>
+                    <td style="width:33%">
+                        <div style="text-align: center">
+                            <p style="font-size:15px">State of New Jersey
+                                <br/>
+                                Division of Taxation
+                            </p>
+                            <p style="font-size:20px">
+                                <strong>SALES TAX
+                                    <br/>
+                                    FORM ST-8
+                                </strong>
+                            </p>
+                            <p style="font-size:17px">CERTIFICATE OF EXEMPT
+                                <br/>
+                                CAPITAL IMPROVEMENT
+                            </p>
+                        </div>
+                    </td>
+                    <td style="border: 1px solid black;">
+                        <div>
+                            <p class="mt48" style="font-size:15px">A registered New Jersey contractor must
+                                collect the tax on the amount charged for
+                                labor and services under the contract
+                                unless the owner gives him a fully
+                                completed Certificate of Exempt Capital
+                                Improvement.
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+            <div style="text-align: center">
+                <p style="font-size:18px">
+                    MAY BE ISSUED ONLY BY THE OWNER OF THE REAL PROPERTY
                     <br/>
-                    REPRODUCTION OF CERTIFICATE OF EXEMPT CAPITAL IMPROVEMENT FORMS: Private reproduction of both sides
-                    of the Exempt Capital
-                    Improvement Certificates may be made without the prior permission of the Division of Taxation.
-
+                    MAY NOT BE ISSUED FOR THE PURCHASE OF MATERIALS
                 </p>
+
             </div>
+
+            <span t-field="doc.company_id.name"/>
+            <hr style="height:3px;border-width:0;color:gray;background-color:gray"/>
+            <div style="text-align: center">
+                <span style="font-size:14px">Name of Contractor</span>
+            </div>
+            <span t-field="doc.company_id.street"/>,
+            <span t-field="doc.company_id.city"/>,
+            <span t-field="doc.company_id.state_id.name"/>,
+            <span t-field="doc.company_id.zip"/>
+            <hr style="height:3px;border-width:0;color:gray;background-color:gray"/>
+            <div style="text-align: center">
+                <span style="font-size:14px">Address Of Contractor</span>
+            </div>
+            <span t-field="doc.company_id.licence_id_one"/>
+            <hr style="height:3px;border-width:0;color:gray;background-color:gray"/>
+            <div style="text-align: center">
+                <span style="font-size:13px">Contractor's New Jersey Certificate of authority Number</span>
+            </div>
+            <p style="font-size:15px">
+                THE FOLLOWING INFORMATION MUST BE FURNISHED:
+            </p>
+            <p style="font-size:16px">The nature of the contract is as follows (describe the exempt capital
+                improvement to
+                be made):
+            </p>
+            <table style="border: 1px solid black;width:100%">
+                <tr>
+                    <td>
+                        <div>
+                            <p style="font-size:17px">
+                                <span style="font-size:16px" t-field="doc.st_note"/>
+                            </p>
+
+                        </div>
+                    </td>
+
+                </tr>
+
+            </table>
+            <p style="font-size:16px">The address or location where work is to be performed:
+            </p>
+
+            <table style="border: 1px solid black;width:100%">
+                <tr>
+                    <td>
+                        <div>
+                            <div class="border border-dark">
+                                <span style="font-size:16px" t-field="doc.partner_shipping_id.street"/>,
+                                <span style="font-size:16px" t-field="doc.partner_shipping_id.city"/>,
+                                <span style="font-size:16px" t-field="doc.partner_shipping_id.state_id.name"/>,
+                                <span style="font-size:16px" t-field="doc.partner_shipping_id.zip"/>
+                            </div>
+                        </div>
+                    </td>
+
+                </tr>
+
+            </table>
+            <span style="font-size:17px">TOTAL AMOUNT OF COTRACT</span>
+            <span style="font-size:17px" t-field="doc.st_amount" widget="monetary"/>
+            <p style="font-size:14px">
+                The undersigned hereby certifies that he is not required to pay sales and use tax with respect to
+                charges for
+                installation of tangible personal property, because
+                the performance of the contract will result in an exempt capital improvement to real property. The
+                undersigned
+                purchaser hereby affirms (under the penalties
+                for perjury and false swearing) that all of the information shown in this Certificate is true
+            </p>
+            <table style="width:100%;">
+                <tr>
+                    <td style="border: 1px solid black;width:50%">
+                        <div>
+                            <div style="text-align: center">
+                                <p style="font-size:16px">
+                                    <strong>CONTRACTOR CERTIFICATION</strong>
+                                </p>
+
+                            </div>
+                            <p style="font-size:16px">I certify that all sales and use tax due has been or will be
+                                paid
+                                by the
+                                undersigned on purchases of materials incorporated or consumed in the
+                                performance of the contract described herein.
+                            </p>
+                            <table style="width:100%;height:40px">
+                                <tr>
+                                    <td style="width:60%">
+                                        <span style="font-size:16px">Signature:</span>
+                                    </td>
+                                    <td style="width:40%">
+                                        <span style="font-size:16px">Date:</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+
+                    <td style="border: 1px solid black;width:50%">
+                        <div>
+                            <div style="text-align: center">
+                                <p style="font-size:16px">
+                                    <strong>PROPERTY OWNER SIGNATURE</strong>
+                                </p>
+
+                            </div>
+                            <span style="font-size:16px">Name of owner of real property:</span>
+                            <br/>
+                            <span t-field="doc.partner_id.name"/>
+                            <br/>
+                            <span style="font-size:16px">Address of owner of real property:</span>
+                            <br/>
+                            <span style="font-size:16px" t-field="doc.partner_id.street"/>
+                            <br/>
+                            <t t-if="doc.partner_id.city"><span style="font-size:16px" t-field="doc.partner_id.city"/>,
+                            </t>
+                            <t t-if="doc.partner_id.state_id.name"><span style="font-size:16px"
+                                                                         t-field="doc.partner_id.state_id.name"/>,
+                            </t>
+                            <span style="font-size:16px" t-field="doc.partner_id.zip"/>
+                            <table style="width:100%;height:55px">
+                                <tr>
+                                    <td style="width:60%">
+                                        <span style="font-size:16px">Signature:</span>
+                                    </td>
+                                    <td style="width:40%">
+                                        <span style="font-size:16px">Date:</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+            <p style="font-size:12px">
+                Any person making representations on this certificate which are willfully false may be subject to
+                such penalties as may be provided for by law.
+                <br/>
+                REPRODUCTION OF CERTIFICATE OF EXEMPT CAPITAL IMPROVEMENT FORMS: Private reproduction of both sides
+                of the Exempt Capital
+                Improvement Certificates may be made without the prior permission of the Division of Taxation.
+
+            </p>
+        </div>
     </template>
     <template id="report_form_st8">
         <t t-call="web.html_container">

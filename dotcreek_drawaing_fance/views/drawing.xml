@@ -14,7 +14,7 @@
                             <button name="go_to_drawing" type="object" class="oe_stat_button"
                                     context="{'drawing_id': id}" >
                                 <div class="o_stat_info">
-                                    <span>Go To Drawing</span>
+                                    <span>Edit Drawing</span>
                                 </div>
                             </button>
                         </div>
