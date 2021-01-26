@@ -20,7 +20,8 @@
     'depends': [
         'base',
         'sale_management',
-        'dotcreek_drawaing_fance'
+        'dotcreek_drawaing_fance',
+        'sale_crm'
     ],
     'data': [
         'views/job_proposal.xml',
