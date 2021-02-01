@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data >
+        <record id="sms_template_data_task" model="sms.template">
+            <field name="name">Change Task Start Date</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="body">
+                For the task ${object.display_name}, the start was change to ${object.planned_date_begin}
+            </field>
+        </record>
+    </data>
+</odoo>
