@@ -86,6 +86,8 @@ class ProductProduct(models.Model):
         if categ_ids:
             templates_ids = self.env['product.product'].search([('categ_id', 'in', categ_ids._ids)])
             for template in templates_ids:
+                if template.default_code=='73014375':
+                    print(template.default_code)
                 template.write({'optional_product_ids': [(5,)]})
                 domain = []
                 for domain_attr in template.product_template_attribute_value_ids:
@@ -100,5 +102,13 @@ class ProductProduct(models.Model):
                             is_chield=False
                     if is_chield and optional.product_template_attribute_value_ids:
                         if optional.default_code:
+                            print(optional.product_tmpl_id.id)
                             template.write({'optional_product_ids': [(4, optional.product_tmpl_id.id)]})
 
+    def change_name_signal(self):
+        templates_ids = self.env['product.template'].search([])
+        for template in templates_ids:
+            template.name = template.name.replace("'","").replace('"',"")
+        products_ids = self.env['product.product'].search([])
+        for product in products_ids:
+            product.name = product.name.replace("'","").replace('"',"")

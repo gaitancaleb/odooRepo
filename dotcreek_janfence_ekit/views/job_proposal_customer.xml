@@ -39,6 +39,12 @@
                     <div class="row mt16 mb16" id="informations">
                         <table style="width:100%">
 <tr>
+     <td>
+                                    <strong>Customer:</strong>
+                                </td>
+                                <td>
+                                    <span t-field="doc.partner_id.name"/>
+                                </td>
                                 <td>
                                     <strong>Payment Terms:</strong>
                                 </td>
@@ -46,12 +52,7 @@
                                     <span t-field="doc.payment_term_id"/>
                                 </td>
 
-                                <td>
-                                    <strong>Customer:</strong>
-                                </td>
-                                <td>
-                                    <span t-field="doc.partner_id.name"/>
-                                </td>
+
                             </tr>
                             <tr>
                                 <td>

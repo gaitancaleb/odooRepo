@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<odoo> <data >
+<record id="mail_template_data_send_report" model="mail.template">
+            <field name="name">Change Task Start Date</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="subject">${object.name} Start Date Changed</field>
+            <field name="email_to">${(object.partner_id.email_formatted) |safe}</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html" type="html">
+                <p>
+                    For the task ${object.display_name}, the start was change to ${object.planned_date_begin}
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>
