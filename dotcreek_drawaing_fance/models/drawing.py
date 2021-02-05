@@ -5,7 +5,7 @@ class Drawing(models.Model):
     _name = "dotcreek_drawaing_fance.drawing"
 
     drawing\
-        = fields.Binary('Drawing', default=False)
+        = fields.Char('Drawing', default=False)
     name = fields.Char('Name')
     lead_id = fields.Many2one('crm.lead',string='Lead')
     drawing_img \
