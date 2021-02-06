@@ -29,7 +29,8 @@ function onSubmit() {
     const SnapshotJSON=JSON.stringify(lc.getSnapshot());
     const SnapshotImage=lc.getSVGString();
     jQuery('#tostorejson').val(SnapshotJSON);
-    jQuery('#edit-field-base64-data').val(btoa(SnapshotImage));
+    png_canvas=lc.getImage().toDataURL()
+    jQuery('#edit-field-base64-data').val(png_canvas);
   }
 $('#bdt-cancel').on('click', function () {
             const queryString = window.location.search;
