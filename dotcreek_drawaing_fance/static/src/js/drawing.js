@@ -31,13 +31,7 @@ function onSubmit() {
     jQuery('#tostorejson').val(SnapshotJSON);
     png_canvas=lc.getImage().toDataURL()
     jQuery('#edit-field-base64-data').val(png_canvas);
-    var request = jQuery.ajax({
-    method: "GET",
-    url:"/specification/drawing",
-    async: false,
-    data: { id: jQuery('#job_form_id').val(),
-    draw:png_canvas}
-    });
+   
   }
 $('#bdt-cancel').on('click', function () {
             const queryString = window.location.search;
