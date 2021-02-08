@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='partner_id']"
+                            position="replace">
+                           <field name="partner_id" domain="[('type','=','contact')]" widget="res_partner_many2one"
+                                  context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}" options="{&quot;always_reload&quot;: True}"/>
+                    </xpath>
+                    <xpath expr="//field[@name='partner_invoice_id']"
+                            position="replace">
+                            <field name="partner_invoice_id" groups="sale.group_delivery_invoice_address"
+                                   domain="[('type','=','invoice')]"
+                                   context="{'default_type':'invoice'}" options="{&quot;always_reload&quot;: True}"/>
+
+                    </xpath>
+                    <xpath expr="//field[@name='partner_shipping_id']"
+                            position="replace">
+                           <field name="partner_shipping_id" groups="sale.group_delivery_invoice_address"
+                                  domain="[('type','=','delivery')]"
+                                  context="{'default_type':'delivery'}" options="{&quot;always_reload&quot;: True}"/>
+
+                    </xpath>
+
+                </data>
+            </field>
+        </record>
+    <record id="crm_lead_view_form" model="ir.ui.view">
+            <field name="name">crm.lead.form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//group[@name='lead_partner']/field[@name='partner_id']"
+                            position="replace">
+                           <field name="partner_id" widget="res_partner_many2one" domain="[('type','=','contact')]" context="{'default_name': contact_name,
+  'default_street': street,  'default_city': city,  'default_state_id': state_id,
+           'default_zip': zip,       'default_country_id': country_id,  'default_function': function,
+            'default_phone': phone, 'default_mobile': mobile, 'default_email': email_from,'default_user_id': user_id,
+             'default_team_id': team_id, 'default_website': website, 'show_vat': True  }" groups="base.group_no_one"/>
+
+                    </xpath>
+                    <xpath expr="//group[@name='opportunity_partner']/field[@name='partner_id']"
+                            position="replace">
+                           <field name="partner_id" widget="res_partner_many2one" string="Customer" domain="[('type','=','contact')]" context="{'default_name': contact_name,
+  'default_street': street,  'default_city': city,  'default_state_id': state_id,
+           'default_zip': zip,       'default_country_id': country_id,  'default_function': function,
+            'default_phone': phone, 'default_mobile': mobile, 'default_email': email_from,'default_user_id': user_id,
+             'default_team_id': team_id, 'default_website': website, 'show_vat': True  }" groups="base.group_no_one"/>
+
+                    </xpath>
+
+
+                </data>
+            </field>
+        </record>
+    <record id="quick_create_opportunity_form" model="ir.ui.view">
+            <field name="name">crm.lead.opportunity.form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.quick_create_opportunity_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='partner_id']"
+                            position="replace">
+                           <field name="partner_id" domain="[('type','=','contact')]" widget="res_partner_many2one"
+                                  context="{'res_partner_search_mode': 'customer', 'show_vat': True}" string="Organization / Contact"/>
+
+                    </xpath>
+
+                </data>
+            </field>
+        </record>
+    <record id="purchase_order_form" model="ir.ui.view">
+            <field name="name">purchase.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='partner_id']"
+                            position="replace">
+                           <field name="partner_id" domain="[('type','=','contact')]" widget="res_partner_many2one"
+                                  context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}" options="{&quot;always_reload&quot;: True}"/>
+                    </xpath>
+
+                </data>
+            </field>
+        </record>
+     <record id="view_picking_form" model="ir.ui.view">
+            <field name="name">stock.picking.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='partner_id']"
+                            position="replace">
+                           <field name="partner_id" nolabel="1" domain="[('type','=','contact')]"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    <record id="view_move_form" model="ir.ui.view">
+            <field name="name">account.move.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='partner_id']"
+                            position="replace">
+                           <field name="partner_id" widget="res_partner_many2one" nolabel="1" domain="[('type','=','contact')]"
+                                  context="{'res_partner_search_mode': (context.get('default_move_type', 'entry') in ('out_invoice', 'out_refund', 'out_receipt') and 'customer') or (context.get('default_move_type', 'entry') in ('in_invoice', 'in_refund', 'in_receipt') and 'supplier') or False,'show_address': 1, 'default_is_company': True, 'show_vat': True}"
+                                  options="{&quot;always_reload&quot;: True, &quot;no_quick_create&quot;: True}" attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund', 'out_receipt', 'in_receipt'))]}"/>
+
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    <record id="view_task_form2" model="ir.ui.view">
+            <field name="name">project.task.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='partner_id']"
+                            position="replace">
+                           <field name="partner_id" class="o_task_customer_field" domain="[('type','=','contact')]"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+</odoo>

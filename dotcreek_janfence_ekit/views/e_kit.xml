@@ -39,7 +39,7 @@
                                     <t t-set="count" t-value="count+1"/>
                                 </td>
                                 <td style="font-size:19px">
-                                    Specification
+                                    Job Specification
                                 </td>
                             </tr>
                         </t>
