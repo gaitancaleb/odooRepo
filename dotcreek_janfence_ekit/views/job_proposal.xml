@@ -436,9 +436,34 @@
                 <br/>
             </p>
         </div>
+         <div style="page-break-before: always;">
+                    <div class="col-xs-3 text-center">
+                        <h3>
+                            <strong>Underground Acknowledgement and Release from Liability - Private Utility Lines </strong>
+                        </h3>
+                    </div>
+                    <p style="font-size:16px">
+                    <strong>Public Utilities</strong><br/>
+Fence installation requiring excavation presents unique challenges in that underground obstructions cannot be seen without commencing digging. In accordance with New Jersey State Law, Jan Fence, Inc will have public utilities marked by NJ-One Call and will not begin digging until marking is complete. We will maintain appropriate clearance from NJ-One Call markings and will follow all other guidelines and rules pertaining to working near these public utilities.
+<br/><strong>Private Utilities</strong><br/>
+Private utilities may include electrical lines for outdoor lighting, power to a back garage shed, natural gas or underground piping to a garage or out building, propane lines to gas grills and pool heaters, private water systems, septic systems, drain lines from downspouts, underground sprinkler systems, electric lines installed after the meter, invisible pet fences, data communications line, etc..
+<br/><strong>Review the Location of Your Private Lines</strong><br/>
+It is important to review where your private utilities are located. We recommend having private utilities marked. Private utilities in the way of the fence line, either marked or unmarked, impede with your installation.
+<br/><strong>Turn Off Your Private Utilities</strong><br/>
+It is recommended that you turn off your private utilities the day of installation. We will only need access to Water and Electricity.
+<br/><strong>Options for Private Utilities in the way of the Fence Line</strong><br/>
+Because we are digging into your yard, any private utility in the way of the fence line may be hit during installation. To avoid damage to the utility, we recommend having the utility relocated out of the fence line. This should be completed prior to your installation to avoid delays in scheduling.
+<br/><strong>NOTE: Jan fence, Inc will use any and all precautions before we dig. Due to the unique challenges in that underground utilities cannot be seen without digging. Jan Fence, Inc is not liable for any damages to private utilities, marked or unmarked as they should to be moved prior to installation. </strong><br/>
+                    <div class="col-xs-3 text-center">
+                            <strong>Our goal is to protect your property from damage and keep our crew members safe.</strong>
+                    </div><br/>
+                        _________________________________________________________ Property Owner Signature<br/> _________________________________________________________ Printed Name<br/>
+_________________________________________________________Date<br/>
+                    </p>
+                </div>
         <t t-if="doc.drawing_img">
             <div style="page-break-before: always;">
-                <h3>Specification</h3>
+                <h3>Job Specification</h3>
                 <img t-if="doc.drawing_img" t-att-src="'data:image/png;base64,%s' % to_text(doc.drawing_img)"
                      border="1"/>
             </div>

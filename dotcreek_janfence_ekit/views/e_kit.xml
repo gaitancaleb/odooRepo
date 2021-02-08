@@ -32,6 +32,17 @@
                                 Job Proposal
                             </td>
                         </tr>
+                        <t t-if="doc.drawing_img">
+                            <tr>
+                                <td style="font-size:19px">
+                                    <t t-esc="count"/>
+                                    <t t-set="count" t-value="count+1"/>
+                                </td>
+                                <td style="font-size:19px">
+                                    Job Specification
+                                </td>
+                            </tr>
+                        </t>
                         <t t-if="doc.release_form">
                             <tr>
                                 <td style="font-size:19px">
@@ -65,17 +76,7 @@
                                 </td>
                             </tr>
                         </t>
-                        <t t-if="doc.drawing_img">
-                            <tr>
-                                <td style="font-size:19px">
-                                    <t t-esc="count"/>
-                                    <t t-set="count" t-value="count+1"/>
-                                </td>
-                                <td style="font-size:19px">
-                                    Specification
-                                </td>
-                            </tr>
-                        </t>
+
 
                     </tbody>
                 </table>
