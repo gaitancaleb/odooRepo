@@ -73,13 +73,13 @@
                             <strong>Approximate Start Date:</strong>
                         </td>
                         <td>
-                            <span t-field="doc.approximate_start_date" t-options='{"widget": "date"}'/>
+                            <span t-field="doc.approximate_start_date" />
                         </td>
                         <td>
                             <strong>Approximate End Date:</strong>
                         </td>
                         <td>
-                            <span t-field="doc.approximate_end_date" t-options='{"widget": "date"}'/>
+                            <span t-field="doc.approximate_end_date" />
                         </td>
                     </tr>
                     <tr>

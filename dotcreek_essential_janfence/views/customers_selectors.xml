@@ -53,6 +53,12 @@
              'default_team_id': team_id, 'default_website': website, 'show_vat': True  }" groups="base.group_no_one"/>
 
                     </xpath>
+                     <xpath expr="//field[@name='partner_name']"
+                            position="after">
+                           <field name="partner_delivery_id"  widget="res_partner_many2one"
+                                  context="{'res_partner_search_mode': 'customer', 'show_vat': True}" />
+
+                    </xpath>
 
 
                 </data>
@@ -66,11 +72,10 @@
                 <data>
                     <xpath expr="//field[@name='partner_id']"
                             position="replace">
-                           <field name="partner_id" domain="[('type','=','contact')]" widget="res_partner_many2one"
+                           <field name="partner_id" domain="[('type','=','contact'),'|', ('company_id', '=', False), ('company_id', '=', company_id)]" widget="res_partner_many2one"
                                   context="{'res_partner_search_mode': 'customer', 'show_vat': True}" string="Organization / Contact"/>
 
                     </xpath>
-
                 </data>
             </field>
         </record>
