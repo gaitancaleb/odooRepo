@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_document_form_st124">
+        <t t-name="sale.report_form_st124">
+            <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
+
+            <t t-call="dotcreek_janfence_ekit.report_document_form_st124_templ"></t>
+
+
+        </t>
+    </template>
+    <template id="report_document_form_st124_templ">
+        <div class="page">
+            <div class="oe_structure"/>
+            <table style="width:100%;">
+                <tr>
+                    <td style="border: 1px solid black;width:33%">
+                        <div>
+                            <p class="mt48" style="font-size:15px">
+                                logo
+                            </p>
+
+                        </div>
+                    </td>
+                    <td style="width:33%">
+                        <div >
+                            <span style="font-size:12px">State of New Jersey
+                                <br/>
+                                Department of Taxation and Finance
+                            </span>
+                            <span style="font-size:14px">
+                                <strong>SALES TAX
+                                    <br/>
+                                    New York State and Local Sales and Use Tax
+                                </strong>
+                            </span>
+
+                        </div>
+                    </td>
+                    <td style="border: 1px solid black;">
+                        <div>
+                            <span style="font-size:20px">
+                                ST-124
+                            </span><br/>
+                            <span style="font-size:12px">(12/15)
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+            <div >
+                <p style="font-size:16px">
+                    After this certificate is completed and signed by both the customer and the contractor performing the capital improvement
+                    it must be kept by the contractor. Copies of this certificate must be furnished to all subcontractors on the job and retained as part of their records.
+                </p>
+                <p style="font-size:16px">
+                    <strong>Read this form completely before making any entries.<br/>
+                        This certificate may not be used to purchase building materials exempt from tax.</strong>
+                </p>
+            </div>
+
+
+        </div>
+    </template>
+    <template id="report_form_st124">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="dotcreek_janfence_ekit.report_document_form_st124" t-lang="doc.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_saleorder_form_st124" model="ir.actions.report">
+        <field name="name">st124 Form</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">dotcreek_janfence_ekit.report_form_st124</field>
+        <field name="report_file">dotcreek_janfence_ekit.report_form_st124</field>
+        <field name="print_report_name">'st124 Form - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

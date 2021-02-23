@@ -47,28 +47,7 @@
                 </field>
             </field>
         </record>
-        <record id='ir_cron_optional_product_aso' model='ir.cron'>
-            <field name='name'>Optional product linking</field>
-            <field name='model_id' ref='product.model_product_product'/>
-            <field name='state'>code</field>
-            <field name='code'>model.set_cetgories_foroptional()</field>
-            <field name='interval_number'>1000</field>
-            <field name='interval_type'>minutes</field>
-            <field name='numbercall'>1</field>
-            <field name="doall" eval="False"/>
-            <field name="active" eval="False" />
-        </record>
-        <record id='ir_cron_optional_product_aso_afo' model='ir.cron'>
-            <field name='name'>Optional product linking AF</field>
-            <field name='model_id' ref='product.model_product_product'/>
-            <field name='state'>code</field>
-            <field name='code'>model.set_cetgories_foroptional_af_especial()</field>
-            <field name='interval_number'>1000</field>
-            <field name='interval_type'>minutes</field>
-            <field name='numbercall'>1</field>
-            <field name="doall" eval="False"/>
-            <field name="active" eval="False" />
-        </record>
+
         <record id='ir_cron_optional_product_clean' model='ir.cron'>
             <field name='name'>Clean Signal from products names</field>
             <field name='model_id' ref='product.model_product_product'/>

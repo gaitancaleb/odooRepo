@@ -30,7 +30,8 @@
         'views/user.xml',
         'views/sms.xml',
         'views/email.xml',
-        'views/customers_selectors.xml'
+        'views/customers_selectors.xml',
+        'views/task_search.xml'
     ],
 
 }
