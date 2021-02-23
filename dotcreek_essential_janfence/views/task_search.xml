@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="project_task_view_search_view" model="ir.ui.view">
+            <field name="name">project.task.search.fsm</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="industry_fsm.project_task_view_search_fsm"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath
+                            expr="//filter[@name='my_tasks']"
+                            position="replace">
+                            <filter string="My Tasks" name="my_tasks"
+                                    domain="[('user_id', '=', uid),('stage_id_name', '!=', 'Done'),('worksheet_template_id_name', '=', 'Confirmed')]"/>
+                            <filter string="Only My Tasks" name="my_tasks_only"
+                                    domain="[('user_id', '=', uid)]"/>
+                    </xpath>
+
+                </data>
+            </field>
+        </record>
+
+    </data>
+</odoo>
