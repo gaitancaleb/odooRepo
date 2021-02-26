@@ -113,11 +113,7 @@
             <br/>
             <p>
             This Change Order covers revisions to the original Quotation. Except as added or deleted by the following descriptions, all terms and conditions of the original Quotation remain unchanged.<br/>
-            Below the totals is the acceptance area, which includes this paragragh above the Signature and Date fields:<br/>
-            Note: -<br/>
-            Acceptances: By signing this Change Order you acknowledge approval of the above amendment to your original contract. All costs ( Materials and or Labor) associated with this Change Order are due in full at the time of signature.<br/>
-            Acceptance of this Change Order constitutes a waiver of any claims whatsoever in relationship to the work covered within this Change order.<br/>
-            </p>
+           </p>
             <table class="table table-sm o_main_table">
                 <thead>
                     <tr>
@@ -269,7 +265,12 @@
                     </tbody>
                 </table>
             </div>
-
+            <p>
+            Note: -<br/>
+            Acceptances: By signing this Change Order you acknowledge approval of the above amendment to your original contract. All costs ( Materials and or Labor) associated with this Change Order are due in full at the time of signature.
+            <br/>
+            Acceptance of this Change Order constitutes a waiver of any claims whatsoever in relationship to the work covered within this Change order.
+           </p>
             <table style="width:100%;height:40px">
                 <tr>
                     <td style="width:50%">

@@ -24,6 +24,7 @@
         'sale_crm'
     ],
     'data': [
+        'data/sale.order.template.csv',
         'views/change_oreder.xml',
         'views/job_proposal.xml',
         'views/job_proposal_customer.xml',
@@ -35,7 +36,6 @@
         'views/company.xml',
         'views/sale_order.xml',
         'views/mail_template.xml'
-
     ],
 
 }
