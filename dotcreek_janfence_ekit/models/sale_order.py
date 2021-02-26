@@ -30,8 +30,13 @@ class SaleOrder(models.Model):
     change_order = fields.Boolean("Change Order")
     pdft_name = fields.Char('Pdf Name')
 
+    @api.onchange('sale_order_template_id')
+    def onchange_change_order(self):
+        self.change_order= self.sale_order_template_id.id == self.env.ref('dotcreek_janfence_ekit.sale_order_template_cahnge_order').id
+
+
     @api.onchange('name','change_order')
-    def onchange_tracking(self):
+    def onchange_name_order(self):
         self.pdft_name='Job Proposal - %s' % (self.name)
         if self.change_order:
             self.pdft_name = 'Change Order - %s' % (self.name)

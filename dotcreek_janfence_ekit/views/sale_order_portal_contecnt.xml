@@ -69,7 +69,11 @@
                     </div>
                 </div>
             </div>
-
+            <section id="change_order" class="mt-5" t-if="sale_order.change_order">
+                <p>
+                    This Change Order covers revisions to the original Quotation. Except as added or deleted by the following descriptions, all terms and conditions of the original Quotation remain unchanged.<br/>
+                    </p>
+            </section>
             <section id="details" style="page-break-inside: auto;" class="mt32">
 
                 <h3 id="details">Pricing</h3>
@@ -241,15 +245,13 @@
                 <h3 class="">Terms &amp; Conditions</h3>
                 <hr class="mt-0 mb-1"/>
                 <em t-field="sale_order.note"/>
-                <t t-if="sale_order.change_order">
-                    <p>
-                    This Change Order covers revisions to the original Quotation. Except as added or deleted by the following descriptions, all terms and conditions of the original Quotation remain unchanged.<br/>
-                    Below the totals is the acceptance area, which includes this paragragh above the Signature and Date fields:<br/>
+            </section>
+             <section id="acceptances" class="mt-5" t-if="sale_order.change_order">
+                <p>
                     Note: -<br/>
                     Acceptances: By signing this Change Order you acknowledge approval of the above amendment to your original contract. All costs ( Materials and or Labor) associated with this Change Order are due in full at the time of signature.<br/>
                     Acceptance of this Change Order constitutes a waiver of any claims whatsoever in relationship to the work covered within this Change order.<br/>
                     </p>
-                </t>
             </section>
 
             <section class="mt-5" t-if="sale_order.payment_term_id">
