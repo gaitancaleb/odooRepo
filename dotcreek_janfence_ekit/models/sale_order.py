@@ -27,6 +27,14 @@ class SaleOrder(models.Model):
         = fields.Binary('Drawing', related='drawing_id.drawing_img', readonly=True)
     approximate_start_date = fields.Char('Approximate Start Date')
     approximate_end_date = fields.Char('Approximate End Date')
+    change_order = fields.Boolean("Change Order")
+    pdft_name = fields.Char('Pdf Name')
+
+    @api.onchange('name','change_order')
+    def onchange_tracking(self):
+        self.pdft_name='Job Proposal - %s' % (self.name)
+        if self.change_order:
+            self.pdft_name = 'Change Order - %s' % (self.name)
 
     def action_quotation_send(self):
         ''' Opens a wizard to compose an email, with relevant mail template loaded by default '''

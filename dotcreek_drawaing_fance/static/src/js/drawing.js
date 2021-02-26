@@ -1,5 +1,5 @@
 var backgroundImage = new Image()
-backgroundImage.src = '/dotcreek_drawaing_fance/static/src/img/bgdrawing.jpg';
+backgroundImage.src = '/dotcreek_drawaing_fance/static/src/img/bgdrawing.png';
 
 lc = LC.init(
     document.getElementsByClassName('my-drawing')[0],
