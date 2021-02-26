@@ -22,6 +22,7 @@
         'contacts',
         'account',
         'crm',
+        'sales_team',
         'dotcreek_janfence_ekit',
         'industry_fsm',
     ],
@@ -31,7 +32,7 @@
         'views/sms.xml',
         'views/email.xml',
         'views/customers_selectors.xml',
-        'views/task_search.xml'
+        'views/task_search.xml',
     ],
 
 }

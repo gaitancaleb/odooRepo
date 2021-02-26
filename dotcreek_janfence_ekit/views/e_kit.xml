@@ -29,7 +29,12 @@
                                 <t t-set="count" t-value="count+1"/>
                             </td>
                             <td style="font-size:19px">
-                                Job Proposal
+                                <t t-if="doc.change_order">
+                                    Change Order
+                                </t>
+                                <t t-else="1">
+                                    Job Proposal
+                                </t>
                             </td>
                         </tr>
                         <t t-if="doc.drawing_img">
@@ -83,7 +88,12 @@
             </div>
         </t>
         <t t-call="web.external_layout">
-            <t t-call="dotcreek_janfence_ekit.report_saleorder_document_janfence_customers_templ"></t>
+            <t t-if="doc.change_order">
+                    <t t-call="dotcreek_janfence_ekit.report_change_order_document_janfence_templ"></t>
+                </t>
+                <t t-else="1">
+                    <t t-call="dotcreek_janfence_ekit.report_saleorder_document_janfence_customers_templ"></t>
+                </t>
 
         </t>
         <t t-if="doc.release_form">
