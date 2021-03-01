@@ -23,16 +23,19 @@
         'account',
         'crm',
         'sales_team',
+        'sale_crm',
         'dotcreek_janfence_ekit',
         'industry_fsm',
     ],
     'data': [
-        'views/contact.xml',
         'views/user.xml',
+        'views/contact.xml',
         'views/sms.xml',
         'views/email.xml',
         'views/customers_selectors.xml',
         'views/task_search.xml',
+        'data/res.groups.csv',
+        'views/view_domains.xml',
     ],
 
 }

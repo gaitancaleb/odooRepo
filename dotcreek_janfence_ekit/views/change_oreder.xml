@@ -114,7 +114,7 @@
             <p>
             This Change Order covers revisions to the original Quotation. Except as added or deleted by the following descriptions, all terms and conditions of the original Quotation remain unchanged.<br/>
            </p>
-            <table class="table table-sm o_main_table">
+            <!--<table class="table table-sm o_main_table">
                 <thead>
                     <tr>
                         <th name="th_description" class="text-left">Description</th>
@@ -193,7 +193,7 @@
                         </t>
                     </t>
                 </tbody>
-            </table>
+            </table>-->
 
             <div class="clearfix" name="so_total_summary">
                 <div id="total" class="row" name="total">
