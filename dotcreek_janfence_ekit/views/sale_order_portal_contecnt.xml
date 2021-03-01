@@ -3,8 +3,7 @@
         <!-- Intro -->
         <div id="introduction" t-attf-class="pb-2 pt-3 #{'card-header bg-white' if report_type == 'html' else ''}">
           <h2 class="my-0">
-                <t t-esc="sale_order.type_name"/>
-                <em t-esc="sale_order.name"/>
+                <em t-esc="sale_order.pdft_name"/>
             </h2>
         </div>
 
@@ -79,7 +78,7 @@
                 <h3 id="details">Pricing</h3>
 
                 <t t-set="display_discount" t-value="True in [line.discount &gt; 0 for line in sale_order.order_line]"/>
-                <t t-if="sale_order.change_order">
+                <!--<t t-if="sale_order.change_order">
                     <table t-att-data-order-id="sale_order.id" t-att-data-token="sale_order.access_token" class="table table-sm" id="sales_order_table">
                     <thead class="bg-100">
                         <tr>
@@ -168,8 +167,8 @@
                         </t>
                     </tbody>
                 </table>
-                </t>
-                <t t-else="1">
+                </t>-->
+<!--                <t t-else="1">-->
                      <table t-att-data-order-id="sale_order.id" t-att-data-token="sale_order.access_token" class="table table-sm" id="sales_order_table">
                     <thead class="bg-100">
                         <tr>
@@ -222,7 +221,7 @@
                         </t>-->
                     </tbody>
                 </table>
-                </t>
+<!--                </t>-->
                 <div id="total" class="row" name="total" style="page-break-inside: avoid;">
                     <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
                         <t t-call="sale.sale_order_portal_content_totals_table"/>
@@ -241,11 +240,11 @@
                 </div>
             </section>
 
-            <section id="terms" class="mt-5" t-if="sale_order.note">
+           <!-- <section id="terms" class="mt-5" t-if="sale_order.note">
                 <h3 class="">Terms &amp; Conditions</h3>
                 <hr class="mt-0 mb-1"/>
                 <em t-field="sale_order.note"/>
-            </section>
+            </section>-->
              <section id="acceptances" class="mt-5" t-if="sale_order.change_order">
                 <p>
                     Note: -<br/>
