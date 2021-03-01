@@ -34,7 +34,7 @@
         'views/email.xml',
         'views/customers_selectors.xml',
         'views/task_search.xml',
-        #'data/res.groups.csv',
+        'data/res.groups.csv',
         'views/view_domains.xml',
     ],
 
