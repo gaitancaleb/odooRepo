@@ -5,10 +5,15 @@ class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     @api.onchange('st_form')
-    def _onchange_digits(self):
+    def _onchange_st_form(self):
         if not self.st_form:
-            self.st_note=""
-            self.st_amount=0
+            self.st_note = ""
+            self.st_amount = 0
+
+    @api.onchange('st124_form')
+    def _onchange_st124_form(self):
+        if not self.st_form:
+            self.st124_note = ""
 
     @api.onchange('amount_total','st_form')
     def _onchange_st_amount(self):
@@ -18,8 +23,10 @@ class SaleOrder(models.Model):
 
     st_note = fields.Text("Nature of Contract")
     st_amount = fields.Monetary("Amount of Contract")
+    st124_note = fields.Text("Capital Improvement to be performed")
 
     st_form = fields.Boolean("ST8 Form")
+    st124_form = fields.Boolean("ST124 Form")
     release_form = fields.Boolean("Realease Form")
     credit_card_form = fields.Boolean("Credit Card Form")
     drawing_id = fields.Many2one('dotcreek_drawaing_fance.drawing', string='Drawing')

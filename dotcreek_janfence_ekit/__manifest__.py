@@ -35,7 +35,8 @@
         'views/e_kit.xml',
         'views/company.xml',
         'views/sale_order.xml',
-        'views/mail_template.xml'
+        'views/mail_template.xml',
+        'views/form_st_124.xml'
     ],
 
 }
