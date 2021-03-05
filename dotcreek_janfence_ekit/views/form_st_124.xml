@@ -2,11 +2,12 @@
 <odoo>
     <template id="report_document_form_st124">
         <t t-name="sale.report_form_st124">
+            <t t-call="web.internal_layout">
             <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
 
             <t t-call="dotcreek_janfence_ekit.report_document_form_st124_templ"></t>
 
-
+</t>
         </t>
     </template>
     <template id="report_document_form_st124_templ">
@@ -14,54 +15,211 @@
             <div class="oe_structure"/>
             <table style="width:100%;">
                 <tr>
-                    <td style="border: 1px solid black;width:33%">
+                    <td style="width:20%">
                         <div>
-                            <p class="mt48" style="font-size:15px">
-                                logo
-                            </p>
+                           <img src='/dotcreek_janfence_ekit/static/src/img/st124.jpg' style="max-height: 60px;"/>
 
                         </div>
                     </td>
-                    <td style="width:33%">
-                        <div >
-                            <span style="font-size:12px">State of New Jersey
-                                <br/>
-                                Department of Taxation and Finance
-                            </span>
-                            <span style="font-size:14px">
-                                <strong>SALES TAX
-                                    <br/>
-                                    New York State and Local Sales and Use Tax
+                    <td style="width:60%">
+                        <div>
+                            <span style="font-size:14px">Department of Taxation and Finance
+                            </span><br/>
+                            <span style="font-size:17px">
+                                <strong>New York State and Local Sales and Use Tax
+                                </strong>
+                            </span><br/>
+                            <span style="font-size:28px">
+                                <strong>Certificate of Capital Improvement
                                 </strong>
                             </span>
 
                         </div>
                     </td>
-                    <td style="border: 1px solid black;">
+                    <td >
                         <div>
-                            <span style="font-size:20px">
-                                ST-124
-                            </span><br/>
-                            <span style="font-size:12px">(12/15)
+                            <span style="font-size:40px" class="text-right">
+                                <strong>ST-124</strong>
+                            </span>
+                            <br/>
+                            <span style="font-size:16px">(12/15)
                             </span>
                         </div>
                     </td>
                 </tr>
 
             </table>
-            <div >
+            <div>
                 <p style="font-size:16px">
-                    After this certificate is completed and signed by both the customer and the contractor performing the capital improvement
-                    it must be kept by the contractor. Copies of this certificate must be furnished to all subcontractors on the job and retained as part of their records.
-                </p>
-                <p style="font-size:16px">
-                    <strong>Read this form completely before making any entries.<br/>
-                        This certificate may not be used to purchase building materials exempt from tax.</strong>
+                    After this certificate is completed and signed by both the customer and the contractor performing
+                    the capital improvement
+                    it must be kept by the contractor. Copies of this certificate must be furnished to all
+                    subcontractors on the job and retained as part of their records.
+                <br/>
+                    <strong>Read this form completely before making any entries.
+                        <br/>
+                        This certificate may not be used to purchase building materials exempt from tax.
+                    </strong>
                 </p>
             </div>
+            <table style="width:100%;">
+                <tr>
+                    <td style="border: 1px solid black;width:50%">
+                        <span style="font-size:16px">Name of contractor</span>
+                        <br/>
+                        <span t-field="doc.company_id.name"/>
+                    </td>
+                    <td style="border: 1px solid black;width:50%">
+                        <span style="font-size:16px">Name of customer</span>
+                        <br/>
+                        <span t-field="doc.partner_id.name"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black;width:50%">
+                        <span style="font-size:16px">Address</span>
+                        <br/>
+                        <span t-field="doc.company_id.street"/>
+                    </td>
+                    <td style="border: 1px solid black;width:50%">
+                        <span style="font-size:16px">Address</span>
+                        <br/>
+                        <span t-field="doc.partner_id.street"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black;width:50%">
+                        <span style="font-size:16px">City State ZIP code</span>
+                        <br/>
+                        <span t-field="doc.company_id.city"/>
+                        <span t-field="doc.company_id.state_id.name"/>
+                        <span t-field="doc.company_id.zip"/>
+                    </td>
+                    <td style="border: 1px solid black;width:50%">
+                        <span style="font-size:16px">City State ZIP code</span>
+                        <br/>
+                        <span t-field="doc.partner_id.city"/>
+                        <span t-field="doc.partner_id.state_id.name"/>
+                        <span t-field="doc.partner_id.zip"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:50%">
+                        <span style="font-size:16px"></span>
+                    </td>
+                    <td style="border: 1px solid black;width:50%">
+                        <span style="font-size:16px">Sale Tax Certificate of Authority number(if any)</span>
+                        <br/>
+                        <span t-field="doc.company_id.licence_id_one"/>
+                    </td>
+                </tr>
+            </table>
+            <p style="font-size:16px">
+                <strong>To be completed by the customer</strong>
+            <br/>
+                Describe capital improvement to be performed
+                <br/>
+                <span t-field="doc.st124_note"/>
+            </p>
+            <table style="width:100%;">
+                <tr>
+                    <td style="border: 1px solid black;width:100%">
+                        <span style="font-size:16px">Project name</span>
+                        <br/>
+                        <br/>
+                        <span></span>
+                    </td>
 
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black;width:100%">
+                        <span style="font-size:16px">Street address(where the work is to be performed) City State ZIP
+                            code
+                        </span><br/>
+                        <span style="font-size:16px" t-field="doc.partner_shipping_id.street"/>,
+                        <span style="font-size:16px" t-field="doc.partner_shipping_id.city"/>,
+                        <span style="font-size:16px" t-field="doc.partner_shipping_id.state_id.name"/>,
+                        <span style="font-size:16px" t-field="doc.partner_shipping_id.zip"/>
+                    </td>
 
+                </tr>
+            </table>
+            <p>
+                I certify that:
+                <br/>
+                • I am the (mark an <strong>X</strong> in one) <input type="checkbox"/>owner <input type="checkbox"/>tenant of the real property identified on this
+                form;
+                <strong>and</strong>
+                <br/>
+                • the work described above will result in a capital improvement to the real property as outlined in the
+                instructions of this form;
+                <strong>and</strong>
+                <br/>
+                • this contract (mark an <strong>X</strong> in one) <input type="checkbox"/>includes <input type="checkbox"/>does not include the sale of any items that
+                will <strong>not</strong> become a permanent part of the real property (for example, a free-standing
+                microwave or washing machine).
+                <br/>
+                I understand that:
+                <br/>
+                • I will be responsible for any sales tax, interest, and penalty due on the contractor’s total charge
+                for tangible personal property and forlabor if it is determined that this work does not qualify as a
+                capital improvement;
+                <strong>and</strong>
+                <br/>
+                • I will be required to pay the contractor the appropriate sales tax on tangible personal property (and
+                any associated services) when theproperty installed by the contractor does not become a permanent part
+                of the real property;
+                <strong>and</strong>
+                <br/>
+                • I will be subject to civil or criminal penalties (or both) under the Tax Law if I issue a false or
+                fraudulent certificate.
+            </p>
+            <table style="width:100%;">
+                <tr>
+                    <td style="border: 1px solid black;width:45%">
+                        <span style="font-size:16px">Signature of customer</span>
+                        <br/>
+                    </td>
+                    <td style="border: 1px solid black;width:30%">
+                        <span style="font-size:16px">Title</span>
+                        <br/>
+                    </td>
+                    <td style="border: 1px solid black;width:25%">
+                        <span style="font-size:16px">Date</span>
+                        <br/>
+                    </td>
+                </tr>
+            </table>
+            <p style="font-size:16px">
+                <strong>To be completed by the contractor</strong>
+            <br/>
+                I, the contractor, certify that I have entered into a contract to perform the work described by the
+                customer named above, and that Iaccept this form in good faith. (A copy of the written contract, if any,
+                is attached.) I understand that my failure to collect tax as a result ofaccepting an improperly
+                completed certificate will make me personally liable for the tax otherwise due, plus penalties and
+                interest.
+            </p>
+            <table style="width:100%;">
+                <tr>
+                    <td style="border: 1px solid black;width:45%">
+                        <span style="font-size:16px">Signature of customer</span>
+                        <br/>
+                    </td>
+                    <td style="border: 1px solid black;width:30%">
+                        <span style="font-size:16px">Title</span>
+                        <br/>
+                    </td>
+                    <td style="border: 1px solid black;width:25%">
+                        <span style="font-size:16px">Date</span>
+                        <br/>
+                    </td>
+                </tr>
+            </table>
+            <div style="text-align: center">
+                <h3>This certificate is not valid unless all entries are completed.</h3>
+            </div>
         </div>
+
     </template>
     <template id="report_form_st124">
         <t t-call="web.html_container">
@@ -72,7 +230,7 @@
     </template>
 
     <record id="action_report_saleorder_form_st124" model="ir.actions.report">
-        <field name="name">st124 Form</field>
+        <field name="name">ST124 Form</field>
         <field name="model">sale.order</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">dotcreek_janfence_ekit.report_form_st124</field>

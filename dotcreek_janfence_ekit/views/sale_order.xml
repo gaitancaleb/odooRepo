@@ -16,7 +16,8 @@
                             <group>
                             <field name="release_form"/>
                             <field name="credit_card_form"/>
-                            <field name="st_form"/>
+                            <field name="st124_form"/>
+                                <field name="st_form"/>
                                 <field name="change_order" invisible="1"/>
                                 <field name="pdft_name" invisible="1" force_save="1"/>
 
@@ -28,6 +29,10 @@
                             <group string="ST8 Information" attrs="{'invisible' : [('st_form', '=', False)]}">
                                 <field name="st_amount"/>
                                 <field name="st_note"/>
+
+                            </group>
+                            <group string="ST124 Information" attrs="{'invisible' : [('st124_form', '=', False)]}">
+                                <field name="st124_note"/>
 
                             </group>
 
