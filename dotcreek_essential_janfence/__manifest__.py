@@ -19,6 +19,7 @@
     },
     'depends': [
         'base',
+        'calendar',
         'contacts',
         'account',
         'crm',
@@ -28,14 +29,15 @@
         'industry_fsm',
     ],
     'data': [
+        'views/record_rules_calendar.xml',
         'views/user.xml',
         'views/contact.xml',
         'views/sms.xml',
         'views/email.xml',
         'views/customers_selectors.xml',
         'views/task_search.xml',
-        'data/res.groups.csv',
         'views/view_domains.xml',
+
     ],
 
 }

@@ -45,7 +45,7 @@ function onSubmit() {
 $('#bdt-cancel').on('click', function () {
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
-            const drawing_id = urlParams.get('id');
+            const drawing_id = urlParams.get('lead');
             location.replace("/web#id="+drawing_id+"&model=crm.lead&view_type=form");
 
             });

@@ -461,11 +461,14 @@ Because we are digging into your yard, any private utility in the way of the fen
 _________________________________________________________Date<br/>
                     </p>
                 </div>
-        <t t-if="doc.drawing_img">
+        <t t-if="doc.drawing_id">
             <div style="page-break-before: always;">
                 <h3>Job Specification</h3>
-                <img t-if="doc.drawing_img" t-att-src="'data:image/png;base64,%s' % to_text(doc.drawing_img)"
-                     border="1"/>
+                <t t-foreach="doc.drawing_id" t-as="drawing_img">
+                    <h5><span t-field="drawing_img.name" nolabel="1"/></h5>
+                <img  t-att-src="'data:image/png;base64,%s' % to_text(drawing_img.drawing_img)"
+                     border="1"/><br/>
+                </t>
             </div>
         </t>
 

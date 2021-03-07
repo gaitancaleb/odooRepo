@@ -29,9 +29,7 @@ class SaleOrder(models.Model):
     st124_form = fields.Boolean("ST124 Form")
     release_form = fields.Boolean("Realease Form")
     credit_card_form = fields.Boolean("Credit Card Form")
-    drawing_id = fields.Many2one('dotcreek_drawaing_fance.drawing', string='Drawing')
-    drawing_img \
-        = fields.Binary('Drawing', related='drawing_id.drawing_img', readonly=True)
+    drawing_id = fields.Many2many('dotcreek_drawaing_fance.drawing','sale_drawing', 'sale_id', 'drawing_id', 'Drawing')
     approximate_start_date = fields.Char('Approximate Start Date')
     approximate_end_date = fields.Char('Approximate End Date')
     change_order = fields.Boolean("Change Order")

@@ -37,7 +37,7 @@
                                     </t>
                                 </td>
                             </tr>
-                            <t t-if="doc.drawing_img">
+                            <t t-if="doc.drawing_id">
                                 <tr>
                                     <td style="font-size:19px">
                                         <t t-esc="count"/>
