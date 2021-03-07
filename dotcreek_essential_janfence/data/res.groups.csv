@@ -1,0 +1,4 @@
+id,category_id/id,comment,implied_ids/id,name
+dotcreek_essential_janfence.group_calendar_event_all,base.module_category_productivity_calendar,,,Everyone else
+dotcreek_essential_janfence.group_calendar_event_manager,base.module_category_productivity_calendar,,dotcreek_essential_janfence.group_calendar_event_all,Management
+dotcreek_essential_janfence.group_sale_salesman_installer,,the user will have access to all records of everyone in the sales application.,,User: Installer

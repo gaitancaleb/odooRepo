@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+         <record model="ir.actions.act_window" id="crm.crm_lead_action_pipeline">
+            <field name="name">Pipeline</field>
+            <field name="res_model">crm.lead</field>
+            <field name="view_mode">kanban,tree,graph,pivot,form,calendar,activity</field>
+            <field name="domain">[('type','=','opportunity')]</field>
+             <field name="groups_id" eval="[(4, ref('sales_team.group_sale_manager'))]"/>
+            <field name="context">{
+                    'default_type': 'opportunity',
+                    'search_default_assigned_to_me': 1
+            }</field>
+            <field name="search_view_id" ref="crm.view_crm_case_opportunities_filter"/>
+        </record>
+
+        <record id="crm.action_your_pipeline" model="ir.actions.server">
+            <field name="name">Crm: My Pipeline</field>
+            <field name="model_id" ref="crm.model_crm_team"/>
+            <field name="state">code</field>
+            <field name="groups_id"  eval="[(4, ref('sales_team.group_sale_manager'))]"/>
+            <field name="code">action = model.action_your_pipeline()</field>
+        </record>
+
+        <record id="crm.menu_crm_opportunities" model="ir.ui.menu">
+            <field name="action" ref="crm.action_your_pipeline"/>
+            <field name="groups_id"  eval="[(6, 0, [ref('sales_team.group_sale_manager')])]"/>
+        </record>
+
+
+        <record id="action_your_pipeline" model="ir.actions.server">
+            <field name="name">Crm: My Pipeline</field>
+            <field name="model_id" ref="crm.model_crm_team"/>
+            <field name="state">code</field>
+            <field name="groups_id"  eval="[(6, 0, [ref('dotcreek_essential_janfence.group_sale_salesman_installer')])]"/>
+            <field name="code">action = model.action_your_pipeline_installer()</field>
+        </record>
+           <menuitem
+        id="menu_crm_opportunities"
+        name="My Pipeline"
+        parent="crm.crm_menu_sales"
+        action="action_your_pipeline"
+        groups="dotcreek_essential_janfence.group_sale_salesman_installer"
+        sequence="1"/>
+        <record id="menu_crm_opportunities" model="ir.ui.menu">
+            <field name="action" ref="action_your_pipeline"/>
+            <field name="groups_id"  eval="[(6, 0, [ref('dotcreek_essential_janfence.group_sale_salesman_installer')])]"/>
+        </record>
+
+        <record model="ir.actions.act_window" id="crm_lead_action_pipeline">
+            <field name="name">Pipeline</field>
+            <field name="res_model">crm.lead</field>
+            <field name="view_mode">kanban,tree,graph,pivot,form,calendar,activity</field>
+            <field name="domain">[('type','=','opportunity'),('user_id','=',uid)]</field>
+            <field name="context">{
+                    'default_type': 'opportunity',
+                    'search_default_assigned_to_me': 1
+            }</field>
+            <field name="search_view_id" ref="crm.view_crm_case_opportunities_filter"/>
+        </record>
+
+        <record id="sale.action_quotations" model="ir.actions.act_window">
+            <field name="name">Quotations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+            <field name="search_view_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+             <field name="groups_id" eval="[(4, ref('sales_team.group_sale_manager'))]"/>
+            <field name="context">{'search_default_my_quotation': 1}</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new quotation, the first step of a new sale!
+              </p><p>
+                Once the quotation is confirmed by the customer, it becomes a sales order.<br/> You will be able to create an invoice and collect the payment.
+              </p>
+            </field>
+        </record>
+
+        <menuitem
+        id="sale_crm.sale_order_menu_quotations_crm"
+        name="My Quotations"
+        action="sale.action_quotations"
+        parent="crm.crm_menu_sales"
+        groups="sales_team.group_sale_manager"
+        sequence="2"/>
+        <record id="sale_crm.sale_order_menu_quotations_crm" model="ir.ui.menu">
+            <field name="groups_id"  eval="[(6, 0, [ref('sales_team.group_sale_manager')])]"/>
+        </record>
+
+        <record id="action_quotations" model="ir.actions.act_window">
+            <field name="name">Quotations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+            <field name="search_view_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+            <field name="domain">[('user_id','=',uid)]</field>
+            <field name="context">{'search_default_my_quotation': 1}</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new quotation, the first step of a new sale!
+              </p><p>
+                Once the quotation is confirmed by the customer, it becomes a sales order.<br/> You will be able to create an invoice and collect the payment.
+              </p>
+            </field>
+        </record>
+        <menuitem
+        id="sale_order_menu_quotations_crm"
+        name="My Quotations"
+        action="action_quotations"
+        parent="crm.crm_menu_sales"
+        groups="dotcreek_essential_janfence.group_sale_salesman_installer"
+        sequence="2"/>
+       <record id="menu_crm_opportunities" model="ir.ui.menu">
+            <field name="groups_id"  eval="[(6, 0, [ref('dotcreek_essential_janfence.group_sale_salesman_installer')])]"/>
+        </record>
+
+        <record id="base.action_partner_form" model="ir.actions.act_window">
+            <field name="name">Customers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="context">{'res_partner_search_mode': 'customer'}</field>
+            <field name="search_view_id" ref="base.view_res_partner_filter"/>
+            <field name="groups_id" eval="[(4, ref('sales_team.group_sale_manager'))]"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new customer in your address book
+              </p><p>
+                Odoo helps you easily track all activities related to a customer.
+              </p>
+            </field>
+        </record>
+        <menuitem
+        id="crm.res_partner_menu_customer"
+        name="Customers"
+        parent="crm.crm_menu_sales"
+        action="base.action_partner_form"
+        groups="sales_team.group_sale_manager"
+        sequence="5"/>
+        <record id="crm.res_partner_menu_customer" model="ir.ui.menu">
+            <field name="groups_id"  eval="[(6, 0, [ref('sales_team.group_sale_manager')])]"/>
+        </record>
+        <record id="action_partner_form" model="ir.actions.act_window">
+            <field name="name">Customers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="context">{'res_partner_search_mode': 'customer'}</field>
+            <field name="domain">[('user_id','=',uid)]</field>
+            <field name="search_view_id" ref="base.view_res_partner_filter"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new customer in your address book
+              </p><p>
+                Odoo helps you easily track all activities related to a customer.
+              </p>
+            </field>
+        </record>
+        <menuitem
+        id="res_partner_menu_customer"
+        name="Customers"
+        parent="crm.crm_menu_sales"
+        action="action_partner_form"
+        groups="dotcreek_essential_janfence.group_sale_salesman_installer"
+        sequence="5"/>
+        <record id="res_partner_menu_customer" model="ir.ui.menu">
+            <field name="groups_id"  eval="[(6, 0, [ref('dotcreek_essential_janfence.group_sale_salesman_installer')])]"/>
+        </record>
+        <record id="sale.action_quotations_with_onboarding" model="ir.actions.act_window">
+            <field name="name">Quotations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_id" ref="sale.view_quotation_tree_with_onboarding"/>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+            <field name="search_view_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+            <field name="groups_id" eval="[(4, ref('sales_team.group_sale_manager'))]"/>
+            <field name="context">{'search_default_my_quotation': 1}</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new quotation, the first step of a new sale!
+              </p><p>
+                Once the quotation is confirmed by the customer, it becomes a sales order.<br/> You will be able to create an invoice and collect the payment.
+              </p>
+            </field>
+        </record>
+        <menuitem id="sale.menu_sale_quotations"
+        action="sale.action_quotations_with_onboarding"
+        parent="sale.sale_order_menu"
+        sequence="1" groups="sales_team.group_sale_manager"/>
+        <record id="sale.menu_sale_quotations" model="ir.ui.menu">
+            <field name="groups_id"  eval="[(6, 0, [ref('sales_team.group_sale_manager')])]"/>
+        </record>
+        <record id="action_quotations_with_onboarding" model="ir.actions.act_window">
+            <field name="name">Quotations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_id" ref="sale.view_quotation_tree_with_onboarding"/>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+            <field name="search_view_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+            <field name="context">{'search_default_my_quotation': 1}</field>
+            <field name="domain">[('user_id','=',uid)]</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new quotation, the first step of a new sale!
+              </p><p>
+                Once the quotation is confirmed by the customer, it becomes a sales order.<br/> You will be able to create an invoice and collect the payment.
+              </p>
+            </field>
+        </record>
+        <menuitem id="menu_sale_quotations"
+        action="action_quotations_with_onboarding"
+        parent="sale.sale_order_menu"
+        sequence="1" groups="dotcreek_essential_janfence.group_sale_salesman_installer"/>
+        <record id="menu_sale_quotations" model="ir.ui.menu">
+            <field name="groups_id"  eval="[(6, 0, [ref('dotcreek_essential_janfence.group_sale_salesman_installer')])]"/>
+        </record>
+        <menuitem id="sale.menu_sale_order"
+            name="Orders"
+            action="sale.action_orders"
+            parent="sale.sale_order_menu"
+            sequence="2" groups="sales_team.group_sale_manager"/>
+        <record id="sale.menu_sale_order" model="ir.ui.menu">
+            <field name="groups_id"  eval="[(6, 0, [ref('sales_team.group_sale_manager')])]"/>
+        </record>
+         <record id="action_orders" model="ir.actions.act_window">
+            <field name="name">Sales Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+            <field name="search_view_id" ref="sale.sale_order_view_search_inherit_sale"/>
+            <field name="context">{}</field>
+            <field name="domain">[('state', 'not in', ('draft', 'sent', 'cancel')),('user_id','=',uid)]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new quotation, the first step of a new sale!
+                </p><p>
+                    Once the quotation is confirmed, it becomes a sales order.<br/> You will be able to create an invoice and collect the payment.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_sale_order"
+            name="Orders"
+            action="action_orders"
+            parent="sale.sale_order_menu"
+            sequence="2" groups="dotcreek_essential_janfence.group_sale_salesman_installer"/>
+        <record id="menu_sale_order" model="ir.ui.menu">
+            <field name="groups_id"  eval="[(6, 0, [ref('dotcreek_essential_janfence.group_sale_salesman_installer')])]"/>
+        </record>
+        <record id="account.res_partner_action_customer" model="ir.actions.act_window">
+            <field name="name">Customers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="groups_id" eval="[(4, ref('sales_team.group_sale_manager'))]"/>
+             <field name="domain">[('type','=','contact')]</field>
+            <field name="context">{'search_default_customer': 1,'res_partner_search_mode': 'customer', 'default_is_company': True, 'default_customer_rank': 1}</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new customer in your address book
+              </p><p>
+                Odoo helps you easily track all activities related to a customer.
+              </p>
+            </field>
+        </record>
+        <menuitem id="sale.res_partner_menu"
+            parent="sale.sale_order_menu"
+            action="account.res_partner_action_customer"
+            sequence="4" groups="sales_team.group_sale_manager"/>
+        <record id="sale.res_partner_menu" model="ir.ui.menu">
+            <field name="groups_id"  eval="[(6, 0, [ref('sales_team.group_sale_manager')])]"/>
+        </record>
+         <record id="res_partner_action_customer" model="ir.actions.act_window">
+            <field name="name">Customers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form</field>
+             <field name="domain">[('type','=','contact'),('user_id','=',uid)]</field>
+            <field name="context">{'search_default_customer': 1,'res_partner_search_mode': 'customer', 'default_is_company': True, 'default_customer_rank': 1}</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new customer in your address book
+              </p><p>
+                Odoo helps you easily track all activities related to a customer.
+              </p>
+            </field>
+        </record>
+        <menuitem id="res_partner_menu"
+            parent="sale.sale_order_menu"
+            action="res_partner_action_customer"
+            sequence="4" groups="dotcreek_essential_janfence.group_sale_salesman_installer"/>
+        <record id="res_partner_menu" model="ir.ui.menu">
+            <field name="groups_id"  eval="[(6, 0, [ref('dotcreek_essential_janfence.group_sale_salesman_installer')])]"/>
+        </record>
+        <record id="sale.action_orders_to_invoice" model="ir.actions.act_window">
+            <field name="name">Orders to Invoice</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">tree,form,calendar,graph,pivot,kanban,activity</field>
+            <field name="groups_id" eval="[(4, ref('sales_team.group_sale_manager'))]"/>
+            <field name="context">{'create': False}</field>
+            <field name="domain">[('invoice_status','=','to invoice')]</field>
+            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                No orders to invoice found
+              </p><p>
+                You can select all orders and invoice them in batch,<br/>
+                or check every order and invoice them one by one.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="sale.menu_sale_order_invoice"
+            action="sale.action_orders_to_invoice"
+            parent="sale.menu_sale_invoicing"
+                  groups="sales_team.group_sale_manager"
+            sequence="2" active="True"/>
+        <record id="sale.menu_sale_order_invoice" model="ir.ui.menu">
+            <field name="groups_id"  eval="[(6, 0, [ref('sales_team.group_sale_manager')])]"/>
+        </record>
+        <record id="action_orders_to_invoice" model="ir.actions.act_window">
+            <field name="name">Orders to Invoice</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">tree,form,calendar,graph,pivot,kanban,activity</field>
+            <field name="context">{'create': False}</field>
+            <field name="domain">[('invoice_status','=','to invoice'),('user_id','=',uid)]</field>
+            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                No orders to invoice found
+              </p><p>
+                You can select all orders and invoice them in batch,<br/>
+                or check every order and invoice them one by one.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_sale_order_invoice"
+            action="action_orders_to_invoice"
+            parent="sale.menu_sale_invoicing"
+                  groups="dotcreek_essential_janfence.group_sale_salesman_installer"
+            sequence="2" active="True"/>
+        <record id="menu_sale_order_invoice" model="ir.ui.menu">
+            <field name="groups_id"  eval="[(6, 0, [ref('dotcreek_essential_janfence.group_sale_salesman_installer')])]"/>
+        </record>
+        <record id="sale.action_orders_upselling" model="ir.actions.act_window">
+            <field name="name">Orders to Upsell</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">tree,form,calendar,graph,pivot,kanban,activity</field>
+            <field name="domain">[('invoice_status','=','upselling')]</field>
+            <field name="context">{'create': False}</field>
+            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+            <field name="groups_id" eval="[(4, ref('sales_team.group_sale_manager'))]"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                No orders to upsell found.
+              </p><p>
+                An order is to upsell when delivered quantities are above initially
+                ordered quantities, and the invoicing policy is based on ordered quantities.
+              </p><p>
+                As an example, if you sell pre-paid hours of services, Odoo recommends you
+                to sell extra hours when all ordered hours have been consumed.
+              </p>
+            </field>
+        </record>
+
+        <menuitem action="sale.action_orders_upselling"
+            id="sale.menu_sale_order_upselling" parent="sale.menu_sale_invoicing"
+                  groups="sales_team.group_sale_manager"
+            sequence="5" active="True"/>
+        <record id="sale.action_orders_upselling" model="ir.ui.menu">
+            <field name="groups_id"  eval="[(6, 0, [ref('sales_team.group_sale_manager')])]"/>
+        </record>
+        <record id="action_orders_upselling" model="ir.actions.act_window">
+            <field name="name">Orders to Upsell</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">tree,form,calendar,graph,pivot,kanban,activity</field>
+            <field name="domain">[('invoice_status','=','upselling'),('user_id','=',uid)]</field>
+            <field name="context">{'create': False}</field>
+            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                No orders to upsell found.
+              </p><p>
+                An order is to upsell when delivered quantities are above initially
+                ordered quantities, and the invoicing policy is based on ordered quantities.
+              </p><p>
+                As an example, if you sell pre-paid hours of services, Odoo recommends you
+                to sell extra hours when all ordered hours have been consumed.
+              </p>
+            </field>
+        </record>
+
+        <menuitem action="action_orders_upselling"
+            id="menu_sale_order_upselling" parent="sale.menu_sale_invoicing"
+                  groups="dotcreek_essential_janfence.group_sale_salesman_installer"
+            sequence="5" active="True"/>
+        <record id="menu_sale_order_upselling" model="ir.ui.menu">
+            <field name="groups_id"  eval="[(6, 0, [ref('dotcreek_essential_janfence.group_sale_salesman_installer')])]"/>
+        </record>
+    </data>
+</odoo>

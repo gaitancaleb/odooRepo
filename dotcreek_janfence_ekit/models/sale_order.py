@@ -5,10 +5,15 @@ class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     @api.onchange('st_form')
-    def _onchange_digits(self):
+    def _onchange_st_form(self):
         if not self.st_form:
-            self.st_note=""
-            self.st_amount=0
+            self.st_note = ""
+            self.st_amount = 0
+
+    @api.onchange('st124_form')
+    def _onchange_st124_form(self):
+        if not self.st_form:
+            self.st124_note = ""
 
     @api.onchange('amount_total','st_form')
     def _onchange_st_amount(self):
@@ -18,15 +23,28 @@ class SaleOrder(models.Model):
 
     st_note = fields.Text("Nature of Contract")
     st_amount = fields.Monetary("Amount of Contract")
+    st124_note = fields.Text("Capital Improvement to be performed")
 
     st_form = fields.Boolean("ST8 Form")
+    st124_form = fields.Boolean("ST124 Form")
     release_form = fields.Boolean("Realease Form")
     credit_card_form = fields.Boolean("Credit Card Form")
-    drawing_id = fields.Many2one('dotcreek_drawaing_fance.drawing', string='Drawing')
-    drawing_img \
-        = fields.Binary('Drawing', related='drawing_id.drawing_img', readonly=True)
+    drawing_id = fields.Many2many('dotcreek_drawaing_fance.drawing','sale_drawing', 'sale_id', 'drawing_id', 'Drawing')
     approximate_start_date = fields.Char('Approximate Start Date')
     approximate_end_date = fields.Char('Approximate End Date')
+    change_order = fields.Boolean("Change Order")
+    pdft_name = fields.Char('Pdf Name')
+
+    @api.onchange('sale_order_template_id')
+    def onchange_change_order(self):
+        self.change_order= self.sale_order_template_id.id == self.env.ref('dotcreek_janfence_ekit.sale_order_template_cahnge_order').id
+
+
+    @api.onchange('name','change_order')
+    def onchange_name_order(self):
+        self.pdft_name='Job Proposal - %s' % (self.name)
+        if self.change_order:
+            self.pdft_name = 'Change Order - %s' % (self.name)
 
     def action_quotation_send(self):
         ''' Opens a wizard to compose an email, with relevant mail template loaded by default '''

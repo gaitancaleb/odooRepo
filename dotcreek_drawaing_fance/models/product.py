@@ -81,29 +81,6 @@ class ProductProduct(models.Model):
             product_ids = self._search(args, limit=limit, access_rights_uid=name_get_uid)
         return product_ids
 
-    def set_cetgories_foroptional(self):
-        categ_ids = self.env['product.category'].search([('name', 'ilike','SECTIONS')])
-        if categ_ids:
-            templates_ids = self.env['product.product'].search([('categ_id', 'in', categ_ids._ids)])
-            for template in templates_ids:
-                if template.default_code=='73014375':
-                    print(template.default_code)
-                template.write({'optional_product_ids': [(5,)]})
-                domain = []
-                for domain_attr in template.product_template_attribute_value_ids:
-                    domain.append(domain_attr.product_attribute_value_id.id)
-                for optional in self.env['product.product'].search([('id', '!=', template.id),
-                                                                   ('categ_id', 'not in', categ_ids._ids),
-                                                                   ('height', '=', template.height)]):
-                    is_chield=True
-
-                    for attri_id in optional.product_template_attribute_value_ids:
-                        if attri_id.product_attribute_value_id.id not in domain:
-                            is_chield=False
-                    if is_chield and optional.product_template_attribute_value_ids:
-                        if optional.default_code:
-                            print(optional.product_tmpl_id.id)
-                            template.write({'optional_product_ids': [(4, optional.product_tmpl_id.id)]})
 
     def change_name_signal(self):
         templates_ids = self.env['product.template'].search([])

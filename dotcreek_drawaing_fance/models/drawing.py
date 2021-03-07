@@ -16,18 +16,19 @@ class Drawing(models.Model):
     ]
 
     def go_to_drawing(self):
-        self.write({
-            "lead_id":self.env.context["lead_id"]
-        })
+        if "lead_id" in self.env.context:
+            self.write({
+                "lead_id":self.env.context["lead_id"]
+            })
         if self.drawing:
             return {
                 'type': 'ir.actions.act_url',
-                'url': '/specification?id=%s&name=%s' % (self.id, self.name),
+                'url': '/specification?id=%s&name=%s&lead=%s' % (self.id, self.name,self.lead_id.id),
                 'target': 'self',
             }
         else:
             return{
                 'type': 'ir.actions.act_url',
-                'url': '/specification?id=%s&name=%s' % (self.id,self.name),
+                'url': '/specification?id=%s&name=%s&lead=%s' % (self.id,self.name,self.lead_id.id),
                 'target': 'self',
             }

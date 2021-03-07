@@ -19,18 +19,25 @@
     },
     'depends': [
         'base',
+        'calendar',
         'contacts',
         'account',
         'crm',
+        'sales_team',
+        'sale_crm',
         'dotcreek_janfence_ekit',
         'industry_fsm',
     ],
     'data': [
-        'views/contact.xml',
+        'views/record_rules_calendar.xml',
         'views/user.xml',
+        'views/contact.xml',
         'views/sms.xml',
         'views/email.xml',
-        'views/customers_selectors.xml'
+        'views/customers_selectors.xml',
+        'views/task_search.xml',
+        'views/view_domains.xml',
+
     ],
 
 }
