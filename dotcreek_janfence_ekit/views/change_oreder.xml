@@ -282,10 +282,13 @@
                 </tr>
             </table>
         </div>
-        <t t-if="doc.drawing_img">
+         <t t-if="doc.drawing_id">
             <div style="page-break-before: always;">
-            <h3>Job Specification</h3>
-                <img t-if="doc.drawing_img" t-att-src="'data:image/png;base64,%s' % to_text(doc.drawing_img)" border="1"/>
+                <h3>Job Specification</h3>
+                <t t-foreach="drawing_img" t-as="doc.drawing_id">
+                <img  t-att-src="'data:image/png;base64,%s' % to_text(drawing_img.drawing_img)"
+                     border="1"/>
+                </t>
             </div>
         </t>
 
