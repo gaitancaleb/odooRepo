@@ -57,13 +57,15 @@ class Meeting(models.Model):
             if self.env.user.has_group('dotcreek_essential_janfence.group_calendar_event_all'):
                 for event in events:
                     group_id= self.env.ref('dotcreek_essential_janfence.group_calendar_event_all')
-                    if event['user_id'][0] in group_id.users._ids:
-                        event_aux.append(event)
+                    if event['user_id']:
+                        if event['user_id'][0] in group_id.users._ids:
+                            event_aux.append(event)
                 events=event_aux
             else:
                 for event in events:
-                    if event['user_id'][0] == self.env.user.id:
-                        event_aux.append(event)
+                    if event['user_id']:
+                        if event['user_id'][0] == self.env.user.id:
+                            event_aux.append(event)
                 events=event_aux
 
         private_events, public_events = split_privacy(events)

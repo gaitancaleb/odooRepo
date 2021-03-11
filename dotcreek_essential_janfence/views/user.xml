@@ -10,8 +10,8 @@
                     <xpath
                             expr="//page[@name='access_rights']"
                             position="inside">
-                        <group string="Installer">
-                            <field name="installers"/>
+                        <group string="Installer" invisible="1">
+                            <field name="installers" />
                         </group>
 
                     </xpath>

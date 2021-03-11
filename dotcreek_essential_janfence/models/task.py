@@ -19,3 +19,23 @@ class Task(models.Model):
     @api.onchange('user_id')
     def onchange_user_installer(self):
         self.installer_id = self.user_id
+
+    @api.model
+    def action_your_task(self):
+        action=False
+        if self.env.user.has_group('dotcreek_essential_janfence.group_field_server_installer'):
+            action = self.env["ir.actions.actions"]._for_xml_id("dotcreek_essential_janfence.project_task_action_fsm")
+        else:
+            if self.env.user.has_group('industry_fsm.group_fsm_user'):
+                action = self.env["ir.actions.actions"]._for_xml_id("industry_fsm.project_task_action_fsm")
+        return action
+
+    @api.model
+    def action_your_task_map(self):
+        action=False
+        if self.env.user.has_group('dotcreek_essential_janfence.group_field_server_installer'):
+            action = self.env["ir.actions.actions"]._for_xml_id("dotcreek_essential_janfence.project_task_action_fsm_map")
+        else:
+            if self.env.user.has_group('industry_fsm.group_fsm_user'):
+                action = self.env["ir.actions.actions"]._for_xml_id("industry_fsm.project_task_action_fsm_map")
+        return action
