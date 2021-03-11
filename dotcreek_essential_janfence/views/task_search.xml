@@ -10,9 +10,9 @@
                     <xpath
                             expr="//filter[@name='my_tasks']"
                             position="replace">
+                            <!--<filter string="My Tasks" name="my_tasks"
+                                    domain="[('user_id', '=', uid),('stage_id_name', '!=', 'Done'),('worksheet_template_id_name', '=', 'Confirmed')]"/>-->
                             <filter string="My Tasks" name="my_tasks"
-                                    domain="[('user_id', '=', uid),('stage_id_name', '!=', 'Done'),('worksheet_template_id_name', '=', 'Confirmed')]"/>
-                            <filter string="Only My Tasks" name="my_tasks_only"
                                     domain="[('user_id', '=', uid)]"/>
                     </xpath>
                     <xpath
@@ -32,7 +32,10 @@
                 <data>
                     <xpath
                             expr="//field[@name='user_id']"
-                            position="after">
+                            position="replace">
+                        <field name="user_id"
+                                class="o_task_user_field"
+                                domain="[('installers','=',True)]"/>
                             <field name="installer_id" invisible="1"/>
                     </xpath>
 

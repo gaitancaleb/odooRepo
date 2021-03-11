@@ -37,6 +37,8 @@
         'views/customers_selectors.xml',
         'views/task_search.xml',
         'views/view_domains.xml',
+        'views/sale_order.xml',
+        'views/view_dom_task.xml',
 
     ],
 
