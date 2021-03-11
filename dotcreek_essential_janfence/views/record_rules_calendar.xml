@@ -11,8 +11,12 @@
             <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
         </record>
          <record id="group_sale_salesman_installer" model="res.groups">
-            <field name="name">User: Installer</field>
-            <field name="comment">the user will have access to all records of everyone in the sales application.</field>
+            <field name="name">Sales Associate</field>
+            <field name="comment">The user will have access only their own records.</field>
+        </record>
+        <record id="group_field_server_installer" model="res.groups">
+            <field name="name">Installer</field>
+            <field name="comment">For installers users on field service.</field>
         </record>
     </data>
 </odoo>
