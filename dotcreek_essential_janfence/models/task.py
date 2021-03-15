@@ -1,4 +1,5 @@
 from odoo import fields, models, api
+from datetime import timedelta, datetime
 
 
 class Task(models.Model):
@@ -10,11 +11,26 @@ class Task(models.Model):
                               string='Assigned to',domain=[('installers','=',True)],
                               default=lambda self: self.env.uid,
                               index=True, tracking=True)
-    installer_id = fields.Many2one('res.users', string='Installer')
+    installer_id = fields.Many2one('res.users', string='Installer',
+        index=True,domain=[('installers','=',True)],group_expand='_read_group_installer_id')
 
     def create_email_start(self):
         template = self.env.ref('dotcreek_essential_janfence.mail_template_data_send_report')
         res = template.sudo().send_mail(self.id, force_send=True)
+
+    @api.model
+    def _read_group_installer_id(self, users, domain, order):
+        if self.env.context.get('fsm_mode'):
+            recently_created_tasks = self.env['project.task'].search([
+                ('create_date', '>', datetime.now() - timedelta(days=30)),
+                ('is_fsm', '=', True),
+                ('user_id', '!=', False)
+            ])
+            search_domain = ['|', '|', ('id', 'in', users.ids),
+                             ('groups_id', 'in', self.env.ref('dotcreek_essential_janfence.group_field_server_installer').id),
+                             ('id', 'in', recently_created_tasks.mapped('installer_id.id'))]
+            return users.search(search_domain, order=order)
+        return users
 
     @api.onchange('user_id')
     def onchange_user_installer(self):
