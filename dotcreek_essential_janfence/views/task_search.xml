@@ -42,6 +42,22 @@
                 </data>
             </field>
         </record>
+        <record id="project_task_view_gantt" model="ir.ui.view">
+            <field name="name">project.task.gantt</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project_enterprise.project_task_view_gantt"/>
+            <field name="arch" type="xml">
+                <data>
+                     <xpath expr="//gantt[1]" position="attributes">
+                        <attribute name="default_group_by">installer_id</attribute>
+                        <attribute name="precision">{"day":"hour:full","week":"day:half","month":"day:full"}</attribute>
+                        <attribute name="string">Installers</attribute>
+                        <attribute name="total_row"/>
+                      </xpath>
+
+                </data>
+            </field>
+        </record>
 
     </data>
 </odoo>
