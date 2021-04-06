@@ -9,19 +9,11 @@
             <field name="arch" type="xml">
                 <data>
 
-                    <xpath expr="//group[@name='sale_reporting']"
-                            position="replace">
-                         <group string="Reporting" name="sale_reporting" >
-                                    <group name="technical" colspan="2" class="mb-0">
-                                        <field name="origin"/>
-                                        <field name="opportunity_id" help="Log in the chatter from which opportunity the order originates"/>
-                                    </group>
-                                    <group name="utm_link" colspan="2" class="mt-0">
-                                        <field name="campaign_id"/>
-                                        <field name="medium_id"/>
-                                        <field name="source_id"/>
-                                    </group>
-                                </group>
+                    <xpath expr="//field[@name='partner_shipping_id']"
+                            position="after">
+                            <field name="opportunity_id"
+                                       domain="[('active','=',True),('partner_id','=',partner_id),('type', '=', 'opportunity'), '|', ('company_id', '=', False), ('company_id', '=', company_id)]"
+                                       help="Log in the chatter from which opportunity the order originates"/>
                     </xpath>
 
                 </data>
