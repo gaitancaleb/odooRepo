@@ -26,6 +26,7 @@
     'data': [
         'data/sale.order.template.csv',
         'views/change_oreder.xml',
+        'views/damage_form.xml',
         'views/job_proposal.xml',
         'views/job_proposal_customer.xml',
         'views/form_st_8.xml',

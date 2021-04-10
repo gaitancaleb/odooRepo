@@ -33,18 +33,27 @@ class SaleOrder(models.Model):
     approximate_start_date = fields.Char('Approximate Start Date')
     approximate_end_date = fields.Char('Approximate End Date')
     change_order = fields.Boolean("Change Order")
+    damage_order = fields.Boolean("Damage Order")
     pdft_name = fields.Char('Pdf Name')
+
+    relate_sale_order = fields.Many2one('sale.order',
+                                         string='Related Job Proposal',
+                                         domain=[('status','in',['sale','done']),('partner_id','=','partner_id')])
 
     @api.onchange('sale_order_template_id')
     def onchange_change_order(self):
         self.change_order= self.sale_order_template_id.id == self.env.ref('dotcreek_janfence_ekit.sale_order_template_cahnge_order').id
+        self.damage_order = self.sale_order_template_id.id == self.env.ref(
+            'dotcreek_janfence_ekit.sale_order_template_damage_order').id
 
 
-    @api.onchange('name','change_order')
+    @api.onchange('name','change_order','damage_order')
     def onchange_name_order(self):
         self.pdft_name='Job Proposal - %s' % (self.name)
         if self.change_order:
             self.pdft_name = 'Change Order - %s' % (self.name)
+        if self.damage_order:
+            self.pdft_name = 'Damage Form - %s' % (self.name)
 
     def action_quotation_send(self):
         ''' Opens a wizard to compose an email, with relevant mail template loaded by default '''
