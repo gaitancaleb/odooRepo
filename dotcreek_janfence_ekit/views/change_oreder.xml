@@ -107,7 +107,24 @@
                             <span t-field="doc.user_id.name"/>
                         </td>
                     </tr>
+                    <t t-if="doc.relate_sale_order">
 
+                    <tr>
+                        <td>
+                            <strong>Related Job Proposal:</strong>
+                        </td>
+                        <td>
+                            <span t-field="doc.relate_sale_order.name"/>
+                        </td>
+
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                    </t>
                 </table>
             </div>
             <br/>

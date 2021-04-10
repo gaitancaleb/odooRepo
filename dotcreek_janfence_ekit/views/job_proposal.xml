@@ -4,8 +4,16 @@
     <t t-name="dotcreek_janfence_ekit.report_saleorder_janfence">
         <t t-call="web.external_layout">
             <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
+            <t t-if="doc.change_order">
+                    <t t-call="dotcreek_janfence_ekit.report_change_order_document_janfence_templ"></t>
+            </t>
+            <t t-if="doc.damage_order">
+                    <t t-call="dotcreek_janfence_ekit.report_damage_order_document_janfence_templ"></t>
+                </t>
+            <t t-else="1">
+                <t t-call="dotcreek_janfence_ekit.report_saleorder_document_janfence_templ"></t>
+            </t>
 
-            <t t-call="dotcreek_janfence_ekit.report_saleorder_document_janfence_templ"></t>
 
         </t>
     </t>

@@ -7,6 +7,9 @@
                 <t t-if="doc.change_order">
                     <t t-call="dotcreek_janfence_ekit.report_change_order_document_janfence_templ"></t>
                 </t>
+                <t t-if="doc.damage_order">
+                    <t t-call="dotcreek_janfence_ekit.report_damage_order_document_janfence_templ"></t>
+                </t>
                 <t t-else="1">
                     <t t-call="dotcreek_janfence_ekit.report_saleorder_document_janfence_customers_templ"></t>
                 </t>
