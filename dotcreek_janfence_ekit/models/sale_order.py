@@ -37,8 +37,7 @@ class SaleOrder(models.Model):
     pdft_name = fields.Char('Pdf Name')
 
     relate_sale_order = fields.Many2one('sale.order',
-                                         string='Related Job Proposal',
-                                         domain=[('status','in',['sale','done']),('partner_id','=','partner_id')])
+                                         string='Related Job Proposal')
 
     @api.onchange('sale_order_template_id')
     def onchange_change_order(self):
