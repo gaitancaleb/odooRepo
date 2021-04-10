@@ -17,6 +17,11 @@
                                     <span>Edit Drawing</span>
                                 </div>
                             </button>
+                        <button name="duplicate_drawing" type="object" class="oe_stat_button" >
+                                <div class="o_stat_info">
+                                    <span>Duplicate</span>
+                                </div>
+                            </button>
                         </div>
                     <group>
                         <field name="name"/>
