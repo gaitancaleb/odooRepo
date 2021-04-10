@@ -42,7 +42,7 @@ class SaleOrder(models.Model):
 
     @api.onchange('sale_order_template_id')
     def onchange_change_order(self):
-        self.change_order= self.sale_order_template_id.id == self.env.ref('dotcreek_janfence_ekit.sale_order_template_cahnge_order').id
+        self.change_order = self.sale_order_template_id.id == self.env.ref('dotcreek_janfence_ekit.sale_order_template_cahnge_order').id
         self.damage_order = self.sale_order_template_id.id == self.env.ref(
             'dotcreek_janfence_ekit.sale_order_template_damage_order').id
 
