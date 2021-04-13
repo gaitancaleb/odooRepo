@@ -39,6 +39,10 @@ class SaleOrder(models.Model):
     relate_sale_order = fields.Many2one('sale.order',
                                          string='Related Job Proposal')
 
+    opportunity_id = fields.Many2one(
+        'crm.lead', string='Opportunity', check_company=True,
+        domain="[('active','=',True),('partner_id','=',partner_id),('type', '=', 'opportunity'), '|', ('company_id', '=', False), ('company_id', '=', company_id)]")
+
     @api.onchange('sale_order_template_id')
     def onchange_change_order(self):
         self.change_order = self.sale_order_template_id.id == self.env.ref('dotcreek_janfence_ekit.sale_order_template_cahnge_order').id
