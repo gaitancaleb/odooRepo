@@ -49,7 +49,7 @@
                     </xpath>
                     <xpath expr="//field[@name='partner_shipping_id']"
                             position="after">
-                        <field name="relate_sale_order" domain="[('state','in',['sale','done']),('partner_id','=','partner_id')]"
+                        <field name="relate_sale_order" domain="[('state','in',['sale','done']),('partner_id','=',partner_id)]"
                                attrs="{'required' : ['|',('change_order', '=', True),('damage_order', '=', True)]}"/>
                     </xpath>
 
