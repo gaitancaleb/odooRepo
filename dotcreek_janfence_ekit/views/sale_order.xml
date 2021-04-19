@@ -57,6 +57,22 @@
                 </data>
             </field>
         </record>
+        <record id="view_sale_order_ekit_tree" model="ir.ui.view">
+            <field name="name">sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="priority">12</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+            <field name="arch" type="xml">
+                <data>
+                     <xpath expr="//tree[1]/field[@name='name']" position="before">
+    <field name="sale_order_template_id" string="Quotation Template"/>
+  </xpath>
+  <xpath expr="//tree[1]/field[@name='name']" position="after">
+    <field name="relate_sale_order"/>
+  </xpath>
+                </data>
+            </field>
+        </record>
 
     </data>
 </odoo>
