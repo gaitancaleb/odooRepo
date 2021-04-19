@@ -39,6 +39,10 @@ class SaleOrder(models.Model):
     relate_sale_order = fields.Many2one('sale.order',
                                          string='Related Job Proposal')
 
+    opportunity_id = fields.Many2one(
+        'crm.lead', string='Opportunity', check_company=True,
+        domain="[('active','=',True),('partner_id','=',partner_id),('type', '=', 'opportunity'), '|', ('company_id', '=', False), ('company_id', '=', company_id)]")
+
     @api.onchange('sale_order_template_id')
     def onchange_change_order(self):
         self.change_order = self.sale_order_template_id.id == self.env.ref('dotcreek_janfence_ekit.sale_order_template_cahnge_order').id
@@ -53,6 +57,31 @@ class SaleOrder(models.Model):
             self.pdft_name = 'Change Order - %s' % (self.name)
         if self.damage_order:
             self.pdft_name = 'Damage Form - %s' % (self.name)
+
+    @api.model
+    def create(self, values):
+        user = super(SaleOrder, self).create(values)
+        user.pdft_name = 'Job Proposal - %s' % (user.name)
+        if user.change_order:
+            user.pdft_name = 'Change Order - %s' % (user.name)
+        if user.damage_order:
+            user.pdft_name = 'Damage Form - %s' % (user.name)
+        return user
+
+    def write(self, vals):
+        vals.update({
+            'pdft_name':'Job Proposal - %s' % (self.name)
+        })
+        if self.change_order:
+            vals.update({
+                'pdft_name': 'Change Order - %s' % (self.name)
+            })
+        if self.damage_order:
+            vals.update({
+                'pdft_name': 'Damage Form - %s' % (self.name)
+            })
+        result = super(SaleOrder, self).write(vals)
+        return result
 
     def action_quotation_send(self):
         ''' Opens a wizard to compose an email, with relevant mail template loaded by default '''
