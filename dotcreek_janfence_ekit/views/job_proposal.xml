@@ -10,7 +10,7 @@
             <t t-if="doc.damage_order">
                     <t t-call="dotcreek_janfence_ekit.report_damage_order_document_janfence_templ"></t>
                 </t>
-            <t t-else="1">
+            <t t-if="not doc.damage_order and not doc.change_order">
                 <t t-call="dotcreek_janfence_ekit.report_saleorder_document_janfence_templ"></t>
             </t>
 

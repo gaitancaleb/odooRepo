@@ -58,6 +58,31 @@ class SaleOrder(models.Model):
         if self.damage_order:
             self.pdft_name = 'Damage Form - %s' % (self.name)
 
+    @api.model
+    def create(self, values):
+        user = super(SaleOrder, self).create(values)
+        user.pdft_name = 'Job Proposal - %s' % (user.name)
+        if user.change_order:
+            user.pdft_name = 'Change Order - %s' % (user.name)
+        if user.damage_order:
+            user.pdft_name = 'Damage Form - %s' % (user.name)
+        return user
+
+    def write(self, vals):
+        vals.update({
+            'pdft_name':'Job Proposal - %s' % (self.name)
+        })
+        if self.change_order:
+            vals.update({
+                'pdft_name': 'Change Order - %s' % (self.name)
+            })
+        if self.damage_order:
+            vals.update({
+                'pdft_name': 'Damage Form - %s' % (self.name)
+            })
+        result = super(SaleOrder, self).write(vals)
+        return result
+
     def action_quotation_send(self):
         ''' Opens a wizard to compose an email, with relevant mail template loaded by default '''
         self.ensure_one()
