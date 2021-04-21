@@ -10,7 +10,7 @@
                 <t t-if="doc.damage_order">
                     <t t-call="dotcreek_janfence_ekit.report_damage_order_document_janfence_templ"></t>
                 </t>
-                <t t-else="1">
+                <t t-if="not doc.damage_order and not doc.change_order">
                     <t t-call="dotcreek_janfence_ekit.report_saleorder_document_janfence_customers_templ"></t>
                 </t>
             </t>
@@ -23,12 +23,12 @@
                         <tr>
                             <td>
                                 <h2>
-                                    <span>Job Proposal</span>
+                                    <span>Job Proposal </span><span t-field="doc.name" nolabel="1"/>
 
                                 </h2>
                                 <br/>
                             </td>
-                            <td class="ml64">
+                          <!--  <td class="ml64">
                                 <p>
                                     <span t-field="doc.company_id.licence_id_one" nolabel="1"/>
                                     <br/>
@@ -37,7 +37,7 @@
                                     <span t-field="doc.company_id.licence_id_three" nolabel="1"/>
                                     <br/>
                                 </p>
-                            </td>
+                            </td>-->
                         </tr>
                     </table>
 
@@ -495,7 +495,7 @@ _________________________________________________________Date<br/>
         </record>
 
         <record id="sale.action_report_pro_forma_invoice" model="ir.actions.report">
-            <field name="name">Job Proposal/Change Order</field>
+            <field name="name">Job Proposal / Change O / Damage F</field>
             <field name="model">sale.order</field>
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">sale.report_saleorder_pro_forma</field>

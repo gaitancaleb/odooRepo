@@ -25,7 +25,7 @@
                 <tr>
                     <td>
                         <h2>
-                            <span>Job Proposal</span>
+                            <span>Job Proposal </span><span t-field="doc.name" nolabel="1"/>
 
                         </h2>
                         <br/>
