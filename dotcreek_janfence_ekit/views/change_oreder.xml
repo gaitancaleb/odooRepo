@@ -9,12 +9,12 @@
                 <tr>
                     <td>
                         <h2>
-                            <span>Change Order</span>
+                            <span>Change Order </span><span t-field="doc.name" nolabel="1"/>
 
                         </h2>
                         <br/>
                     </td>
-                    <td class="ml64">
+                    <!--<td class="ml64">
                         <p>
                             <span t-field="doc.company_id.licence_id_one" nolabel="1"/>
                             <br/>
@@ -23,7 +23,7 @@
                             <span t-field="doc.company_id.licence_id_three" nolabel="1"/>
                             <br/>
                         </p>
-                    </td>
+                    </td>-->
                 </tr>
             </table>
 
