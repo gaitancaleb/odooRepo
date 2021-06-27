@@ -39,6 +39,7 @@
         'views/mail_template.xml',
         'views/form_st_124.xml',
         'views/account_invoice.xml',
+        'views/sale_mftg.xml',
     ],
 
 }
