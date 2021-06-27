@@ -128,7 +128,7 @@
                 </tr>
 
             </table>
-            <span style="font-size:17px">TOTAL AMOUNT OF COTRACT</span>
+            <span style="font-size:17px">TOTAL AMOUNT OF CONTRACT</span>
             <span style="font-size:17px" t-field="doc.st_amount" widget="monetary"/>
             <p style="font-size:14px">
                 The undersigned hereby certifies that he is not required to pay sales and use tax with respect to
