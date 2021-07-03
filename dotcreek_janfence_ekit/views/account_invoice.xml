@@ -268,44 +268,6 @@
                         By signing below, you acknowledge that the above prices, specifications, materials and conditions are satisfactory and are
 hereby accepted.
                       </p>
-                        <div id="delivery_shipp" class="row mt32 mb32">
-                        <div class="col-auto mw-100 mb-2" t-if="o.partner_shipping_id.name" >
-                            <strong>Customer Name:</strong>
-                            <p class="m-0" t-field="o.partner_shipping_id.name"/>
-                        </div>
-                        <div class="col-auto mw-100 mb-2" t-if="o.partner_shipping_id.street">
-                            <strong>Service Address:</strong>
-                            <p class="m-0" t-field="o.partner_shipping_id.street"/>
-                        </div>
-                        <div class="col-auto mw-100 mb-2" t-if="o.partner_shipping_id.city or o.partner_shipping_id.state_id.name or o.partner_shipping_id.zip">
-                            <strong>City/State/Zip:</strong>
-                            <p class="m-0">
-                                <span  t-field="o.partner_shipping_id.city"/>
-                            <t t-if="o.partner_shipping_id.state_id">
-                              /<span  t-field="o.partner_shipping_id.state_id.name"/>
-                              </t>
-                                <t t-if="o.partner_shipping_id.zip">
-                            <span  t-field="o.partner_shipping_id.zip"/>
-                                </t>
-                            </p>
-
-                        </div>
-                        <div class="col-auto mw-100 mb-2" t-if="o.partner_shipping_id.email">
-                            <strong>Email:</strong>
-                            <p class="m-0" t-field="o.partner_shipping_id.email"/>
-                        </div>
-                        <div class="col-auto mw-100 mb-2" t-if="o.partner_shipping_id.phone or o.partner_shipping_id.mobile">
-                            <strong>Phones:</strong>
-                            <p class="m-0">
-                                <span  t-field="o.partner_shipping_id.phone"/>
-                            <t t-if="o.partner_shipping_id.mobile">
-                            ,<span t-field="o.partner_shipping_id.mobile"/>
-                            </t>
-                            </p>
-
-                        </div>
-                    </div>
-
                         <t t-if="o.partner_shipping_id">
                           <div id="delivery_shipp" class="row mt32 mb32">
                         <div class="col-auto mw-100 mb-2" t-if="o.partner_shipping_id.name" >
@@ -345,7 +307,7 @@ hereby accepted.
                         </div>
                     </div>
                         </t>
-
+                        <p>Yard Hours: M-F: 9:00 AM - 4:00 PM | Sa: 9:00 AM - 2:00 PM | Su: Closed</p>
                       <p>
                         You agree your electronic signature is the legal equivalent of your manual signature on this document.
                           <strong>Signature:</strong><br/><br/><br/><br/>
