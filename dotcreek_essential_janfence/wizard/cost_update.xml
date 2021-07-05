@@ -33,7 +33,7 @@
     <menuitem id="menu_cost_updater"
               name="Cost Updater"
               action="action_view_cost_updater"
-              parent="stock.menu_stock_root"
+              parent="stock.menu_stock_inventory_control"
               sequence="3"/>
 
     </data>
