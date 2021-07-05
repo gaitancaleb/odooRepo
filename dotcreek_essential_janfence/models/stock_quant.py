@@ -10,4 +10,5 @@ class Product(models.Model):
     _inherit = "stock.quant"
 
     def create_onhand(self,vals):
-        return self.sudo().create(vals).id
+        res = self.sudo().create(vals)
+        return res.id
