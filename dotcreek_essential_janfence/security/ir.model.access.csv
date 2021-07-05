@@ -1,2 +1,2 @@
 "id","name","model_id","group_id","perm_read","perm_write","perm_create","perm_unlink"
-"dotcreek_essential_janfence.","Cost Updater","Update Cost","","True","True","True","True"
+"dotcreek_essential_janfence.group_stock_manager","Cost Updater","Update Cost","purchase.group_purchase_manager","True","True","True","True"
