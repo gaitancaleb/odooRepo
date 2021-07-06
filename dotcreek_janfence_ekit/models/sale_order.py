@@ -88,18 +88,26 @@ class SaleOrder(models.Model):
         self.ensure_one()
         template_id = self._find_mail_template()
         ids_sale_reports= []
-        if self.credit_card_form:
-            res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_credit_card')
-            ids_sale_reports.append(res_id.id)
-        if self.st_form:
-            res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_form_st8')
-            ids_sale_reports.append(res_id.id)
-        if self.release_form:
-            res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_release_send_form')
-            ids_sale_reports.append(res_id.id)
+        sale_order_pdf=False
+        if self.company_id.id==1:
+            res_id = self.env.ref('sale.action_report_saleorder')
+            sale_order_pdf=res_id
+            if self.credit_card_form:
+                res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_credit_card')
+                ids_sale_reports.append(res_id.id)
+            if self.st_form:
+                res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_form_st8')
+                ids_sale_reports.append(res_id.id)
+            if self.release_form:
+                res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_release_send_form')
+                ids_sale_reports.append(res_id.id)
+        else:
+            res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_mftg')
+            sale_order_pdf=res_id
 
         lang = self.env.context.get('lang')
         template = self.env['mail.template'].browse(template_id)
+        template.report_template=sale_order_pdf
         template.report_template_ids = [(6, 0, ids_sale_reports)]
         if template.lang:
             lang = template._render_lang(self.ids)[self.id]
