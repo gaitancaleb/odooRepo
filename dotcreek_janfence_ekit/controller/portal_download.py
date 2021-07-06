@@ -24,7 +24,7 @@ class CustomerPortal(CustomerPortal):
             return request.redirect('/my')
 
         if report_type in ('html', 'pdf', 'text'):
-            if order_sudo.company_id==1:
+            if order_sudo.company_id.id==1:
                 return self._show_report(model=order_sudo, report_type=report_type, report_ref='sale.action_report_saleorder', download=download)
             else:
                 return self._show_report(model=order_sudo, report_type=report_type,
