@@ -27,9 +27,24 @@ class UpdateCost(models.TransientModel):
             df = pd.read_excel(PATH_DIR.replace("wizard", "") + '/data/' + self.name_file)
             lines = df.to_dict('records')
             for line in lines:
+                vendor = self.env['res.partner'].search([('name', '=', line['Vendor'])])
                 product = self.env['product.product'].search([('default_code', '=', line['SKU'])])
                 if product:
                     product.write({
                         'standard_price':float(line['Cost'])
                     })
+                sup_info = self.env['product.supplierinfo'].search([('product_id', '=', product.id),
+                                                                  ('name', '=', vendor.id),])
+                if sup_info:
+                    sup_info.write({
+                        'price':float(line['Cost'])
+                    })
+                else:
+                    self.env['product.supplierinfo'].create(
+                        {
+                            "name": vendor.id,
+                            "price": line['Cost'],
+                            "product_id": product.id
+                        }
+                    )
             os.remove(PATH_DIR.replace("wizard", "") + '/data/' + self.name_file)
