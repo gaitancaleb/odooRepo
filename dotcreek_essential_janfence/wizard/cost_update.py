@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 import base64
 import os
-
+import io
 import pandas as pd
 import datetime
 import re
@@ -21,10 +21,13 @@ class UpdateCost(models.TransientModel):
 
     def update(self):
         if self.file:
-            PATH_DIR = os.path.dirname(os.path.abspath(__file__))
-            with open(PATH_DIR.replace("wizard", "") + '/data/' + self.name_file, "wb+") as f:
-                f.write(base64.decodestring(self.file))
-            df = pd.read_excel(PATH_DIR.replace("wizard", "") + '/data/' + self.name_file)
+            # PATH_DIR = os.path.dirname(os.path.abspath(__file__))
+            # with open(PATH_DIR.replace("wizard", "") + '/data/' + self.name_file, "wb+") as f:
+            #     f.write(base64.decodestring(self.file))
+            toread = io.BytesIO()
+            toread.write(base64.b64decode(self.file))
+            # df = pd.read_excel(PATH_DIR.replace("wizard", "") + '/data/' + self.name_file)
+            df = pd.read_excel(toread)
             lines = df.to_dict('records')
             for line in lines:
                 vendor = self.env['res.partner'].search([('name', '=', line['Vendor'])])
@@ -47,4 +50,4 @@ class UpdateCost(models.TransientModel):
                             "product_id": product.id
                         }
                     )
-            os.remove(PATH_DIR.replace("wizard", "") + '/data/' + self.name_file)
+           # os.remove(PATH_DIR.replace("wizard", "") + '/data/' + self.name_file)
