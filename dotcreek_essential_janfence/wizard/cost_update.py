@@ -50,4 +50,4 @@ class UpdateCost(models.TransientModel):
                             "product_id": product.id
                         }
                     )
-            os.remove(PATH_DIR.replace("wizard", "") + '/data/' + self.name_file)
+           # os.remove(PATH_DIR.replace("wizard", "") + '/data/' + self.name_file)
