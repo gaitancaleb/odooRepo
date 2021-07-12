@@ -37,17 +37,22 @@ class UpdateCost(models.TransientModel):
                         'standard_price':float(line['Cost'])
                     })
                 sup_info = self.env['product.supplierinfo'].search([('product_id', '=', product.id),
-                                                                  ('name', '=', vendor.id),])
+                                                                  ('name', '=', vendor.id),
+                                                                    ('company_id','=',self.env.user.company_id.id)])
                 if sup_info:
                     sup_info.write({
-                        'price':float(line['Cost'])
+                        "name": vendor.id,
+                            "price": line['Cost'],
+                            "product_id": product.id,
+                            "product_tmpl_id":product.product_tmpl_id.id
                     })
                 else:
                     self.env['product.supplierinfo'].create(
                         {
                             "name": vendor.id,
                             "price": line['Cost'],
-                            "product_id": product.id
+                            "product_id": product.id,
+                            "product_tmpl_id":product.product_tmpl_id.id
                         }
                     )
            # os.remove(PATH_DIR.replace("wizard", "") + '/data/' + self.name_file)
