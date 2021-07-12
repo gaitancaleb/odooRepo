@@ -21,6 +21,18 @@ class SaleOrder(models.Model):
             if self.st_amount<=0:
                 self.st_amount = self.amount_total
 
+    def _default_website(self):
+        """ Find the first company's website, if there is one. """
+        company_id = self.env.user.company_id.id
+
+        if self._context.get('default_company_id'):
+            company_id = self._context.get('default_company_id')
+
+        domain = [('company_id', '=', company_id)]
+        return self.env['website'].search(domain, limit=1)
+
+    website_id = fields.Many2one('website', string="Website", ondelete='restrict',required=True,default=_default_website, domain="[('company_id', '=?', company_id)]")
+
     st_note = fields.Text("Nature of Contract")
     st_amount = fields.Monetary("Amount of Contract")
     st124_note = fields.Text("Capital Improvement to be performed")
