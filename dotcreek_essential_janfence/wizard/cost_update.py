@@ -55,4 +55,26 @@ class UpdateCost(models.TransientModel):
                             "product_tmpl_id":product.product_tmpl_id.id
                         }
                     )
+                for key in line.keys():
+                    if key not in ('Cost','Vendor','SKU'):
+                        price_list = self.env['product.pricelist'].search([('name', '=', key)],limit=1)
+                        if price_list:
+                            item = self.env['product.pricelist.item'].search([('product_id', '=', product.id),('pricelist_id','=',price_list.id)], limit=1)
+                            if item:
+                                item.write({
+                                    "applied_on": '0_product_variant',
+                                    "compute_price": 'fixed',
+                                    "fixed_price": line[key],
+                                })
+                            else:
+                                item.create({
+                                    "applied_on": '0_product_variant',
+                                     "compute_price": 'fixed',
+                                     "product_id": product.id,
+                                     "fixed_price": line[key],
+                                     "pricelist_id": price_list.id
+                                })
+
+
+
            # os.remove(PATH_DIR.replace("wizard", "") + '/data/' + self.name_file)
