@@ -37,7 +37,11 @@
         'views/company.xml',
         'views/sale_order.xml',
         'views/mail_template.xml',
-        'views/form_st_124.xml'
+        'views/form_st_124.xml',
+        'views/account_invoice.xml',
+        'views/sale_mftg.xml',
+        # 'views/sale_order_portal_contecnt.xml',
+        # 'views/sale_portal_templates.xml',
     ],
 
 }

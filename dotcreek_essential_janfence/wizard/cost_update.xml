@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2018 TechAsERP
+ License CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/).-->
+
+<odoo>
+    <data>
+        <record id="view_cost_updater_form" model="ir.ui.view">
+            <field name="name">Cost Updater Form</field>
+            <field name="model">dotcreek.cost_updater</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Cost Updater Import">
+                    <group>
+                        <field name="file" filename="name_file"/>
+                        <field name="name_file" invisible="1"/>
+                    </group>
+                    <footer>
+                        <button name="update" type="object" class="btn-primery"
+                                string="Update"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_cost_updater" model="ir.actions.act_window">
+        <field name="name">Cost Updater</field>
+        <field name="res_model">dotcreek.cost_updater</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_cost_updater_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_cost_updater"
+              name="Cost Updater"
+              action="action_view_cost_updater"
+              parent="purchase.menu_purchase_products"
+              sequence="3"/>
+
+    </data>
+</odoo>

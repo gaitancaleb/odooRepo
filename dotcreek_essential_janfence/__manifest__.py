@@ -39,6 +39,7 @@
         'views/view_domains.xml',
         'views/sale_order.xml',
         'views/view_dom_task.xml',
+        'wizard/cost_update.xml',
 
     ],
 
