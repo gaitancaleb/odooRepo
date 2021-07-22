@@ -45,7 +45,7 @@
                     </div>
 
                     <t t-set="display_discount" t-value="any(l.discount for l in o.invoice_line_ids)"/>
-
+                    <t t-if="o.company_id.id==2">
                     <table class="table table-sm o_main_table" name="invoice_line_table">
                         <thead>
                             <tr>
@@ -116,18 +116,21 @@
                             </t>
                         </tbody>
                     </table>
-
+                    </t>
+                    <t t-else="">
+                        <span><strong>Scope of Work</strong></span>
+                        <p t-if="o.narration" name="comment">
+                            <span t-field="o.narration"/>
+                        </p>
+                    </t>
                     <div class="clearfix">
                         <div id="total" class="row">
                         <t t-if="o.company_id.id==2">
                           <div  t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-5 col-md-6'}">
                                 <p style="font-size:10px">
                                     Thank you for choosing MyFence2Go for your fencing needs!<br/>
-                                    All returns will be subject to inspection and approval. Material must be returned
-                                    within 15 days in sellable condition for a refund to be issues. All returns will be
-                                    charged a 20% restocking fee.<br/>
-                                    Special orders and custom-made items are non-refundable and may not be
-                                    returned or exchanged.<br/>
+                                    All returns will be subject to inspection and approval. Material must be returned within 15 days in sellable condition for a refund to be issued. All returns will be charged a 20% restocking fee.<br/>
+                                    Special orders and custom-made items are non-refundable and may not be returned or exchanged.<br/>
                                 </p>
                             </div>
                             <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'}">
@@ -315,9 +318,11 @@ hereby accepted.
                         A valid form of identification must be presented at the time of pick-up.
                       </p>
                     </t>
-                    <p t-if="o.narration" name="comment">
-                        <span t-field="o.narration"/>
-                    </p>
+                    <t t-if="o.company_id.id==2">
+                        <p t-if="o.narration" name="comment">
+                            <span t-field="o.narration"/>
+                        </p>
+                    </t>
                     <p t-if="o.fiscal_position_id.note" name="note">
                         <span t-field="o.fiscal_position_id.note"/>
                     </p>
