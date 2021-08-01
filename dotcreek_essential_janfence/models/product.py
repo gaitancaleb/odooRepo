@@ -15,7 +15,8 @@ class Product(models.Model):
     height = fields.Char('Height')
 
     def create_variant_ids(self, vals):
-        return self._create_variant_ids(vals)
+        self._create_variant_ids()
+        return True
 
 class ProductProduct(models.Model):
     _inherit = "product.product"
