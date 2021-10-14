@@ -69,7 +69,7 @@
                                         Underground Acknowledgement
                                     </td>
                                 </tr>
-                            <t t-if="doc.release_form">
+                            <!--<t t-if="doc.release_form">
                                 <tr>
                                     <td style="font-size:19px">
                                         <t t-esc="count"/>
@@ -90,7 +90,7 @@
                                         Credit Card Form
                                     </td>
                                 </tr>
-                            </t>
+                            </t>-->
                             <t t-if="doc.st_form">
                                 <tr>
                                     <td style="font-size:19px">
@@ -144,7 +144,7 @@
             <t t-call="web.internal_layout">
                     <t t-call="dotcreek_janfence_ekit.report_document_underground_templ"></t>
                 </t>
-            <t t-if="doc.release_form">
+            <!--<t t-if="doc.release_form">
                 <t t-call="web.external_layout">
                     <t t-call="dotcreek_janfence_ekit.report_document_release_send_templ"></t>
 
@@ -155,7 +155,7 @@
                     <t t-call="dotcreek_janfence_ekit.report_document_credit_card_templ"></t>
 
                 </t>
-            </t>
+            </t>-->
 
             <t t-if="doc.st_form">
                 <t t-call="web.internal_layout">
