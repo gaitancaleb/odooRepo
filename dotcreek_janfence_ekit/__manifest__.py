@@ -30,6 +30,9 @@
         'views/job_proposal.xml',
         'views/job_proposal_customer.xml',
         'views/form_st_8.xml',
+        'views/contract_obligation.xml',
+        'views/undergroud_acknoledgment.xml',
+        'views/termsofpayment.xml',
         'views/credit_card_form.xml',
         'views/release_form.xml',
         'views/release_send_form.xml',
@@ -40,7 +43,7 @@
         'views/form_st_124.xml',
         'views/account_invoice.xml',
         'views/sale_mftg.xml',
-        # 'views/sale_order_portal_contecnt.xml',
+        'views/account_move_views.xml',
         # 'views/sale_portal_templates.xml',
     ],
 
