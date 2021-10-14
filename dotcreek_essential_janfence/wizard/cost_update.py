@@ -75,6 +75,7 @@ class UpdateCost(models.TransientModel):
                                      "pricelist_id": price_list.id
                                 })
 
-
-
-           # os.remove(PATH_DIR.replace("wizard", "") + '/data/' + self.name_file)
+            return {
+                'type': 'ir.actions.client',
+                'tag': 'reload',
+            }

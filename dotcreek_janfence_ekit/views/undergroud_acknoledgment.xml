@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_document_underground_templ">
+        <div class="page">
+            <div class="col-xs-3 text-center">
+                <h2>
+                    <strong>
+                        <u>Underground Acknowledgement and Release from Liability - Private Utility Lines</u>
+                    </strong>
+                </h2>
+            </div>
+            <p style="font-size:16px">
+                <strong>
+                    <u>Public Utilities</u>
+                </strong>
+                <br/>
+
+            </p>
+            <p style="font-size:16px">
+                Fence installation requiring excavation presents unique challenges in that underground obstructions
+                cannot be seen without commencing digging. In accordance with New Jersey State Law, Jan Fence,
+                Inc will have public utilities marked by NJ-One Call and will not begin digging until marking is
+                complete. We will maintain appropriate clearance from NJ-One Call markings and will follow all
+                other guidelines and rules pertaining to working near these public utilities.
+            </p>
+            <p style="font-size:16px">
+                <strong>
+                    <u>Private Utilities</u>
+                </strong>
+                <br/>
+
+            </p>
+            <p style="font-size:16px">
+                Private utilities may include electrical lines for outdoor lighting, power to a back garage shed,
+                natural gas or underground piping to a garage or outbuilding, propane lines to gas grills and
+                pool heaters, private water systems, septic systems, drain lines from downspouts, underground
+                sprinkler systems, electric lines installed after the meter, invisible pet fences, data
+                communications line, etc.
+            </p>
+            <p style="font-size:16px">
+                <strong>
+                    <u>Review the Location of Your Private Lines</u>
+                </strong>
+                <br/>
+
+            </p>
+            <p style="font-size:16px">
+                It is important to review where your private utilities are located. We recommend having private
+                utilities marked. Private utilities in the way of the fence line, either marked or unmarked,
+                impede with your installation.
+            </p>
+            <p style="font-size:16px">
+                <strong>
+                    <u>Turn Off Your Private Utilities</u>
+                </strong>
+                <br/>
+
+            </p>
+            <p style="font-size:16px">
+                It is recommended that you turn off your private utilities the day of installation.
+                We will only need access to Water and Electricity.
+            </p>
+            <p style="font-size:16px">
+                <strong>
+                    <u>Options for Private Utilities in the way of the Fence Line</u>
+                </strong>
+                <br/>
+
+            </p>
+            <p style="font-size:16px">
+                Because we are digging into your yard, any private utility in the way of the fence line may be
+                hit during installation. To avoid damage to the utility, we recommend having the utility
+                relocated out of the fence line. This should be completed prior to your installation to avoid
+                delays in scheduling.
+            </p>
+            <p style="font-size:16px">
+                <strong>NOTE: Jan fence, Inc will use any and all precautions before we dig. Due to the unique
+                    challenges in that underground utilities cannot be seen without digging. Jan Fence, Inc is not
+                    liable for any damages to private utilities, marked or unmarked as they should to be moved prior
+                    to installation.
+                </strong>
+                <br/>
+
+            </p>
+            <div class="col-xs-3 text-center">
+                <p style="font-size:16px">
+                    <strong>Our goal is to protect your property from damage and keep our crew members safe.</strong>
+                </p>
+            </div>
+        </div>
+    </template>
+
+</odoo>

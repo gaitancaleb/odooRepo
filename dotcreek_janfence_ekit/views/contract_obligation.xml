@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_document_contrct_oblig_templ">
+        <div class="page">
+                    <div class="oe_structure"/>
+            <div style="text-align: center">
+                <i>This Proposal when signed by the customer and Jan Fence, Inc will constitute a binding contract.</i></div>
+                    <br/>
+            <div style="text-align: center">
+                    <h2>
+                        <strong><u>Contractual Obligations</u></strong>
+                    </h2>
+            </div>
+            <div class="ms16 me16">
+
+
+                    <ol>
+                        <p style="font-size:16px">
+                        <strong>
+                            1. Charges for Late Payment.
+                        </strong>
+                        If we do not receive full payment within 10 days after it is due,
+                            you will be responsible for a late payment charge of 5% of the
+                            unpaid amount or $10.00, whichever is greater. You will be responsible
+                            for all costs involved should nonpayment require third party intervention.
+                            This includes but is not limited to court fees, lawyer fees and any other service
+                            needed to finalize the Contracts terms. Nonpayment will also void your warranty
+                            status with Jan Fence, Inc.
+                    </p>
+                    </ol>
+                    <ol>
+                        <p style="font-size:16px">
+                        <strong>
+                            2. Change in Address.
+                        </strong>
+                        You must notify us in writing within 30 days of any change in your address.
+                        </p>
+                    </ol>
+                    <ol>
+                        <p style="font-size:16px">
+                        <strong>
+                            3. Official Fees, Taxes and Fines.
+                        </strong>
+                        You must promptly pay all official fees and taxes, if applicable, related to this installation,
+                            including permit fees, inspection fees and personal property taxes. Some bills for official
+                            fees and taxes may be sent to you for payment. Other bills may be paid by us on your behalf,
+                            and we will charge you the amount paid. You must pay all fees incurred during the installation,
+                            even if they are assessed and billed after the installation has ended. We may charge you an
+                            estimated amount for the remaining fees at the end of the installation. You are responsible
+                            for any shortage in this estimate, and we will refund you any excess.
+                        </p>
+                    </ol>
+                    <ol>
+                        <p style="font-size:16px">
+                        <strong>
+                            4. Installation.
+                        </strong>
+                        We shall furnish and install a fence as agreed upon previously and any additional work as
+                            described herein at the address listed on the reverse. We agree to complete coverage,
+                            except in omitted areas. We shall be permitted to make all necessary alterations in its
+                            judgement required to accomplish the work to be performed. We will make every effort to
+                            avoid damage to lawn, shrubs, and property, but by reason of the nature of the work are
+                            not responsible for any damage caused during installation.
+                        </p>
+                    </ol>
+                    <ol>
+                        <p style="font-size:16px">
+                        <strong>
+                            5. Completion Date.
+                        </strong>
+                        We shall make a good faith effort to complete the installation on or about the date mentioned
+                            herein. If completion date is not met by us, we shall not be held responsible for any delay.
+                        </p>
+                    </ol>
+            <ol>
+                        <p style="font-size:16px">
+                        <strong>
+                            6. Boundaries.
+                        </strong>
+                        You will provide an accurate survey or diagram of the property boundaries upon which we may rely.
+                            You will indemnify any claims arising from the location of the fence.
+                        </p>
+
+                    </ol>
+            <ol>
+                        <p style="font-size:16px">
+                        <strong>
+                            7. Permits.
+                        </strong>
+                        You will obtain and be responsible for the cost of the necessary permits and variances.
+                        </p>
+
+                    </ol>
+            <ol>
+                        <p style="font-size:16px">
+                        <strong>
+                            8. Indemnification.
+                        </strong>
+                        Unless Jan Fence’s own negligence, you shall defend, hold harmless Jan Fence, its employees,
+                            officers, directors, and affiliates from any cost, expense, or damage claimed by third
+                            parties for property damage and/or bodily injury, including death, which arises from or is
+                            related to the installation, use, maintenance, or operation of the fence system and/or any
+                            work performed by Jan Fence to the greatest extent permitted by law.
+                        </p>
+
+                    </ol>
+            <ol>
+                        <p style="font-size:16px">
+                        <strong>
+                            9. Limited Liability.
+                        </strong>
+                        You shall in no manner hold Jan Fence, its employees, officers, directors, and affiliates
+                            liable for bodily injury or property damages resulting from and/or inflicted to underground
+                            pipes, wires, cables, invisible dog fences, pool lines or any other underground structure
+                            that is not clearly marked on a surveyor diagram of location to scale, of for the improper
+                            placement of the fence. Furthermore, we shall not be responsible for empty ground space due
+                            to rocky conditions, property grading or heavily sloped areas. You are responsible for all
+                            repairs of any damage outlined within this paragraph and for all property boundaries.
+                        </p>
+
+                    </ol>
+            <ol>
+                        <p style="font-size:16px">
+                        <strong>
+                            10. Notices.
+                        </strong>
+                        All correspondence and notices will be sent to the billing address shown on the Contract unless you give us an alternate address in writing.
+                        </p>
+
+                    </ol>
+            <ol>
+                        <p style="font-size:16px">
+                        <strong>
+                            11. Choice of Law Severability.
+                        </strong>
+                        You agree that the law of the State of New Jersey applies to this Contract. If certain
+                            provisions of this contract violate the law, those provisions will be void, and the
+                            rest of the Contract will be enforceable. The venue of any litigation under this agreement
+                            shall be in a court of competent jurisdiction in the State of New Jersey.
+                        </p>
+
+                    </ol>
+            <ol>
+                        <p style="font-size:16px">
+                        <strong>
+                            12. No Waiver by Us.
+                        </strong>
+                        If we delay or refrain from exercising our rights under this Contract, we do not lose those
+                            rights. If we accept late or partial payments from you, we do not waive our rights to
+                            receive full and timely payments.
+                        </p>
+
+                    </ol>
+            <ol>
+                        <p style="font-size:16px">
+                        <strong>
+                            13. Modification or Amendment.
+                        </strong>
+                        No amendment, change or modification of this Contract shall be valid unless in writing and signed by both parties hereto.
+                        </p>
+
+                    </ol>
+            <ol>
+                        <p style="font-size:16px">
+                        <strong>
+                            14. Miscellaneous.
+                        </strong>
+                        All material is guaranteed to be as specified. All work to be completed in a workmanlike manner
+                            according to standard practices. Any alteration or deviation from the within specifications
+                            involving extra cost will be done only upon a written change order. The costs will become an
+                            extra charge over and above the estimate. All elements of this agreement are contingent upon
+                            strikes, accidents, or delays beyond our control. The estimate does not include material price
+                            increases or additional labor and materials which may be required should unforeseen problems
+                            arise after the work has commenced.
+                        </p>
+
+                    </ol>
+            <ol>
+                        <p style="font-size:16px">
+                        <strong>
+                            15. NJ Department of Consumer Affairs Consumer Service Center Hotline.
+                        </strong>
+                         (973) 504-6200, Toll Free (NJ Only): 800-242-5846.
+                        </p>
+
+                    </ol>
+            <ol>
+                        <p style="font-size:16px">
+                        <strong>
+                            16. Insurance.
+                        </strong>
+                         A copy of the certificate of commercial general liability insurance can be obtained upon request. The telephone of the insurance company issuing the certificate is (973) 256-7703
+                        </p>
+
+                    </ol>
+            <div style="text-align: center">
+                <strong>
+                    <u>Two Year Labor Warranty</u>
+                        </strong>
+                <br/>
+            </div>
+            <p style="font-size:16px">
+                Jan Fence, Inc warrants only the original purchaser that all new fencing is free from defects in
+                material and workmanship, under normal and proper usage. This warranty only applies to defects resulting
+                from normal use and not from changes by alteration, abuse, fire, flood, unstable soil, underground water
+                conditions, checking, warping, and “Acts of God”. Under this warranty, obligation is limited to replacement
+                of the defective material this warranty gives you specific legal rights and may also have other rights
+                which may vary from state to state.
+            </p>
+                </div>
+                </div>
+    </template>
+
+</odoo>

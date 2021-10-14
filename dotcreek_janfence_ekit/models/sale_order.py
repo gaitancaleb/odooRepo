@@ -102,17 +102,17 @@ class SaleOrder(models.Model):
         ids_sale_reports= []
         sale_order_pdf=False
         if self.company_id.id==1:
-            res_id = self.env.ref('sale.action_report_saleorder')
+            res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_e_kit_print')
             sale_order_pdf=res_id
-            if self.credit_card_form:
-                res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_credit_card')
-                ids_sale_reports.append(res_id.id)
-            if self.st_form:
-                res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_form_st8')
-                ids_sale_reports.append(res_id.id)
-            if self.release_form:
-                res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_release_send_form')
-                ids_sale_reports.append(res_id.id)
+            # if self.credit_card_form:
+            #     res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_credit_card')
+            #     ids_sale_reports.append(res_id.id)
+            # if self.st_form:
+            #     res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_form_st8')
+            #     ids_sale_reports.append(res_id.id)
+            # if self.release_form:
+            #     res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_release_send_form')
+            #     ids_sale_reports.append(res_id.id)
         else:
             res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_mftg')
             sale_order_pdf=res_id
