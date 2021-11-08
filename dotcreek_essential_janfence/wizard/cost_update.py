@@ -30,7 +30,9 @@ class UpdateCost(models.TransientModel):
             df = pd.read_excel(toread)
             lines = df.to_dict('records')
             for line in lines:
-                vendor = self.env['res.partner'].search([('name', '=', line['Vendor'])])
+                vendor=False
+                if 'Vendor' in line.keys():
+                    vendor = self.env['res.partner'].search([('name', '=', line['Vendor'])])
                 product = self.env['product.product'].search([('default_code', '=', line['SKU'])])
                 if product:
                     product.write({
