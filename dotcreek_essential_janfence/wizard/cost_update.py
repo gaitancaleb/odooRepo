@@ -36,25 +36,27 @@ class UpdateCost(models.TransientModel):
                     product.write({
                         'standard_price':float(line['Cost'])
                     })
-                sup_info = self.env['product.supplierinfo'].search([('product_id', '=', product.id),
-                                                                  ('name', '=', vendor.id),
-                                                                    ('company_id','=',self.env.user.company_id.id)])
-                if sup_info:
-                    sup_info.write({
-                        "name": vendor.id,
-                            "price": line['Cost'],
-                            "product_id": product.id,
-                            "product_tmpl_id":product.product_tmpl_id.id
-                    })
-                else:
-                    self.env['product.supplierinfo'].create(
-                        {
+                if vendor:
+                    sup_info = self.env['product.supplierinfo'].search([('product_id', '=', product.id),
+                                                                      ('name', '=', vendor.id),
+                                                                        ('company_id','=',self.env.user.company_id.id)])
+                if vendor:
+                    if sup_info:
+                        sup_info.write({
                             "name": vendor.id,
-                            "price": line['Cost'],
-                            "product_id": product.id,
-                            "product_tmpl_id":product.product_tmpl_id.id
-                        }
-                    )
+                                "price": line['Cost'],
+                                "product_id": product.id,
+                                "product_tmpl_id":product.product_tmpl_id.id
+                        })
+                    else:
+                        self.env['product.supplierinfo'].create(
+                            {
+                                "name": vendor.id,
+                                "price": line['Cost'],
+                                "product_id": product.id,
+                                "product_tmpl_id":product.product_tmpl_id.id
+                            }
+                        )
                 for key in line.keys():
                     if key not in ('Cost','Vendor','SKU'):
                         price_list = self.env['product.pricelist'].search([('name', '=', key)],limit=1)
