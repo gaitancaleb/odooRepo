@@ -5,7 +5,7 @@
 <odoo>
     <data>
         <record id="view_cost_average_form" model="ir.ui.view">
-            <field name="name">Cost Average Form</field>
+            <field name="name">Cost Update by Percentage Form</field>
             <field name="model">dotcreek.cost_average</field>
             <field name="arch" type="xml">
                 <form string="Cost Updater Average">
@@ -23,7 +23,7 @@
         </record>
 
        <record id="action_cost_average" model="ir.actions.act_window">
-            <field name="name">Cost Updater Average</field>
+            <field name="name">Cost Update by Percentage</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">dotcreek.cost_average</field>
             <field name="view_mode">form</field>
