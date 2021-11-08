@@ -118,47 +118,29 @@
                         </tbody>
                     </table>
                 </div>
-            </t>
+
 
                 <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
                 <t t-if="doc.change_order">
-                    <t t-call="web.external_layout">
                     <t t-call="dotcreek_janfence_ekit.report_change_order_document_janfence_templ"></t>
-                        </t>
+
                 </t>
                 <t t-if="doc.damage_order">
-                    <t t-call="web.external_layout">
                     <t t-call="dotcreek_janfence_ekit.report_damage_order_document_janfence_templ"></t>
-                        </t>
+
                 </t>
                 <t t-else="1">
-                    <t t-call="web.external_layout">
                     <t t-call="dotcreek_janfence_ekit.report_saleorder_document_janfence_customers_templ"></t>
-                        </t>
+
                 </t>
 
 
-             <t t-call="web.internal_layout">
                     <t t-call="dotcreek_janfence_ekit.report_document_contrct_oblig_templ"></t>
-                </t>
-            <t t-call="web.internal_layout">
+
                     <t t-call="dotcreek_janfence_ekit.report_document_underground_templ"></t>
-                </t>
-            <!--<t t-if="doc.release_form">
-                <t t-call="web.external_layout">
-                    <t t-call="dotcreek_janfence_ekit.report_document_release_send_templ"></t>
-
-                </t>
             </t>
-            <t t-if="doc.credit_card_form">
-                <t t-call="web.external_layout">
-                    <t t-call="dotcreek_janfence_ekit.report_document_credit_card_templ"></t>
-
-                </t>
-            </t>-->
-
+            <t t-call="web.internal_layout">
             <t t-if="doc.st_form">
-                <t t-call="web.internal_layout">
 
                     <div class="page">
                         <div class="oe_structure"/>
@@ -388,15 +370,13 @@
 
                         </p>
                     </div>
-                </t>
 
             </t>
             <t t-if="doc.st124_form">
-                <t t-call="web.internal_layout">
                     <t t-call="dotcreek_janfence_ekit.report_document_form_st124_templ"></t>
-                </t>
             </t>
-            <t t-call="web.internal_layout">
+            </t>
+            <t t-call="web.external_layout">
                     <t t-call="dotcreek_janfence_ekit.report_document_term_payment_templ"></t>
                 </t>
         </t>
