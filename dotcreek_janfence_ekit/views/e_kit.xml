@@ -121,6 +121,7 @@
 
 
                 <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
+                <div style="page-break-before: always;">
                 <t t-if="doc.change_order">
                     <t t-call="dotcreek_janfence_ekit.report_change_order_document_janfence_templ"></t>
 
@@ -133,15 +134,16 @@
                     <t t-call="dotcreek_janfence_ekit.report_saleorder_document_janfence_customers_templ"></t>
 
                 </t>
-
-
+                </div>
+                <div style="page-break-before: always;">
                     <t t-call="dotcreek_janfence_ekit.report_document_contrct_oblig_templ"></t>
-
+                </div>
+                <div style="page-break-before: always;">
                     <t t-call="dotcreek_janfence_ekit.report_document_underground_templ"></t>
+                </div>
             </t>
             <t t-call="web.internal_layout">
             <t t-if="doc.st_form">
-
                     <div class="page">
                         <div class="oe_structure"/>
                         <table style="width:100%;margin-top:0px;height:20px">
@@ -370,8 +372,8 @@
 
                         </p>
                     </div>
-
-            </t>
+            </t></t>
+                <t t-call="web.internal_layout">
             <t t-if="doc.st124_form">
                     <t t-call="dotcreek_janfence_ekit.report_document_form_st124_templ"></t>
             </t>
