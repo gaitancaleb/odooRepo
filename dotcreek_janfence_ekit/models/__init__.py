@@ -1,1 +1,1 @@
-from . import company, sale_order, mail_template, partner
+from . import company, sale_order, mail_template, partner, account_move
