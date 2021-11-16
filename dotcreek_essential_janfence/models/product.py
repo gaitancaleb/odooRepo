@@ -18,6 +18,12 @@ class Product(models.Model):
         self._create_variant_ids()
         return True
 
+    def set_tax_product(self):
+        for item in self.env['product.template'].search([]):
+            item.with_context({'company_id': 2,}).write({'taxes_id':3,
+                        'supplier_taxes_id':6
+                        })
+
 class ProductProduct(models.Model):
     _inherit = "product.product"
 
@@ -32,6 +38,7 @@ class ProductProduct(models.Model):
 
     def cost_update(self, vals):
         return super(ProductProduct, self).write(vals)
+
 
     @api.model
     def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
