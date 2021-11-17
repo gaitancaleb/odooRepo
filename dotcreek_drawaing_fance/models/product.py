@@ -18,12 +18,13 @@ class Product(models.Model):
         self._create_variant_ids()
         return True
 
-    def set_tax_product(self):
-        for item in self.env['product.template'].search([]):
+    def set_tax_product(self,vals):
+        for item in self:
             item.with_context({'company_id': 2, }).write(
                 {'taxes_id': self.env['account.tax'].search([('id', '=', 3)]),
                  'supplier_taxes_id': self.env['account.tax'].search([('id', '=', 6)])
                  })
+        return True
 
 class ProductProduct(models.Model):
     _inherit = "product.product"
