@@ -23,9 +23,11 @@ class SaleOrder(models.Model):
             if items.categ_id:
                 categ_id.append(items.categ_id.id)
         res = {}
-        dom = [('id', 'in', product_ids)]
+        dom = []
         if len(categ_id) > 0:
+            dom.append('|')
             dom.append(('categ_id', 'in', categ_id))
+        dom.append(('id', 'in', product_ids))
         res['domain'] = {'product_template_id': dom}
         return res
 
@@ -48,8 +50,10 @@ class SaleOrder(models.Model):
             if items.categ_id:
                 categ_id.append(items.categ_id.id)
         res = {}
-        dom = [('id', 'in', product_ids)]
+        dom = []
         if len(categ_id) > 0:
+            dom.append('|')
             dom.append(('categ_id', 'in', categ_id))
+        dom.append(('id', 'in', product_ids))
         res['domain'] = {'product_template_id': dom}
         return res

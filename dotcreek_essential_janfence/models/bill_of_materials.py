@@ -22,7 +22,7 @@ class BOM(models.Model):
             'product_tmpl_id':product.product_tmpl_id.id,
             'product_id':product.id,
             'bom_line_ids':lines,
-            'operation_ids':[(0,0,{'name': working_center,
+            'operation_ids':[(0,0,{'name': 'Fabrication',
                                    'workcenter_id':work_center.id})]
         })
         return True
