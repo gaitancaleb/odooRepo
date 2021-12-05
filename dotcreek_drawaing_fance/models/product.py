@@ -14,6 +14,18 @@ class Product(models.Model):
         inverse='_set_default_code', store=True)
     height = fields.Char('Height')
 
+    def create_variant_ids(self, vals):
+        self._create_variant_ids()
+        return True
+
+    def set_tax_product(self,vals):
+        for item in self:
+            item.with_context({'company_id': 2, }).write(
+                {'taxes_id': self.env['account.tax'].search([('id', '=', 3)]),
+                 'supplier_taxes_id': self.env['account.tax'].search([('id', '=', 6)])
+                 })
+        return True
+
 class ProductProduct(models.Model):
     _inherit = "product.product"
 

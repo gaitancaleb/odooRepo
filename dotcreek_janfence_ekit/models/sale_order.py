@@ -98,21 +98,27 @@ class SaleOrder(models.Model):
     def action_quotation_send(self):
         ''' Opens a wizard to compose an email, with relevant mail template loaded by default '''
         self.ensure_one()
-        template_id = self._find_mail_template()
+        if self.company_id.id==1:
+            template_id = self.env['mail.template'].search([('id', '=', 29)]).id
+        elif self.company_id.id==2:
+            template_id = self.env['mail.template'].search([('id', '=', 30)]).id
+        else:
+            template_id = self._find_mail_template()
+
         ids_sale_reports= []
         sale_order_pdf=False
         if self.company_id.id==1:
-            res_id = self.env.ref('sale.action_report_saleorder')
+            res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_e_kit_print')
             sale_order_pdf=res_id
-            if self.credit_card_form:
-                res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_credit_card')
-                ids_sale_reports.append(res_id.id)
-            if self.st_form:
-                res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_form_st8')
-                ids_sale_reports.append(res_id.id)
-            if self.release_form:
-                res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_release_send_form')
-                ids_sale_reports.append(res_id.id)
+            # if self.credit_card_form:
+            #     res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_credit_card')
+            #     ids_sale_reports.append(res_id.id)
+            # if self.st_form:
+            #     res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_form_st8')
+            #     ids_sale_reports.append(res_id.id)
+            # if self.release_form:
+            #     res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_release_send_form')
+            #     ids_sale_reports.append(res_id.id)
         else:
             res_id = self.env.ref('dotcreek_janfence_ekit.action_report_saleorder_mftg')
             sale_order_pdf=res_id

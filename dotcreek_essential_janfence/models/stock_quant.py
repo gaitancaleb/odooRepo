@@ -12,3 +12,7 @@ class Product(models.Model):
     def create_onhand(self,vals):
         res = self.sudo().create(vals)
         return res.id
+
+    def delete_onhand(self,vals):
+        res = self.search([('product_id','in',vals)]).sudo().unlink()
+        return res

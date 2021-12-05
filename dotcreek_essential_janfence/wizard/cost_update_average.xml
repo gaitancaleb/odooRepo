@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2018 TechAsERP
+ License CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/).-->
+
+<odoo>
+    <data>
+        <record id="view_cost_average_form" model="ir.ui.view">
+            <field name="name">Cost Update by Percentage Form</field>
+            <field name="model">dotcreek.cost_average</field>
+            <field name="arch" type="xml">
+                <form string="Cost Updater Average">
+                    <group>
+                        <field name="average" />
+                    </group>
+                    <footer>
+                        <button name="update" type="object" class="btn-primery"
+                                confirm="Are you sure to apply the update?"
+                                string="Update"/>
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+       <record id="action_cost_average" model="ir.actions.act_window">
+            <field name="name">Cost Update by Percentage</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">dotcreek.cost_average</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_cost_average_form"/>
+            <field name="context">{}</field>
+            <field name="target">new</field>
+            <field name="groups_id" eval="[(4, ref('purchase.group_purchase_manager'))]"/>
+            <field name="binding_model_id" ref="product.model_product_product" />
+            <field name="binding_view_types">list</field>
+        </record>
+
+    </data>
+</odoo>

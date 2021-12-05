@@ -30,31 +30,35 @@ class UpdateCost(models.TransientModel):
             df = pd.read_excel(toread)
             lines = df.to_dict('records')
             for line in lines:
-                vendor = self.env['res.partner'].search([('name', '=', line['Vendor'])])
+                vendor=False
+                if 'Vendor' in line.keys():
+                    vendor = self.env['res.partner'].search([('name', '=', line['Vendor'])])
                 product = self.env['product.product'].search([('default_code', '=', line['SKU'])])
                 if product:
                     product.write({
                         'standard_price':float(line['Cost'])
                     })
-                sup_info = self.env['product.supplierinfo'].search([('product_id', '=', product.id),
-                                                                  ('name', '=', vendor.id),
-                                                                    ('company_id','=',self.env.user.company_id.id)])
-                if sup_info:
-                    sup_info.write({
-                        "name": vendor.id,
-                            "price": line['Cost'],
-                            "product_id": product.id,
-                            "product_tmpl_id":product.product_tmpl_id.id
-                    })
-                else:
-                    self.env['product.supplierinfo'].create(
-                        {
+                if vendor:
+                    sup_info = self.env['product.supplierinfo'].search([('product_id', '=', product.id),
+                                                                      ('name', '=', vendor.id),
+                                                                        ('company_id','=',self.env.user.company_id.id)])
+                if vendor:
+                    if sup_info:
+                        sup_info.write({
                             "name": vendor.id,
-                            "price": line['Cost'],
-                            "product_id": product.id,
-                            "product_tmpl_id":product.product_tmpl_id.id
-                        }
-                    )
+                                "price": line['Cost'],
+                                "product_id": product.id,
+                                "product_tmpl_id":product.product_tmpl_id.id
+                        })
+                    else:
+                        self.env['product.supplierinfo'].create(
+                            {
+                                "name": vendor.id,
+                                "price": line['Cost'],
+                                "product_id": product.id,
+                                "product_tmpl_id":product.product_tmpl_id.id
+                            }
+                        )
                 for key in line.keys():
                     if key not in ('Cost','Vendor','SKU'):
                         price_list = self.env['product.pricelist'].search([('name', '=', key)],limit=1)
@@ -75,6 +79,7 @@ class UpdateCost(models.TransientModel):
                                      "pricelist_id": price_list.id
                                 })
 
-
-
-           # os.remove(PATH_DIR.replace("wizard", "") + '/data/' + self.name_file)
+            return {
+                'type': 'ir.actions.client',
+                'tag': 'reload',
+            }

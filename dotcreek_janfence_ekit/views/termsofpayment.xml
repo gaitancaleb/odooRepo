@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_document_term_payment_templ">
+        <div class="page">
+                    <div class="oe_structure"/>
+            <div style="text-align: center">
+                    <h2>
+                        <strong><u>Terms of Payment</u></strong>
+                    </h2>
+            </div>
+            <br/>
+            <div class="ms16 me16">
+
+                        <p style="font-size:18px">
+
+                        By signing below, you acknowledge that (1) You have read the entire Contract; (2) You agree
+                            to all the provisions of this Contract; (3) You have received a complete copy of this
+                            Contract; (4) The above prices. Specifications and conditions are satisfactory and are
+                            hereby accepted. Jan Fence, Inc is authorized to do the work as specified. Payment will be
+                            made as outlined above; (5) Until this Contract is paid in full, you have no ownership
+                            interest in the fence/material installed on your property; (6) You may cancel at any time
+                            before midnight of the third business day after receiving a copy of this Contract. If you
+                            wish to cancel this Contract, you must either (a) send a signed and dated written notice of
+                            cancellation by registered mail, return receipt requested; or (b) personally deliver a signed
+                            and dated written notice of cancellation to: Jan Fence, Inc 4 Industrial Road Pequannock,
+                            NJ 07440, Telephone (973) 694-4055. If the customer cancels the Contract within the three-day
+                            period, the customer is entitled to a full refund of their money. Refunds to the customer must
+                            be made within 30 days of the Contractor’s receipt of the cancellation notice.
+                            After the three-day cancellation period, materials are non-refundable.
+                    </p>
+                     <p style="font-size:21px">
+                        <strong>
+                            Customer Signature:
+                            <u>                  
+                                                  
+                                                  
+                                                  
+                                    
+                            </u>
+                            <br/>
+                            Date:
+                            <u>                  
+                                                  
+                                                  
+                                                  
+                                    
+                            </u>
+                            <br/>
+                            Company Representative Signature:
+                            <u>                  
+                                                  
+                                                  
+                                                  
+                                    
+                            </u>
+                            <br/>
+                        </strong>
+                    </p>
+            </div></div>
+    </template>
+
+</odoo>

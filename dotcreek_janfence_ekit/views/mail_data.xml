@@ -151,7 +151,7 @@
             <table width="100%" style="color:#454748;font-size: 12px;">
                 <tbody><tr>
                     <td>
-                        <br>
+                        <br/>
                         <strong>Ship to:</strong>
                         ${object.partner_shipping_id.street or ''}
                         ${object.partner_shipping_id.city or ''}
