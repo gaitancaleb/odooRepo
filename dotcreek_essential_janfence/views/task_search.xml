@@ -38,6 +38,11 @@
                                 domain="[('installers','=',True)]"/>
                             <field name="installer_id" invisible="1"/>
                     </xpath>
+                    <xpath
+                            expr="//field[@name='sale_line_id']"
+                            position="before">
+                        <field name="sale_order_id"/>
+                    </xpath>
 
                 </data>
             </field>
