@@ -14,6 +14,8 @@ class Task(models.Model):
     installer_id = fields.Many2one('res.users', string='Installer',
         index=True,domain=[('installers','=',True)],group_expand='_read_group_installer_id')
 
+    sale_order_id = fields.Many2one(related='sale_line_id.order_id', readonly=True)
+
     def create_email_start(self):
         template = self.env.ref('dotcreek_essential_janfence.mail_template_data_send_report')
         res = template.sudo().send_mail(self.id, force_send=True)
