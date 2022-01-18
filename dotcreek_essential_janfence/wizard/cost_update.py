@@ -33,7 +33,12 @@ class UpdateCost(models.TransientModel):
                 vendor=False
                 if 'Vendor' in line.keys():
                     vendor = self.env['res.partner'].search([('name', '=', line['Vendor'])])
-                product = self.env['product.product'].search([('default_code', '=', line['SKU'])])
+                sku_value=line['SKU']
+                if type(sku_value) is float:
+                    sku_value=str(int(line['SKU']))
+                else:
+                    sku_value = str(line['SKU'])
+                product = self.env['product.product'].search([('default_code', '=', sku_value)])
                 if product:
                     product.write({
                         'standard_price':float(line['Cost'])
