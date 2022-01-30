@@ -19,6 +19,7 @@
     },
     'depends': [
         'base',
+        'web',
         'calendar',
         'contacts',
         'account',
@@ -30,7 +31,7 @@
     ],
     'data': [
         'views/record_rules_calendar.xml',
-        'views/user.xml',
+        # 'views/user.xml',
         'views/contact.xml',
         'views/sms.xml',
         'views/email.xml',
@@ -39,10 +40,15 @@
         'views/view_domains.xml',
         'views/sale_order.xml',
         'views/view_dom_task.xml',
+        'views/stock_picking.xml',
         'wizard/message_wizard.xml',
         'wizard/cost_update.xml',
         'wizard/cost_update_average.xml',
+        'views/dotcreek_gantt_templates.xml',
 
+    ],
+    'qweb': [
+        'static/src/xml/*.xml',
     ],
 
 }
