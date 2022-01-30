@@ -16,6 +16,8 @@ class Task(models.Model):
 
     sale_order_id = fields.Many2one(related='sale_line_id.order_id', readonly=True)
 
+    stage_color = fields.Integer('Stage color', related='stage_id.color')
+
     def create_email_start(self):
         template = self.env.ref('dotcreek_essential_janfence.mail_template_data_send_report')
         res = template.sudo().send_mail(self.id, force_send=True)
