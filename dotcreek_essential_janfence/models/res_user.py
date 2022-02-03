@@ -8,6 +8,7 @@ class User(models.Model):
 
     def write(self, vals):
         res = super(User, self).write(vals)
-        if not self.installers== self.has_group('dotcreek_essential_janfence.group_field_server_installer'):
-            self.installers= self.has_group('dotcreek_essential_janfence.group_field_server_installer')
+        for user in self:
+            if not user.installers== user.has_group('dotcreek_essential_janfence.group_field_server_installer'):
+                user.installers= user.has_group('dotcreek_essential_janfence.group_field_server_installer')
         return res
