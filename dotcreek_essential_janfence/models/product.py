@@ -10,5 +10,6 @@ class Product(models.Model):
     _inherit = "product.template"
 
     def set_prod_mand(self):
-        for item in self.env['product.template'].search([('id','>',47637),('id','<',54139),]):
-            item.write({'route_ids':[(6, 0, [5])]})
+        for bom in self.env['product.template'].search([]):
+            bom.product_tmpl_id.write({'route_ids':[(6, 0, [5])]})
+        return True
