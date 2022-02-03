@@ -33,6 +33,8 @@ class UpdateCost(models.TransientModel):
                 vendor=False
                 if 'Vendor' in line.keys():
                     vendor = self.env['res.partner'].search([('name', '=', line['Vendor'])])
+                if 'VENDOR' in line.keys():
+                    vendor = self.env['res.partner'].search([('name', '=', line['VENDOR'])])
                 sku_value=line['SKU']
                 if type(sku_value) is float:
                     sku_value=str(int(line['SKU']))
@@ -65,7 +67,7 @@ class UpdateCost(models.TransientModel):
                             }
                         )
                 for key in line.keys():
-                    if key not in ('Cost','Vendor','SKU'):
+                    if key not in ('COST','VENDOR','Cost','Vendor','SKU'):
                         price_list = self.env['product.pricelist'].search([('name', '=', key)],limit=1)
                         if price_list:
                             item = self.env['product.pricelist.item'].search([('product_id', '=', product.id),('pricelist_id','=',price_list.id)], limit=1)
