@@ -19,6 +19,7 @@
     },
     'depends': [
         'base',
+        'web',
         'calendar',
         'contacts',
         'account',
@@ -39,10 +40,18 @@
         'views/view_domains.xml',
         'views/sale_order.xml',
         'views/view_dom_task.xml',
+        'views/stock_picking.xml',
         'wizard/message_wizard.xml',
         'wizard/cost_update.xml',
         'wizard/cost_update_average.xml',
+        'views/dotcreek_gantt_templates.xml',
+        'wizard/reschedule.xml',
+        'wizard/reassign.xml',
+        'security/ir.model.access.csv',
 
+    ],
+    'qweb': [
+        'static/src/xml/*.xml',
     ],
 
 }

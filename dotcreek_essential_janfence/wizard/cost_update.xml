@@ -36,5 +36,38 @@
               parent="purchase.menu_purchase_products"
               sequence="3"/>
 
+
+        <record id="view_vendor_price_updater_form" model="ir.ui.view">
+            <field name="name">Vendor Price Updater Form</field>
+            <field name="model">dotcreek.cost_updater</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form string="Vendor Price Updater Import">
+                    <group>
+                        <field name="file" filename="name_file"/>
+                        <field name="name_file" invisible="1"/>
+                    </group>
+                    <footer>
+                        <button name="vendor_update" type="object" class="btn-primery"
+                                string="Update"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_vendor_price_updater" model="ir.actions.act_window">
+        <field name="name">Vendor Price Updater</field>
+        <field name="res_model">dotcreek.cost_updater</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_vendor_price_updater_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_vendor_price_updater"
+              name="Vendor Price Updater"
+              action="action_view_vendor_price_updater"
+              parent="purchase.menu_purchase_products"
+              sequence="3"/>
+
     </data>
 </odoo>

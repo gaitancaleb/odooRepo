@@ -136,5 +136,20 @@
             parent="industry_fsm.fsm_tasks_menu"
             groups="industry_fsm.group_fsm_user"/>
 
+        <record id="industry_fsm.project_task_action_fsm_planning_groupby_user" model="ir.actions.act_window">
+        <field name="name">Planning by User</field>
+        <field name="res_model">project.task</field>
+        <field name="view_mode">gantt,kanban,tree,calendar,form,activity</field>
+        <field name="search_view_id" ref="industry_fsm.project_task_view_search_fsm"/>
+        <field name="domain">[('is_fsm', '=', True)]</field>
+        <field name="context" eval="{'fsm_mode': 1, 'task_nameget_with_hours': 1}"/>
+        <field name="help" type="html">
+            <p class='o_view_nocontent_smiling_face'>
+                No tasks found
+            </p><p>
+                Let's start your planning by adding a new task.
+            </p>
+        </field>
+    </record>
     </data>
 </odoo>

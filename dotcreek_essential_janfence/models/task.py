@@ -14,6 +14,24 @@ class Task(models.Model):
     installer_id = fields.Many2one('res.users', string='Installer',
         index=True,domain=[('installers','=',True)],group_expand='_read_group_installer_id')
 
+    sale_order_id = fields.Many2one(related='sale_line_id.order_id', readonly=True)
+
+    sale_currency_id = fields.Many2one(related='sale_order_id.currency_id', readonly=True)
+    sale_amount_total = fields.Monetary(related='sale_order_id.amount_total',currency_field='sale_currency_id', readonly=True)
+    sale_shipping_city = fields.Char(related='sale_order_id.partner_shipping_id.city', readonly=True)
+    sale_vendor_name = fields.Char(related='sale_order_id.user_id.name', readonly=True)
+    sale_currency_id_symbol = fields.Char(related='sale_currency_id.symbol', readonly=True)
+
+    def _compute_gantt_display_name(self):
+        for item in self:
+            item.gantt_display_name_one = item.display_name[:45]
+            item.gantt_display_name_two = item.display_name[45:]
+
+    gantt_display_name_one = fields.Char('Display Name One',compute='_compute_gantt_display_name', readonly=False, required=True)
+    gantt_display_name_two = fields.Char('Display Name Two',compute='_compute_gantt_display_name', readonly=False, required=True)
+
+    stage_color = fields.Integer('Stage color', related='stage_id.color')
+
     def create_email_start(self):
         template = self.env.ref('dotcreek_essential_janfence.mail_template_data_send_report')
         res = template.sudo().send_mail(self.id, force_send=True)

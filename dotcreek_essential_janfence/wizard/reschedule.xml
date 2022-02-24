@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2018 TechAsERP
+ License CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/).-->
+
+<odoo>
+    <data>
+        <record id="view_reschedule_form" model="ir.ui.view">
+            <field name="name">Reschedule</field>
+            <field name="model">dotcreek.reschedule</field>
+            <field name="arch" type="xml">
+                <form string="Reschedule">
+                    <group>
+                            <group>
+                                <field name="option" />
+                            </group>
+                    <group>
+                        <field name="date" attrs="{'required': [('option', '=', 'date')],
+                           'invisible':[('option', '=', 'days')]}"/>
+                        <field name="days" attrs="{'required': [('option', '=', 'days')],
+                           'invisible':[('option', '=', 'date')]}"/>
+                    </group>
+                      </group>
+                    <footer>
+                        <button name="update" type="object" class="btn-primery"
+                                confirm="Are you sure to apply the update?"
+                                string="Update"/>
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+       <record id="action_reschedule" model="ir.actions.act_window">
+            <field name="name">Reschedule</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">dotcreek.reschedule</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_reschedule_form"/>
+            <field name="context">{}</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="project.model_project_task" />
+            <field name="binding_view_types">list</field>
+        </record>
+
+    </data>
+</odoo>

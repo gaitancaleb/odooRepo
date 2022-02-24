@@ -1,5 +1,30 @@
 from odoo import fields, models, api
 
+class Sale(models.Model):
+    _inherit = "sale.order"
+
+    def _compute_sale_order(self):
+        for item in self:
+            count=0
+            for line in item.order_line:
+                if line.product_id:
+                    if line.product_id.categ_id:
+                        if 'POST' in line.product_id.categ_id.name:
+                            count += 1
+            item.count_post=count
+
+    count_post = fields.Integer('POST',compute='_compute_sale_order', readonly=False, required=True)
+
+    @api.onchange('order_line')
+    def onchange_user_installer(self):
+        for item in self:
+            count = 0
+            for line in item.order_line:
+                if line.product_id:
+                    if line.product_id.categ_id:
+                        if 'POST' in line.product_id.categ_id.name:
+                            count += 1
+            item.count_post = count
 
 class SaleOrder(models.Model):
     _inherit = "sale.order.line"
@@ -26,7 +51,7 @@ class SaleOrder(models.Model):
         dom = []
         if len(categ_id) > 0:
             dom.append('|')
-            dom.append(('categ_id', 'in', categ_id))
+            dom.append(('categ_id', 'child_of', categ_id))
         dom.append(('id', 'in', product_ids))
         res['domain'] = {'product_template_id': dom}
         return res
@@ -57,3 +82,4 @@ class SaleOrder(models.Model):
         dom.append(('id', 'in', product_ids))
         res['domain'] = {'product_template_id': dom}
         return res
+

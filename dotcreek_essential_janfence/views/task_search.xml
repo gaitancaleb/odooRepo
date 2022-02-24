@@ -38,6 +38,11 @@
                                 domain="[('installers','=',True)]"/>
                             <field name="installer_id" invisible="1"/>
                     </xpath>
+                    <xpath
+                            expr="//field[@name='sale_line_id']"
+                            position="before">
+                        <field name="sale_order_id"/>
+                    </xpath>
 
                 </data>
             </field>
@@ -52,7 +57,32 @@
                         <attribute name="default_group_by">installer_id</attribute>
                         <attribute name="precision">{"day":"hour:full","week":"day:half","month":"day:full"}</attribute>
                         <attribute name="string">Installers</attribute>
+                         <attribute name="color">stage_color</attribute>
                         <attribute name="total_row"/>
+                      </xpath>
+                      <xpath expr="//field[@name='project_color']"
+                            position="replace">
+                        <field name="project_color" />
+                          <field name="sale_currency_id" />
+                          <field name="sale_amount_total" />
+                          <field name="sale_shipping_city" />
+                           <field name="sale_vendor_name" />
+                          <field name="sale_currency_id_symbol" />
+                          <field name="gantt_display_name_one" />
+                          <field name="gantt_display_name_two" />
+                      </xpath>
+                </data>
+            </field>
+        </record>
+        <record id="task_type_edit" model="ir.ui.view">
+            <field name="name">project.task.type.form</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_edit"/>
+            <field name="arch" type="xml">
+                <data>
+                     <xpath expr="//field[@name='mail_template_id']"
+                            position="after">
+                        <field name="color" widget="color_picker"/>
                       </xpath>
 
                 </data>
