@@ -31,7 +31,7 @@
     ],
     'data': [
         'views/record_rules_calendar.xml',
-        # 'views/user.xml',
+        'views/user.xml',
         'views/contact.xml',
         'views/sms.xml',
         'views/email.xml',
@@ -45,6 +45,9 @@
         'wizard/cost_update.xml',
         'wizard/cost_update_average.xml',
         'views/dotcreek_gantt_templates.xml',
+        'wizard/reschedule.xml',
+        'wizard/reassign.xml',
+        'security/ir.model.access.csv',
 
     ],
     'qweb': [
