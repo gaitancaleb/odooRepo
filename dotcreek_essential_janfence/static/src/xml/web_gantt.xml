@@ -131,16 +131,10 @@
                                 <!-- README: be careful when modifying the DOM inside the pill ; @_onMouseMove is strongly dependant of it -->
                                 <p class="text-truncate position-relative mb-0 o_gantt_pill_title" >
 
-                                    <t t-esc="pill.display_name"/><br/>
-                                     <t t-if="pill.partner_id">
-                                            <t t-esc="pill.partner_id"/><br/>
-                                     </t>
-                                    <t t-if="pill.planned_date_begin">
-                                        Start:<t t-esc="pill.planned_date_begin.format('YYYY-MM-DD HH:mm:ss')"/><br/>
-                                    </t>
-                                    <t t-if="pill.planned_date_end">
-                                        End:<t t-esc="pill.planned_date_end.format('YYYY-MM-DD HH:mm:ss')"/><br/>
-                                    </t>
+                                    <t t-esc="pill.gantt_display_name_one"/><br/>
+                                     <t t-esc="pill.gantt_display_name_two"/><br/>
+                                    <t t-esc="pill.sale_currency_id_symbol"/><t t-esc="pill.sale_amount_total"/><br/>
+                                    <t t-if="pill.sale_shipping_city" t-esc="pill.sale_shipping_city"/>,<t t-if="pill.sale_vendor_name"  t-esc="pill.sale_vendor_name"/><br/>
 
                                 </p>
 

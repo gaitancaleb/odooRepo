@@ -13,6 +13,7 @@ class MessageWizard(models.TransientModel):
     _description = "Message Wizard"
 
     message = fields.Text('Message', required=True, readonly=True)
+    target = fields.Text('Target', required=True, readonly=True)
 
     def action_ok(self):
         """ close wizard"""
@@ -20,6 +21,6 @@ class MessageWizard(models.TransientModel):
             'name': _('Product Variants'),
             'type': 'ir.actions.act_window',
             'view_mode': 'tree',
-            'res_model': 'product.product',
+            'res_model': self.target,
             'target': 'self'
         }
