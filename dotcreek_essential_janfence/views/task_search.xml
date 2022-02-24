@@ -63,6 +63,13 @@
                       <xpath expr="//field[@name='project_color']"
                             position="replace">
                         <field name="project_color" />
+                          <field name="sale_currency_id" />
+                          <field name="sale_amount_total" />
+                          <field name="sale_shipping_city" />
+                           <field name="sale_vendor_name" />
+                          <field name="sale_currency_id_symbol" />
+                          <field name="gantt_display_name_one" />
+                          <field name="gantt_display_name_two" />
                       </xpath>
                 </data>
             </field>

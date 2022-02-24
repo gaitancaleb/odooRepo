@@ -31,9 +31,9 @@ class UpdateCost(models.TransientModel):
                 else:
                     update+=(""+str(item.default_code)+" "+str(item.name)+"\n")
         if not update=="":
-            message_id = self.env['message.wizard'].create({'message': _("The update was finished successfully with some exceptions:")+"\n"+update})
+            message_id = self.env['message.wizard'].create({'message': _("The update was finished successfully with some exceptions:")+"\n"+update, 'target':'product.product'})
         else:
-            message_id = self.env['message.wizard'].create({'message': _("The update was finished successfully")})
+            message_id = self.env['message.wizard'].create({'message': _("The update was finished successfully"), 'target':'product.product'})
         return {
             'name': _('Successfull'),
             'type': 'ir.actions.act_window',
