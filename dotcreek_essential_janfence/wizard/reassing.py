@@ -29,7 +29,7 @@ class UpdateCost(models.TransientModel):
                 item.write({
                     'user_id':self.user_id.id
                 })
-        message_id = self.env['message.wizard'].create({'message': _("The update was finished successfully"), 'target':'project.task'})
+        message_id = self.env['message.wizard'].create({'message': _("The update was finished successfully"), 'target':'industry_fsm.project_task_action_all_fsm'})
         return {
             'name': _('Successfull'),
             'type': 'ir.actions.act_window',

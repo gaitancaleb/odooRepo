@@ -133,7 +133,6 @@
 
                                     <t t-esc="pill.gantt_display_name_one"/><br/>
                                      <t t-esc="pill.gantt_display_name_two"/><br/>
-                                    <t t-esc="pill.sale_currency_id_symbol"/><t t-esc="pill.sale_amount_total"/><br/>
                                     <t t-if="pill.sale_shipping_city" t-esc="pill.sale_shipping_city"/>,<t t-if="pill.sale_vendor_name"  t-esc="pill.sale_vendor_name"/><br/>
 
                                 </p>

@@ -24,8 +24,8 @@ class Task(models.Model):
 
     def _compute_gantt_display_name(self):
         for item in self:
-            item.gantt_display_name_one = item.display_name[:45]
-            item.gantt_display_name_two = item.display_name[45:]
+            item.gantt_display_name_one = item.display_name[:30]
+            item.gantt_display_name_two = item.display_name[30:]
 
     gantt_display_name_one = fields.Char('Display Name One',compute='_compute_gantt_display_name', readonly=False, required=True)
     gantt_display_name_two = fields.Char('Display Name Two',compute='_compute_gantt_display_name', readonly=False, required=True)
