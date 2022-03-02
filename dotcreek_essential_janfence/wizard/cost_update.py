@@ -105,6 +105,7 @@ class UpdateCost(models.TransientModel):
                     vendor = self.env['res.partner'].search([('name', '=', line['Vendor'])])
                 if 'VENDOR' in line.keys():
                     vendor = self.env['res.partner'].search([('name', '=', line['VENDOR'])])
+                
                 sku_value=line['SKU']
                 if type(sku_value) is float:
                     sku_value=str(int(line['SKU']))

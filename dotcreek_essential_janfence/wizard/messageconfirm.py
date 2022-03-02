@@ -17,10 +17,12 @@ class MessageWizard(models.TransientModel):
 
     def action_ok(self):
         """ close wizard"""
-        return {
-            'name': _('Product Variants'),
-            'type': 'ir.actions.act_window',
-            'view_mode': 'tree',
-            'res_model': self.target,
-            'target': 'self'
-        }
+        action = self.env.ref(self.target)
+        return action.read()[0]
+        # return {
+        #     'name': _('Product Variants'),
+        #     'type': 'ir.actions.act_window',
+        #     'view_mode': 'tree',
+        #     'res_model': self.target,
+        #     'target': 'self'
+        # }

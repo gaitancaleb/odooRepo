@@ -30,8 +30,8 @@ class UpdateCost(models.TransientModel):
         if task:
             for item in task:
                 if self.option == 'date':
-                    if task.planned_date_end:
-                        diff_day=task.planned_date_end - task.planned_date_begin
+                    if item.planned_date_end:
+                        diff_day=item.planned_date_end - item.planned_date_begin
                         item.write({
                             'planned_date_end': (self.date + datetime.timedelta(days=(diff_day.days*-1))),
                         })
@@ -40,16 +40,16 @@ class UpdateCost(models.TransientModel):
                     })
 
                 else:
-                    if task.planned_date_begin:
+                    if item.planned_date_begin:
                         item.write({
-                            'planned_date_begin': (task.planned_date_begin + datetime.timedelta(days=self.days)),
+                            'planned_date_begin': (item.planned_date_begin + datetime.timedelta(days=abs(self.days))),
                         })
-                    if task.planned_date_end:
+                    if item.planned_date_end:
                         item.write({
-                            'planned_date_end': (task.planned_date_end + datetime.timedelta(days=self.days)),
+                            'planned_date_end': (item.planned_date_end + datetime.timedelta(days=abs(self.days))),
                         })
 
-        message_id = self.env['message.wizard'].create({'message': _("The update was finished successfully"), 'target':'project.task'})
+        message_id = self.env['message.wizard'].create({'message': _("The update was finished successfully"), 'target':'industry_fsm.project_task_action_all_fsm'})
         return {
             'name': _('Successfull'),
             'type': 'ir.actions.act_window',
